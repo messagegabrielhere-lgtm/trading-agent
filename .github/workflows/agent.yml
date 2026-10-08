@@ -7,6 +7,7 @@ on:
 
 permissions:
   contents: write
+  issues: write
 
 concurrency: agent
 
@@ -19,6 +20,16 @@ jobs:
         with:
           python-version: "3.12"
       - run: python -m agent.run
+      - name: Open an issue for new tickets
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          python -m agent.notify > ticket.md
+          if [ -s ticket.md ]; then
+            gh issue create --title "$(head -1 ticket.md)" --body "$(tail -n +3 ticket.md)" \
+              --assignee "${{ github.repository_owner }}"
+          fi
+          rm ticket.md
       - name: Commit dashboard data
         run: |
           git config user.name "paper-agent"
