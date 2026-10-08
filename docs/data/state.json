@@ -13,6 +13,11 @@
    "date": "2026-10-07",
    "equity": 9995.0,
    "benchmark": 10000.0
+  },
+  {
+   "date": "2026-10-08",
+   "equity": 9906.91,
+   "benchmark": 9957.67
   }
  ],
  "trades": [
@@ -44,6 +49,15 @@
     "QQQ": 0.5,
     "SPY": 0.5
    }
+  },
+  {
+   "date": "2026-10-08",
+   "action": "hold",
+   "reason": "Top 126-day momentum above 200-day average: QQQ +22.8%, DBC +14.6%. Next rebalance in 20 trading days.",
+   "targets": {
+    "QQQ": 0.5,
+    "DBC": 0.5
+   }
   }
  ],
  "tickets": {
@@ -65,26 +79,26 @@
    }
   ]
  },
- "last_date": "2026-10-07",
+ "last_date": "2026-10-08",
  "holdings": [
   {
    "symbol": "QQQ",
    "qty": 6.5954,
-   "price": 757.73,
-   "value": 4997.5,
-   "weight": 0.5
+   "price": 747.58,
+   "value": 4930.56,
+   "weight": 0.4977
   },
   {
    "symbol": "SPY",
    "qty": 6.43,
-   "price": 777.22,
-   "value": 4997.5,
-   "weight": 0.5
+   "price": 773.93,
+   "value": 4976.35,
+   "weight": 0.5023
   }
  ],
  "strategy": "momentum_rotation",
  "benchmark": "SPY",
  "goal_multiple": 10,
  "goal_days": 365,
- "updated": "2026-10-08T05:57:16+00:00"
+ "updated": "2026-10-08T21:42:55+00:00"
 }
