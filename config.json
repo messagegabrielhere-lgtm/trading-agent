@@ -1,0 +1,22 @@
+{
+  "starting_cash": 10000,
+  "goal_multiple": 10,
+  "goal_days": 365,
+  "benchmark": "SPY",
+  "universe": ["SPY", "QQQ", "IWM", "EFA", "EEM", "TLT", "GLD", "DBC"],
+  "strategy": "momentum_rotation",
+  "slippage_bps": 5,
+  "min_trade_pct": 0.01,
+  "strategies": {
+    "momentum_rotation": {
+      "lookback_days": 126,
+      "top_n": 2,
+      "rebalance_days": 21,
+      "trend_sma_days": 200
+    },
+    "target_weights": {
+      "weights": {"SPY": 0.6, "TLT": 0.4},
+      "drift_threshold": 0.05
+    }
+  }
+}

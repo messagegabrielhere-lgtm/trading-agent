@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Paper Trading Agent</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<style>
+  :root {
+    --bg: #f6f7f9; --card: #ffffff; --text: #16191d; --muted: #646c78; --line: #e1e4e9;
+    --agent: #2563eb; --bench: #7a828e; --goal: #c2410c; --up: #15803d; --down: #b91c1c;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0f1114; --card: #181b20; --text: #e8eaed; --muted: #9aa2ae; --line: #2a2f37;
+      --agent: #6ea0ff; --bench: #8c94a0; --goal: #fb923c; --up: #4ade80; --down: #f87171;
+    }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text);
+    font: 15px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+  main { max-width: 1040px; margin: 0 auto; padding: 24px 16px 56px; }
+  h1 { font-size: 24px; margin: 0 0 4px; }
+  h2 { font-size: 16px; margin: 0 0 12px; }
+  .sub, .note { color: var(--muted); font-size: 13px; }
+  .banner { border: 1px solid var(--line); border-left: 4px solid var(--goal); background: var(--card);
+    border-radius: 8px; padding: 10px 14px; margin: 16px 0; font-size: 14px; }
+  .tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 12px; margin: 16px 0; }
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 16px; }
+  .tile .label { color: var(--muted); font-size: 12px; text-transform: uppercase; letter-spacing: .04em; }
+  .tile .value { font-size: 24px; font-weight: 600; font-variant-numeric: tabular-nums; }
+  section { margin-top: 16px; }
+  .chart { position: relative; height: 320px; }
+  .grid2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; }
+  .scroll { overflow-x: auto; }
+  table { width: 100%; border-collapse: collapse; font-size: 14px; font-variant-numeric: tabular-nums; }
+  th, td { text-align: right; padding: 7px 8px; border-bottom: 1px solid var(--line); white-space: nowrap; }
+  th:first-child, td:first-child { text-align: left; }
+  td.wrap { white-space: normal; text-align: left; }
+  th { color: var(--muted); font-weight: 500; font-size: 12px; }
+  tr:last-child td { border-bottom: 0; }
+  .up { color: var(--up); } .down { color: var(--down); }
+  .log { max-height: 320px; overflow-y: auto; }
+  #decisions th, #decisions td { text-align: left; }
+</style>
+</head>
+<body>
+<main>
+  <h1>Paper Trading Agent</h1>
+  <div class="sub" id="sub">Loading…</div>
+  <div class="banner">Simulated portfolio. No real money is traded and nothing here is investment advice.
+    The agent never places orders; tickets below are for a human to review and place manually.</div>
+
+  <div class="tiles" id="tiles"></div>
+
+  <section class="card">
+    <h2>Paper equity vs benchmark vs goal pace</h2>
+    <div class="chart"><canvas id="paperChart"></canvas></div>
+    <p class="note" id="goalNote"></p>
+  </section>
+
+  <section class="grid2">
+    <div class="card"><h2>Holdings</h2><div class="scroll"><table id="holdings"></table></div></div>
+    <div class="card"><h2>Latest tickets</h2><div class="scroll"><table id="tickets"></table></div>
+      <p class="note" id="ticketNote"></p></div>
+  </section>
+
+  <section class="card">
+    <h2>Decision log</h2>
+    <div class="log scroll"><table id="decisions"></table></div>
+  </section>
+
+  <section class="card">
+    <h2>Backtest</h2>
+    <div class="chart"><canvas id="btChart"></canvas></div>
+    <div class="scroll"><table id="btStats"></table></div>
+    <p class="note" id="btNote"></p>
+  </section>
+</main>
+
+<script>
+const css = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+const usd = v => v.toLocaleString("en-US", { style: "currency", currency: "USD" });
+const pct = (v, d = 1) => (v > 0 ? "+" : "") + (v * 100).toFixed(d) + "%";
+const mult = v => v == null ? "–" : v.toFixed(2) + "×";
+const el = (tag, text, cls) => { const e = document.createElement(tag); e.textContent = text; if (cls) e.className = cls; return e; };
+
+function table(id, head, rows, empty) {
+  const t = document.getElementById(id);
+  t.replaceChildren();
+  if (!rows.length) { t.append(el("caption", empty, "note")); return; }
+  const hr = t.createTHead().insertRow();
+  head.forEach(h => hr.append(el("th", h)));
+  const body = t.createTBody();
+  rows.forEach(r => { const tr = body.insertRow(); r.forEach(c => {
+    const td = Array.isArray(c) ? el("td", c[0], c[1]) : el("td", c); tr.append(td); }); });
+}
+
+function lineChart(id, labels, series, yLog) {
+  const grid = css("--line"), text = css("--muted");
+  new Chart(document.getElementById(id), {
+    type: "line",
+    data: { labels, datasets: series.map(s => ({
+      label: s.label, data: s.data, borderColor: s.color, backgroundColor: s.color,
+      borderWidth: s.dash ? 1.5 : 2, borderDash: s.dash || [], tension: 0,
+      pointRadius: labels.length < 3 ? 3 : 0, pointHoverRadius: 4 })) },
+    options: {
+      maintainAspectRatio: false, interaction: { mode: "index", intersect: false },
+      plugins: {
+        legend: { labels: { color: text, usePointStyle: true, pointStyle: "line" } },
+        tooltip: { callbacks: { label: c => `${c.dataset.label}: ${usd(c.parsed.y)}` } } },
+      scales: {
+        x: { ticks: { color: text, maxTicksLimit: 8, maxRotation: 0 }, grid: { display: false } },
+        y: { type: yLog ? "logarithmic" : "linear", grid: { color: grid },
+             ticks: { color: text, callback: v => "$" + Number(v).toLocaleString("en-US") } } } }
+  });
+}
+
+async function load() {
+  const get = f => fetch(`data/${f}?t=${Date.now()}`).then(r => r.json());
+  const [st, bt] = await Promise.all([get("state.json"), get("backtest.json")]);
+  const h = st.history, last = h[h.length - 1], start = st.start_cash;
+  const days = (new Date(last.date) - new Date(st.start_date)) / 864e5;
+  const goalAt = d => start * Math.pow(st.goal_multiple, d / st.goal_days);
+  const ret = last.equity / start - 1, bret = last.benchmark / start - 1;
+  let peak = 0, dd = 0;
+  h.forEach(p => { peak = Math.max(peak, p.equity); dd = Math.min(dd, p.equity / peak - 1); });
+
+  document.getElementById("sub").textContent =
+    `Strategy: ${st.strategy.replace(/_/g, " ")} · started ${st.start_date} · data through ${st.last_date}`;
+
+  const tiles = [
+    ["Paper equity", usd(last.equity)],
+    ["Return since start", pct(ret, 2), ret >= 0 ? "up" : "down"],
+    [`${st.benchmark} since start`, pct(bret, 2), bret >= 0 ? "up" : "down"],
+    ["Goal pace today", usd(goalAt(days))],
+    ["Max drawdown", pct(dd, 2), dd < 0 ? "down" : ""],
+  ];
+  document.getElementById("tiles").replaceChildren(...tiles.map(([l, v, c]) => {
+    const d = el("div", "", "card tile"); d.append(el("div", l, "label"), el("div", v, "value " + (c || ""))); return d; }));
+
+  lineChart("paperChart", h.map(p => p.date), [
+    { label: "Paper agent", data: h.map(p => p.equity), color: css("--agent") },
+    { label: st.benchmark, data: h.map(p => p.benchmark), color: css("--bench") },
+    { label: `${st.goal_multiple}× goal pace`, color: css("--goal"), dash: [6, 4],
+      data: h.map(p => goalAt((new Date(p.date) - new Date(st.start_date)) / 864e5)) },
+  ], goalAt(days) / start > 2);
+  const perMonth = Math.pow(st.goal_multiple, 30.4 / st.goal_days) - 1;
+  document.getElementById("goalNote").textContent =
+    `The goal line is ${st.goal_multiple}× in ${st.goal_days} days, which needs about ${pct(perMonth)} compounded every month. ` +
+    `The best 12-month result of any strategy or the benchmark in the backtest below is ` +
+    `${mult(Math.max(...Object.values(bt.stats).map(s => s.best_1y_multiple || 0)))}.`;
+
+  table("holdings", ["Symbol", "Shares", "Price", "Value", "Weight"],
+    st.holdings.map(x => [x.symbol, x.qty.toFixed(4), usd(x.price), usd(x.value), (x.weight * 100).toFixed(1) + "%"])
+      .concat([["Cash", "", "", usd(st.cash), (st.cash / last.equity * 100).toFixed(1) + "%"]]), "");
+
+  const tk = st.tickets;
+  table("tickets", ["Symbol", "Side", "Target weight", "Ref. close"],
+    tk ? tk.items.map(x => [x.symbol, [x.side.toUpperCase(), x.side === "buy" ? "up" : "down"],
+      (x.target_weight * 100).toFixed(0) + "%", usd(x.reference_close)]) : [], "No tickets yet.");
+  if (tk) document.getElementById("ticketNote").textContent =
+    `Generated ${tk.date}. Target weight is the share of the account the strategy wants in that symbol after the trade.`;
+
+  table("decisions", ["Date", "Action", "Reason"],
+    st.decisions.slice().reverse().map(d => [d.date, d.action, [d.reason, "wrap"]]), "");
+
+  const names = Object.keys(bt.curves), palette = [css("--agent"), css("--goal"), css("--bench")];
+  lineChart("btChart", bt.dates, names.map((n, i) => ({
+    label: n.replace(/_/g, " "), data: bt.curves[n],
+    color: n === bt.benchmark ? css("--bench") : palette[i % 2], dash: n === bt.benchmark ? [4, 3] : null })), true);
+  table("btStats", ["", "CAGR", "Volatility", "Sharpe", "Max drawdown", "Total", "Best 12 mo", "Worst 12 mo"],
+    names.map(n => { const s = bt.stats[n]; return [n.replace(/_/g, " "), pct(s.cagr), (s.vol * 100).toFixed(1) + "%",
+      s.sharpe.toFixed(2), pct(s.max_drawdown), mult(s.total_multiple), mult(s.best_1y_multiple), mult(s.worst_1y_multiple)]; }), "");
+  document.getElementById("btNote").textContent =
+    `${bt.from} to ${bt.to}, dividend-adjusted closes, 5 bps slippage, no taxes. Past results do not predict future returns.`;
+}
+load().catch(e => { document.getElementById("sub").textContent = "Could not load data: " + e.message; });
+</script>
+</body>
+</html>

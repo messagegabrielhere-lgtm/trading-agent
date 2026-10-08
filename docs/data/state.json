@@ -1,0 +1,90 @@
+{
+ "start_date": "2026-10-07",
+ "start_cash": 10000,
+ "benchmark_start": 777.219970703125,
+ "cash": 0.0,
+ "positions": {
+  "QQQ": 6.595359,
+  "SPY": 6.42997
+ },
+ "last_rebalance": "2026-10-07",
+ "history": [
+  {
+   "date": "2026-10-07",
+   "equity": 9995.0,
+   "benchmark": 10000.0
+  }
+ ],
+ "trades": [
+  {
+   "date": "2026-10-07",
+   "symbol": "QQQ",
+   "side": "buy",
+   "qty": 6.595359,
+   "price": 758.1088,
+   "value": 5000.0,
+   "target_weight": 0.5
+  },
+  {
+   "date": "2026-10-07",
+   "symbol": "SPY",
+   "side": "buy",
+   "qty": 6.42997,
+   "price": 777.6086,
+   "value": 5000.0,
+   "target_weight": 0.5
+  }
+ ],
+ "decisions": [
+  {
+   "date": "2026-10-07",
+   "action": "rebalance",
+   "reason": "Top 126-day momentum above 200-day average: QQQ +25.3%, SPY +15.6%.",
+   "targets": {
+    "QQQ": 0.5,
+    "SPY": 0.5
+   }
+  }
+ ],
+ "tickets": {
+  "date": "2026-10-07",
+  "items": [
+   {
+    "symbol": "QQQ",
+    "side": "buy",
+    "target_weight": 0.5,
+    "paper_qty": 6.595359,
+    "reference_close": 757.73
+   },
+   {
+    "symbol": "SPY",
+    "side": "buy",
+    "target_weight": 0.5,
+    "paper_qty": 6.42997,
+    "reference_close": 777.22
+   }
+  ]
+ },
+ "last_date": "2026-10-07",
+ "holdings": [
+  {
+   "symbol": "QQQ",
+   "qty": 6.5954,
+   "price": 757.73,
+   "value": 4997.5,
+   "weight": 0.5
+  },
+  {
+   "symbol": "SPY",
+   "qty": 6.43,
+   "price": 777.22,
+   "value": 4997.5,
+   "weight": 0.5
+  }
+ ],
+ "strategy": "momentum_rotation",
+ "benchmark": "SPY",
+ "goal_multiple": 10,
+ "goal_days": 365,
+ "updated": "2026-10-08T04:50:50+00:00"
+}
