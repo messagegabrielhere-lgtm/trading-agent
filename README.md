@@ -107,3 +107,14 @@ budget caps). To go live:
 
 This repository is public, so anyone can read the dashboard and the Actions logs. Consider that
 before switching a real-money bot to live.
+
+## Active strategy: 2x Nasdaq trend (chosen 2026-10-09)
+
+`leveraged_trend` holds QLD (2x the Nasdaq-100) while QQQ is above its 200-day average, with a 2%
+band so it does not flip-flop on small crossings, and holds IEF (7-10 year Treasuries) otherwise.
+In the 2017-2026 backtest it turned $10,000 into about $70,500 (24% a year) against $34,900 for
+holding SPY, and beat SPY in both halves of the period. It also fell 54.5% at its worst (the 2020
+crash moved faster than the 200-day average could react), which is why it failed the drawdown
+limit set before the test. It runs in the Alpaca paper account to see how that behaves live.
+Caveat: 2017-2026 was a strong decade for the Nasdaq; a 2x fund in 2000-2002 or 2008 would have
+been far worse, and the trend filter only partly protects against that.

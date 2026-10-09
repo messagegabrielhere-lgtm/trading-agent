@@ -13,7 +13,7 @@
     "GLD",
     "DBC"
   ],
-  "strategy": "momentum_rotation",
+  "strategy": "leveraged_trend",
   "slippage_bps": 5,
   "min_trade_pct": 0.01,
   "execution": {
