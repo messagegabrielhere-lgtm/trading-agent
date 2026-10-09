@@ -1,9 +1,99 @@
 {
- "orders": [],
+ "orders": [
+  {
+   "time": "2026-10-09T16:59:58Z",
+   "slug": "cpic-uscpi-september-mom-2026-10-14-gt0pt2pct",
+   "title": "Above 0.2%",
+   "event": "CPI MoM in September",
+   "ends": null,
+   "price": 0.96,
+   "qty": 26,
+   "cost": 24.96,
+   "max_profit": 1.04,
+   "mode": "dry_run",
+   "status": "dry run"
+  },
+  {
+   "time": "2026-10-09T16:59:58Z",
+   "slug": "cpic-uscpi-september-yoy-2026-10-14-gt3pt3pct",
+   "title": "Above 3.3%",
+   "event": "CPI YoY in September",
+   "ends": null,
+   "price": 0.96,
+   "qty": 26,
+   "cost": 24.96,
+   "max_profit": 1.04,
+   "mode": "dry_run",
+   "status": "dry run"
+  },
+  {
+   "time": "2026-10-09T16:59:58Z",
+   "slug": "cpic-uscpicore-september-yoy-2026-10-14-gt2pt2pct",
+   "title": "Above 2.2%",
+   "event": "Core CPI YoY in September",
+   "ends": null,
+   "price": 0.97,
+   "qty": 25,
+   "cost": 24.25,
+   "max_profit": 0.75,
+   "mode": "dry_run",
+   "status": "dry run"
+  },
+  {
+   "time": "2026-10-09T16:59:58Z",
+   "slug": "cpic-uscpicore-september-mom-2026-10-14-gtn0pt2p",
+   "title": "Above -0.2%",
+   "event": "Core CPI MoM in September",
+   "ends": null,
+   "price": 0.97,
+   "qty": 25,
+   "cost": 24.25,
+   "max_profit": 0.75,
+   "mode": "dry_run",
+   "status": "dry run"
+  },
+  {
+   "time": "2026-10-09T16:59:58Z",
+   "slug": "rotc-t-youcan-2026-10-19-gte90",
+   "title": "90+",
+   "event": "You Can See Everything Rotten Tomatoes Score?",
+   "ends": null,
+   "price": 0.96,
+   "qty": 26,
+   "cost": 24.96,
+   "max_profit": 1.04,
+   "mode": "dry_run",
+   "status": "dry run"
+  }
+ ],
  "log": [
   {
    "time": "2026-10-09T16:52:12Z",
    "text": "Stopped: RateLimitError: <!doctype html>\n<!--[if lt IE 7]> <html class=\"no-js ie6 oldie\" lang=\"en-US\"> <![endif]-->\n<!--[if IE 7]>    <html class=\"no-js ie7 oldie\" lang=\"en-US\"> <![endif]-->\n<!--[if IE 8]>    <html class=\"no-"
+  },
+  {
+   "time": "2026-10-09T16:59:58Z",
+   "text": "Would place BUY YES 26 x cpic-uscpi-september-mom-2026-10-14-gt0pt2pct at $0.96 ($24.96, pays $26 if it resolves YES; ends None). dry run."
+  },
+  {
+   "time": "2026-10-09T16:59:58Z",
+   "text": "Would place BUY YES 26 x cpic-uscpi-september-yoy-2026-10-14-gt3pt3pct at $0.96 ($24.96, pays $26 if it resolves YES; ends None). dry run."
+  },
+  {
+   "time": "2026-10-09T16:59:58Z",
+   "text": "Would place BUY YES 25 x cpic-uscpicore-september-yoy-2026-10-14-gt2pt2pct at $0.97 ($24.25, pays $25 if it resolves YES; ends None). dry run."
+  },
+  {
+   "time": "2026-10-09T16:59:58Z",
+   "text": "Would place BUY YES 25 x cpic-uscpicore-september-mom-2026-10-14-gtn0pt2p at $0.97 ($24.25, pays $25 if it resolves YES; ends None). dry run."
+  },
+  {
+   "time": "2026-10-09T16:59:58Z",
+   "text": "Would place BUY YES 26 x rotc-t-youcan-2026-10-19-gte90 at $0.96 ($24.96, pays $26 if it resolves YES; ends None). dry run."
+  },
+  {
+   "time": "2026-10-09T16:59:58Z",
+   "text": "Scanned 10 events ending within 14 days (93 price checks); 5 qualify; 5 order(s) simulated."
   }
  ],
  "mode": "dry_run",
@@ -21,5 +111,64 @@
   "pnl_usd": 0,
   "staked_usd": 0
  },
- "updated": "2026-10-09T16:52:12Z"
+ "updated": "2026-10-09T16:59:58Z",
+ "candidates": [
+  {
+   "slug": "cpic-uscpi-september-mom-2026-10-14-gt0pt2pct",
+   "title": "Above 0.2%",
+   "event": "uscpi-september-mom-2026-10-14",
+   "event_title": "CPI MoM in September",
+   "ends": null,
+   "bid": 0.96,
+   "ask": 0.97,
+   "price": 0.96
+  },
+  {
+   "slug": "cpic-uscpi-september-yoy-2026-10-14-gt3pt3pct",
+   "title": "Above 3.3%",
+   "event": "uscpi-september-yoy-2026-10-14",
+   "event_title": "CPI YoY in September",
+   "ends": null,
+   "bid": 0.96,
+   "ask": 0.97,
+   "price": 0.96
+  },
+  {
+   "slug": "cpic-uscpicore-september-yoy-2026-10-14-gt2pt2pct",
+   "title": "Above 2.2%",
+   "event": "uscpicore-september-yoy-2026-10-14",
+   "event_title": "Core CPI YoY in September",
+   "ends": null,
+   "bid": 0.97,
+   "ask": 0.98,
+   "price": 0.97
+  },
+  {
+   "slug": "cpic-uscpicore-september-mom-2026-10-14-gtn0pt2p",
+   "title": "Above -0.2%",
+   "event": "uscpicore-september-mom-2026-10-14",
+   "event_title": "Core CPI MoM in September",
+   "ends": null,
+   "bid": 0.97,
+   "ask": 0.98,
+   "price": 0.97
+  },
+  {
+   "slug": "rotc-t-youcan-2026-10-19-gte90",
+   "title": "90+",
+   "event": "t-youcan-2026-10-19",
+   "event_title": "You Can See Everything Rotten Tomatoes Score?",
+   "ends": null,
+   "bid": 0.95,
+   "ask": 0.99,
+   "price": 0.96
+  }
+ ],
+ "exposure": {
+  "used_usd": 0,
+  "limit_usd": 200,
+  "positions": 0,
+  "open_orders": 0
+ },
+ "positions": []
 }
