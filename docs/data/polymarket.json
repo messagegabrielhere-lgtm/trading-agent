@@ -55,6 +55,20 @@
    "max_profit": 0.75,
    "mode": "dry_run",
    "status": "dry run"
+  },
+  {
+   "time": "2026-10-09T20:57:50Z",
+   "slug": "rotc-t-othmom-2026-10-12-gte16",
+   "title": "16+",
+   "event": "Other Mommy Rotten Tomatoes Score?",
+   "ends": "2026-10-12T23:59:00Z",
+   "series": "t",
+   "price": 0.91,
+   "qty": 27,
+   "cost": 24.57,
+   "max_profit": 2.43,
+   "mode": "dry_run",
+   "status": "dry run"
   }
  ],
  "log": [
@@ -153,6 +167,14 @@
   {
    "time": "2026-10-09T20:28:06Z",
    "text": "Scanned 10 events ending within 14 days (55 price checks); 0 qualify; 0 order(s) simulated."
+  },
+  {
+   "time": "2026-10-09T20:57:50Z",
+   "text": "Would place BUY YES 27 x rotc-t-othmom-2026-10-12-gte16 at $0.91 ($24.57, pays $27 if it resolves YES; ends 2026-10-12T23:59:00Z). dry run."
+  },
+  {
+   "time": "2026-10-09T20:57:50Z",
+   "text": "Scanned 10 events ending within 14 days (55 price checks); 1 qualify; 1 order(s) simulated."
   }
  ],
  "mode": "dry_run",
@@ -170,8 +192,20 @@
   "pnl_usd": 0,
   "staked_usd": 0
  },
- "updated": "2026-10-09T20:28:06Z",
- "candidates": [],
+ "updated": "2026-10-09T20:57:50Z",
+ "candidates": [
+  {
+   "slug": "rotc-t-othmom-2026-10-12-gte16",
+   "title": "16+",
+   "event": "t-othmom-2026-10-12",
+   "event_title": "Other Mommy Rotten Tomatoes Score?",
+   "ends": "2026-10-12T23:59:00Z",
+   "series": "t",
+   "bid": 0.91,
+   "ask": null,
+   "price": 0.91
+  }
+ ],
  "exposure": {
   "used_usd": 99.13,
   "limit_usd": 200,
