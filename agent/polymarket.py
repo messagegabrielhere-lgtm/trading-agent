@@ -150,8 +150,9 @@ def candidate_events(client, cfg):
 
 def series_key(ev):
     """Group related events (e.g. every market on one CPI release) so they count as one bet."""
-    ser = (ev.get("series") or {}).get("slug")
-    return ser or ev["slug"].split("-")[0]
+    # The slug's first word is the topic code (e.g. "cpic" for every CPI market). Series names are
+    # finer-grained (headline vs core CPI) and would let one data release count twice.
+    return ev["slug"].split("-")[0]
 
 
 def pick_price(bid, ask, cfg):
