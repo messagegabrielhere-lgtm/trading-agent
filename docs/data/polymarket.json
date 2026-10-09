@@ -121,6 +121,10 @@
   {
    "time": "2026-10-09T17:13:55Z",
    "text": "Scanned 10 events ending within 14 days (76 price checks); 2 qualify; 2 order(s) simulated."
+  },
+  {
+   "time": "2026-10-09T17:27:54Z",
+   "text": "Scanned 10 events ending within 14 days (49 price checks); 0 qualify; 0 order(s) simulated."
   }
  ],
  "mode": "dry_run",
@@ -138,35 +142,12 @@
   "pnl_usd": 0,
   "staked_usd": 0
  },
- "updated": "2026-10-09T17:13:55Z",
- "candidates": [
-  {
-   "slug": "cpic-uscpi-september-yoy-2026-10-14-gt3pt3pct",
-   "title": "Above 3.3%",
-   "event": "uscpi-september-yoy-2026-10-14",
-   "event_title": "CPI YoY in September",
-   "ends": "2026-10-14T23:59:00Z",
-   "series": "uscpi",
-   "bid": 0.96,
-   "ask": 0.97,
-   "price": 0.96
-  },
-  {
-   "slug": "cpic-uscpicore-september-yoy-2026-10-14-gt2pt2pct",
-   "title": "Above 2.2%",
-   "event": "uscpicore-september-yoy-2026-10-14",
-   "event_title": "Core CPI YoY in September",
-   "ends": "2026-10-14T23:59:00Z",
-   "series": "uscpicore",
-   "bid": 0.97,
-   "ask": 0.98,
-   "price": 0.97
-  }
- ],
+ "updated": "2026-10-09T17:27:54Z",
+ "candidates": [],
  "exposure": {
-  "used_usd": 49.92,
+  "used_usd": 99.13,
   "limit_usd": 200,
-  "positions": 2,
+  "positions": 4,
   "open_orders": 0
  },
  "positions": [
@@ -176,6 +157,20 @@
    "cost": 24.96,
    "event_title": "CPI MoM in September",
    "series": "cpic"
+  },
+  {
+   "slug": "cpic-uscpi-september-yoy-2026-10-14-gt3pt3pct",
+   "qty": 26,
+   "cost": 24.96,
+   "event_title": "CPI YoY in September",
+   "series": "uscpi"
+  },
+  {
+   "slug": "cpic-uscpicore-september-yoy-2026-10-14-gt2pt2pct",
+   "qty": 25,
+   "cost": 24.25,
+   "event_title": "Core CPI YoY in September",
+   "series": "uscpicore"
   },
   {
    "slug": "rotc-t-youcan-2026-10-19-gte90",
