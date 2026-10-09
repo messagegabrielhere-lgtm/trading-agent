@@ -63,12 +63,16 @@
   {
    "time": "2026-10-09T18:21:23+00:00",
    "text": "In line with targets (QQQ 50%, SPY 50%). No orders."
+  },
+  {
+   "time": "2026-10-09T18:49:07+00:00",
+   "text": "In line with targets (QQQ 50%, SPY 50%). No orders."
   }
  ],
  "connected": true,
- "updated": "2026-10-09T18:21:23+00:00",
+ "updated": "2026-10-09T18:49:07+00:00",
  "account": {
-  "equity": 99987.2,
+  "equity": 99982.96,
   "cash": 251.17,
   "last_equity": 100000.0,
   "status": "ACTIVE"
@@ -77,26 +81,26 @@
   {
    "symbol": "QQQ",
    "qty": 66.233701076,
-   "price": 751.29,
-   "value": 49760.72,
+   "price": 751.26,
+   "value": 49758.73,
    "weight": 0.4977,
-   "unrealized_pl": -9.27,
+   "unrealized_pl": -11.26,
    "avg_entry": 751.43
   },
   {
    "symbol": "SPY",
    "qty": 64.184055067,
-   "price": 778.62,
-   "value": 49975.31,
+   "price": 778.59,
+   "value": 49973.06,
    "weight": 0.4998,
-   "unrealized_pl": -3.53,
+   "unrealized_pl": -5.78,
    "avg_entry": 778.68
   }
  ],
  "history": [
   {
    "date": "2026-10-09",
-   "equity": 99987.2
+   "equity": 99982.96
   }
  ]
 }
