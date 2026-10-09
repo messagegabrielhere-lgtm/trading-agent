@@ -46,6 +46,7 @@ DEFAULTS = {
     "max_per_market_usd": 25,
     "max_total_usd": 200,
     "max_positions": 10,
+    "max_per_series": 1,        # related events (same data release, same race) move together
     "max_events_scanned": 300,
     "max_price_checks": 150,    # order-book lookups per run
     "pause_seconds": 0.25,      # between lookups; the public API is rate limited
@@ -147,6 +148,12 @@ def candidate_events(client, cfg):
     return out
 
 
+def series_key(ev):
+    """Group related events (e.g. every market on one CPI release) so they count as one bet."""
+    ser = (ev.get("series") or {}).get("slug")
+    return ser or ev["slug"].split("-")[0]
+
+
 def pick_price(bid, ask, cfg):
     """Post at the bid, or one cent better when the spread allows, never crossing the ask."""
     if bid is None:
@@ -165,11 +172,17 @@ def score_dry_runs(client, rep):
     Assumes every simulated maker order filled, which flatters the result a little: in live
     trading some bids are never hit.
     """
-    t = iso(now())
+    t, hour_ago, tries = iso(now()), iso(now() - timedelta(hours=1)), 0
     for o in rep["orders"]:
-        if o.get("mode") != "dry_run" or "result" in o or not o.get("ends") or o["ends"] > t:
+        if o.get("mode") != "dry_run" or "result" in o or o["time"] > hour_ago:
             continue
+        if o.get("ends") and o["ends"] > t:
+            continue
+        if tries >= 40:
+            break
+        tries += 1
         try:
+            time.sleep(0.25)
             st = client.markets.settlement(o["slug"])
         except Exception:
             continue  # not settled yet
@@ -190,9 +203,10 @@ def holdings(client, live, rep):
     """Slugs we hold or have open orders on, and the dollars tied up in them."""
     if not live:  # the simulated book: dry-run orders whose event has not ended yet
         t = iso(now())
-        held = {o["slug"]: {"qty": o["qty"], "cost": o["cost"], "event_title": o.get("event")}
+        held = {o["slug"]: {"qty": o["qty"], "cost": o["cost"], "event_title": o.get("event"),
+                            "series": o.get("series")}
                 for o in rep["orders"] if o.get("mode") == "dry_run" and "result" not in o
-                and (o.get("ends") or "") > t}
+                and (o.get("ends") or "9999") > t}
         return held, {}, sum(h["cost"] for h in held.values())
     pos = client.portfolio.positions().get("positions", {}) or {}
     held = {}
@@ -200,8 +214,9 @@ def holdings(client, live, rep):
         q = float(p.get("netPositionDecimal") or p.get("netPosition") or 0)
         if q and not p.get("expired"):
             slug = (p.get("marketMetadata") or {}).get("slug") or key
+            ev_slug = (p.get("marketMetadata") or {}).get("eventSlug") or slug
             held[slug] = {"qty": q, "cost": money(p.get("cost")) or 0.0,
-                          "event": (p.get("marketMetadata") or {}).get("eventSlug")}
+                          "event": ev_slug, "series": ev_slug.split("-")[0]}
     open_orders = {}
     for o in client.orders.list().get("orders", []) or []:
         slug = o.get("marketSlug") or (o.get("marketMetadata") or {}).get("slug")
@@ -261,12 +276,23 @@ def main():
                 if px is not None and (best is None or px > best["price"]):
                     best = {"slug": m["slug"], "title": m.get("title") or ev.get("title"),
                             "event": ev["slug"], "event_title": ev.get("title"),
-                            "ends": ev.get("endTime"), "bid": bid, "ask": ask, "price": px}
+                            "ends": ev.get("endTime") or ev.get("endDate") or ev.get("closeTime"),
+                            "series": series_key(ev), "bid": bid, "ask": ask, "price": px}
             if best:
                 picks.append(best)
 
         # Soonest-ending first: capital comes back faster.
-        picks.sort(key=lambda p: p["ends"] or "")
+        picks.sort(key=lambda p: p["ends"] or "9999")
+        series_count = {}
+        for h in held.values():
+            if h.get("series"):
+                series_count[h["series"]] = series_count.get(h["series"], 0) + 1
+        diverse = []
+        for p in picks:
+            if series_count.get(p["series"], 0) < cfg["max_per_series"]:
+                series_count[p["series"]] = series_count.get(p["series"], 0) + 1
+                diverse.append(p)
+        picks = diverse
         rep["candidates"] = picks[:50]
         placed = 0
         for p in picks:
@@ -285,7 +311,7 @@ def main():
                 "manualOrderIndicator": "MANUAL_ORDER_INDICATOR_AUTOMATIC",
             }
             entry = {"time": iso(now()), "slug": p["slug"], "title": p["title"], "event": p["event_title"],
-                     "ends": p["ends"], "price": p["price"], "qty": qty, "cost": cost,
+                     "ends": p["ends"], "series": p["series"], "price": p["price"], "qty": qty, "cost": cost,
                      "max_profit": round(qty * (1 - p["price"]), 2), "mode": cfg["mode"]}
             if live:
                 try:
