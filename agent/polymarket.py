@@ -27,6 +27,7 @@ import json
 import math
 import os
 import sys
+import time
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
@@ -46,7 +47,27 @@ DEFAULTS = {
     "max_total_usd": 200,
     "max_positions": 10,
     "max_events_scanned": 300,
+    "max_price_checks": 150,    # order-book lookups per run
+    "pause_seconds": 0.25,      # between lookups; the public API is rate limited
 }
+
+
+class Throttled(Exception):
+    pass
+
+
+def paced(fn, what, cfg):
+    """Call fn with spacing; on a rate limit wait and retry twice, then give up for this run."""
+    from polymarket_us.errors import RateLimitError
+    for wait in (0, 20, 60):
+        if wait:
+            time.sleep(wait)
+        time.sleep(cfg["pause_seconds"])
+        try:
+            return fn()
+        except RateLimitError:
+            continue
+    raise Throttled(what)
 
 
 def now():
@@ -95,8 +116,8 @@ def make_client(live):
         kw["api_base_url"] = os.environ["POLYMARKET_API_URL"]
     if live:
         return PolymarketUS(key_id=os.environ["POLYMARKET_KEY_ID"],
-                            secret_key=os.environ["POLYMARKET_SECRET_KEY"], **kw)
-    return PolymarketUS(**kw)
+                            secret_key=os.environ["POLYMARKET_SECRET_KEY"], max_retries=0, **kw)
+    return PolymarketUS(max_retries=0, **kw)
 
 
 def candidate_events(client, cfg):
@@ -110,7 +131,8 @@ def candidate_events(client, cfg):
     skip = {s.lower() for s in cfg["skip_tags"]}
     out, offset = [], 0
     while offset < cfg["max_events_scanned"]:
-        page = client.events.list({**params, "offset": offset}).get("events", [])
+        page = paced(lambda: client.events.list({**params, "offset": offset}),
+                     "event list", cfg).get("events", [])
         if not page:
             break
         for ev in page:
@@ -216,15 +238,24 @@ def main():
         slots = cfg["max_positions"] - len(busy)
 
         events = candidate_events(client, cfg)
-        picks = []
+        picks, checks, throttled = [], 0, None
         for ev in events:
+            if throttled or checks >= cfg["max_price_checks"]:
+                break
             if ev["slug"] in held_events or ev.get("title") in held_titles:
                 continue  # one position per event
             best = None
             for m in ev.get("markets", []):
                 if not m.get("active", True) or m.get("closed") or m["slug"] in busy:
                     continue
-                bbo = client.markets.bbo(m["slug"]).get("marketData", {})
+                if checks >= cfg["max_price_checks"]:
+                    break
+                checks += 1
+                try:
+                    bbo = paced(lambda: client.markets.bbo(m["slug"]), "price check", cfg).get("marketData", {})
+                except Throttled as t:
+                    throttled = str(t)
+                    break
                 bid, ask = money(bbo.get("bestBid")), money(bbo.get("bestAsk"))
                 px = pick_price(bid, ask, cfg)
                 if px is not None and (best is None or px > best["price"]):
@@ -276,10 +307,19 @@ def main():
         rep["exposure"] = {"used_usd": round(used, 2), "limit_usd": cfg["max_total_usd"],
                            "positions": len(held), "open_orders": len(open_orders)}
         rep["positions"] = [{"slug": s, **h} for s, h in sorted(held.items())]
-        log(rep, f"Scanned {len(events)} events ending within {cfg['max_days_to_end']} days; "
-                 f"{len(picks)} qualify; {placed} order(s) {'placed' if live else 'simulated'}.")
+        note = f" Stopped early: Polymarket rate-limited the {throttled}." if throttled else ""
+        log(rep, f"Scanned {len(events)} events ending within {cfg['max_days_to_end']} days "
+                 f"({checks} price checks); {len(picks)} qualify; "
+                 f"{placed} order(s) {'placed' if live else 'simulated'}.{note}")
+    except Throttled as t:
+        log(rep, f"Polymarket rate-limited the {t} even after waiting. Nothing placed this run.")
+        save_report(rep)
+        return
     except Exception as e:
-        log(rep, f"Stopped: {type(e).__name__}: {str(e)[:200]}")
+        msg = str(e)
+        if "<html" in msg.lower():
+            msg = f"HTTP {getattr(getattr(e, 'response', None), 'status_code', '?')} (an HTML error page)"
+        log(rep, f"Stopped: {type(e).__name__}: {msg[:200]}")
         save_report(rep)
         sys.exit(1)
     finally:
