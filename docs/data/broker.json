@@ -83,12 +83,16 @@
   {
    "time": "2026-10-09T20:13:44+00:00",
    "text": "Market is closed. Account snapshot only."
+  },
+  {
+   "time": "2026-10-09T20:34:52+00:00",
+   "text": "Market is closed. Account snapshot only."
   }
  ],
  "connected": true,
- "updated": "2026-10-09T20:13:44+00:00",
+ "updated": "2026-10-09T20:34:53+00:00",
  "account": {
-  "equity": 99990.17,
+  "equity": 99984.27,
   "cash": 251.17,
   "last_equity": 100000.0,
   "status": "ACTIVE"
@@ -97,26 +101,26 @@
   {
    "symbol": "QQQ",
    "qty": 66.233701076,
-   "price": 751.33,
-   "value": 49763.37,
+   "price": 751.27,
+   "value": 49759.39,
    "weight": 0.4977,
-   "unrealized_pl": -6.62,
+   "unrealized_pl": -10.6,
    "avg_entry": 751.43
   },
   {
    "symbol": "SPY",
    "qty": 64.184055067,
-   "price": 778.63,
-   "value": 49975.63,
+   "price": 778.6,
+   "value": 49973.71,
    "weight": 0.4998,
-   "unrealized_pl": -3.21,
+   "unrealized_pl": -5.13,
    "avg_entry": 778.68
   }
  ],
  "history": [
   {
    "date": "2026-10-09",
-   "equity": 99990.17
+   "equity": 99984.27
   }
  ]
 }
