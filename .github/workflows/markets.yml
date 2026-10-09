@@ -1,11 +1,14 @@
 name: Polymarket and crypto
 
-# Runs the Polymarket favorite harvester and the Robinhood crypto trend bot every 6 hours.
+# Runs the Polymarket favorite harvester and the Robinhood crypto trend bot every 30 minutes, all week.
 # Both start in dry_run mode (config.json); they only trade real money when you set mode to "live"
 # and add the API keys as repository secrets.
 on:
   schedule:
-    - cron: "20 */6 * * *"
+    - cron: "10,40 * * * *"
+  push:
+    branches: [main]
+    paths: [".github/workflows/markets.yml", "agent/polymarket.py", "agent/crypto.py", "config.json"]
   workflow_dispatch:
 
 permissions:

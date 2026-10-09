@@ -2,9 +2,15 @@ name: Trade paper account
 
 # Mirrors the strategy's targets into the Alpaca paper account during market hours.
 # Needs repository secrets ALPACA_KEY_ID and ALPACA_SECRET_KEY (paper keys).
+# Checks every 15 minutes while US markets can be open (13:30-21:00 UTC covers both EDT and EST;
+# the bot itself skips when Alpaca says the market is closed). It trades only when the account has
+# drifted from the strategy's targets, so most checks place no orders.
 on:
   schedule:
-    - cron: "0 15 * * 1-5" # weekdays 11:00 ET in summer, 10:00 ET in winter
+    - cron: "*/15 13-20 * * 1-5"
+  push:
+    branches: [main]
+    paths: [".github/workflows/trade.yml", "agent/broker.py", "config.json"]
   workflow_dispatch:
 
 permissions:

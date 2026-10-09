@@ -17,7 +17,7 @@ and cannot reach a live account. Nothing here is investment advice.
 - `docs/index.html` — the dashboard, served by GitHub Pages from `/docs`.
 - `.github/workflows/agent.yml` — runs the agent on weekdays after the US close and commits the data.
 - `agent/broker.py` — mirrors the latest targets into the Alpaca paper account during market hours.
-- `.github/workflows/trade.yml` — runs the broker step on weekdays at 15:00 UTC (late morning ET).
+- `.github/workflows/trade.yml` — runs the broker step every 15 minutes while the market is open, and right after any change to the broker code or config.
 
 Run it locally (Python 3.9+, no dependencies):
 
@@ -52,8 +52,8 @@ Edit the parameters in `config.json`, or add a function to `agent/strategies.py`
    fake money). Under *API Keys*, generate a key pair. Make sure the page says "Paper".
 2. In this repo on GitHub: *Settings → Secrets and variables → Actions → New repository secret*.
    Add `ALPACA_KEY_ID` and `ALPACA_SECRET_KEY`.
-3. Run it once now: *Actions → Trade paper account → Run workflow* (during market hours,
-   9:30 to 16:00 ET). After that it runs every weekday on its own.
+3. It checks the account every 15 minutes while the market is open (9:30 to 16:00 ET). To run it
+   immediately: *Actions → Trade paper account → Run workflow*.
 
 What it does each run: cancels leftover orders, compares the account's positions with the strategy's
 targets, sells what is no longer wanted or is overweight, then buys with cash only (no margin).
@@ -79,7 +79,7 @@ ALPACA_KEY_ID=... ALPACA_SECRET_KEY=... python3 -m agent.broker
 
 ## Polymarket and Robinhood crypto (real-money platforms, dry run by default)
 
-Both run every 6 hours from `.github/workflows/markets.yml` and start in **dry-run mode**: they read
+Both run every 30 minutes, all week, from `.github/workflows/markets.yml` and start in **dry-run mode**: they read
 live public prices and log the trades they *would* make, without any keys and without moving money.
 Results show on the dashboard.
 
