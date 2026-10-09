@@ -41,7 +41,7 @@
   tr:last-child td { border-bottom: 0; }
   .up { color: var(--up); } .down { color: var(--down); }
   .log { max-height: 320px; overflow-y: auto; }
-  #decisions th, #decisions td, #brokerLog th, #brokerLog td { text-align: left; }
+  #decisions th, #decisions td, #brokerLog th, #brokerLog td, #pmLog th, #pmLog td, #cxLog th, #cxLog td { text-align: left; }
 </style>
 </head>
 <body>
@@ -49,7 +49,8 @@
   <h1>Paper Trading Agent</h1>
   <div class="sub" id="sub">Loading…</div>
   <div class="banner">Paper trading only. No real money is traded and nothing here is investment advice.
-    When Alpaca paper keys are set, the agent mirrors its targets into an Alpaca paper account (fake money, real quotes).</div>
+    When Alpaca paper keys are set, the agent mirrors its targets into an Alpaca paper account (fake money, real quotes).
+    The Polymarket and crypto bots below run in dry-run mode unless their section says LIVE.</div>
 
   <div class="tiles" id="tiles"></div>
 
@@ -75,6 +76,22 @@
     </div>
     <h2 style="margin-top:16px">Execution log</h2>
     <div class="log scroll"><table id="brokerLog"></table></div>
+  </section>
+
+  <section class="grid2">
+    <div class="card" id="pmCard">
+      <h2>Polymarket favorite harvester <span class="note" id="pmMode"></span></h2>
+      <p class="note" id="pmSub">No runs yet.</p>
+      <div class="scroll"><table id="pmOrders"></table></div>
+      <div class="log scroll" style="max-height:180px;margin-top:8px"><table id="pmLog"></table></div>
+    </div>
+    <div class="card" id="cryptoCard">
+      <h2>Robinhood crypto trend <span class="note" id="cxMode"></span></h2>
+      <p class="note" id="cxSub">No runs yet.</p>
+      <div class="scroll"><table id="cxSignals"></table></div>
+      <div class="scroll"><table id="cxBt"></table></div>
+      <div class="log scroll" style="max-height:180px;margin-top:8px"><table id="cxLog"></table></div>
+    </div>
   </section>
 
   <section class="card">
@@ -213,6 +230,37 @@ async function loadBroker() {
   table("brokerLog", ["Time", "Event"],
     (b.log || []).slice(-40).reverse().map(l => [l.time.slice(0, 16).replace("T", " "), [l.text, "wrap"]]), "");
 }
+async function loadMarkets() {
+  const get = async f => { const r = await fetch(`data/${f}?t=${Date.now()}`); return r.ok ? r.json() : null; };
+  const [pm, cx] = await Promise.all([get("polymarket.json"), get("crypto.json")]);
+  const modeTag = m => m === "live" ? "· LIVE (real money)" : "· dry run (no money moves)";
+  const logRows = l => (l || []).slice(-20).reverse().map(x => [x.time.slice(0, 16).replace("T", " "), [x.text, "wrap"]]);
+  if (pm) {
+    document.getElementById("pmMode").textContent = modeTag(pm.mode);
+    const r = pm.dry_run_record, e = pm.exposure || {};
+    document.getElementById("pmSub").textContent =
+      `Open: ${(pm.positions || []).length} positions, $${(e.used_usd || 0).toFixed(2)} of $${e.limit_usd} limit. ` +
+      (r && r.settled ? `Settled dry-run bets: ${r.won} of ${r.settled} won, P&L ${usd(r.pnl_usd)} on ${usd(r.staked_usd)} staked.`
+                      : "No simulated bets have settled yet.");
+    table("pmOrders", ["Market", "Price", "Cost", "Ends", "Result"],
+      pm.orders.slice(-12).reverse().map(o => [[o.event || o.slug, "wrap"], "$" + o.price.toFixed(2), usd(o.cost),
+        (o.ends || "").slice(0, 10), o.result ? [`${o.result} ${usd(o.pnl)}`, o.pnl >= 0 ? "up" : "down"] : o.status]), "No orders yet.");
+    table("pmLog", ["Time", "Event"], logRows(pm.log), "");
+  }
+  if (cx) {
+    document.getElementById("cxMode").textContent = modeTag(cx.mode);
+    document.getElementById("cxSub").textContent =
+      `Budget ${usd(cx.settings.budget_usd)}. Bot's coins worth ${usd(cx.bot_value_usd || 0)}${cx.book === "sim_qty" ? " (simulated)" : ""}.`;
+    table("cxSignals", ["Coin", "Close", `${cx.settings.sma_days}-day avg`, "Signal", "Target"],
+      Object.entries(cx.signals || {}).map(([c, s]) => [c, usd(s.close), usd(s.sma),
+        [s.above ? "Hold" : "Cash", s.above ? "up" : "down"], usd(cx.targets_usd[c])]), "");
+    const st = (cx.backtest || {}).stats;
+    if (st) table("cxBt", [`Backtest ${cx.backtest.from}–${cx.backtest.to}`, "CAGR", "Max drawdown", "Total"],
+      [["Trend rule", st.trend], ["Buy & hold", st.hold]].map(([n, s]) => [n, pct(s.cagr), pct(s.max_drawdown), mult(s.total_multiple)]), "");
+    table("cxLog", ["Time", "Event"], logRows(cx.log), "");
+  }
+}
+loadMarkets().catch(() => {});
 loadBroker().catch(() => {});
 load().catch(e => { document.getElementById("sub").textContent = "Could not load data: " + e.message; });
 </script>

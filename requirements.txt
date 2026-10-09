@@ -1,0 +1,4 @@
+# Only the Polymarket and Robinhood modules need these. The strategy, backtest and Alpaca steps
+# use the standard library.
+polymarket-us==2.4.1
+pynacl>=1.5

@@ -1,0 +1,44 @@
+name: Polymarket and crypto
+
+# Runs the Polymarket favorite harvester and the Robinhood crypto trend bot every 6 hours.
+# Both start in dry_run mode (config.json); they only trade real money when you set mode to "live"
+# and add the API keys as repository secrets.
+on:
+  schedule:
+    - cron: "20 */6 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency: agent
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -q -r requirements.txt
+      - name: Polymarket
+        continue-on-error: true
+        env:
+          POLYMARKET_KEY_ID: ${{ secrets.POLYMARKET_KEY_ID }}
+          POLYMARKET_SECRET_KEY: ${{ secrets.POLYMARKET_SECRET_KEY }}
+        run: python -m agent.polymarket
+      - name: Robinhood crypto
+        continue-on-error: true
+        env:
+          RH_API_KEY: ${{ secrets.RH_API_KEY }}
+          RH_PRIVATE_KEY: ${{ secrets.RH_PRIVATE_KEY }}
+        run: python -m agent.crypto
+      - name: Commit results
+        run: |
+          git config user.name "paper-agent"
+          git config user.email "actions@users.noreply.github.com"
+          git add docs/data/polymarket.json docs/data/crypto.json 2>/dev/null || true
+          git diff --cached --quiet && exit 0
+          git commit -m "Polymarket and crypto run"
+          git pull --rebase -q && git push

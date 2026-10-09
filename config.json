@@ -3,14 +3,23 @@
   "goal_multiple": 10,
   "goal_days": 365,
   "benchmark": "SPY",
-  "universe": ["SPY", "QQQ", "IWM", "EFA", "EEM", "TLT", "GLD", "DBC"],
+  "universe": [
+    "SPY",
+    "QQQ",
+    "IWM",
+    "EFA",
+    "EEM",
+    "TLT",
+    "GLD",
+    "DBC"
+  ],
   "strategy": "momentum_rotation",
   "slippage_bps": 5,
   "min_trade_pct": 0.01,
   "execution": {
     "enabled": true,
     "drift_threshold": 0.03,
-    "max_drawdown_halt": 0.20,
+    "max_drawdown_halt": 0.2,
     "allocation": 1.0
   },
   "strategies": {
@@ -21,8 +30,31 @@
       "trend_sma_days": 200
     },
     "target_weights": {
-      "weights": {"SPY": 0.6, "TLT": 0.4},
+      "weights": {
+        "SPY": 0.6,
+        "TLT": 0.4
+      },
       "drift_threshold": 0.05
     }
+  },
+  "polymarket": {
+    "mode": "dry_run",
+    "min_price": 0.9,
+    "max_price": 0.97,
+    "max_days_to_end": 14,
+    "min_liquidity": 2000,
+    "max_per_market_usd": 25,
+    "max_total_usd": 200,
+    "max_positions": 10
+  },
+  "crypto": {
+    "mode": "dry_run",
+    "coins": [
+      "BTC",
+      "ETH"
+    ],
+    "sma_days": 200,
+    "budget_usd": 500,
+    "max_order_usd": 300
   }
 }

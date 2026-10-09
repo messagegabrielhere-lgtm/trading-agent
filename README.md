@@ -76,3 +76,34 @@ To test locally against the paper account:
 ```bash
 ALPACA_KEY_ID=... ALPACA_SECRET_KEY=... python3 -m agent.broker
 ```
+
+## Polymarket and Robinhood crypto (real-money platforms, dry run by default)
+
+Both run every 6 hours from `.github/workflows/markets.yml` and start in **dry-run mode**: they read
+live public prices and log the trades they *would* make, without any keys and without moving money.
+Results show on the dashboard.
+
+**Polymarket favorite harvester** (`agent/polymarket.py`). Research on ~586 million Polymarket
+purchases found contracts bought at 90¢ or more earned a small positive return before fees, while
+contracts under 10¢ lost money; sports markets were the exception. An out-of-sample test on ~1,100
+markets found positive but statistically unproven results after costs. The bot buys YES on heavy
+favorites (bid 90–97¢) in non-sports events ending within 14 days, using maker-only limit orders so
+it earns the maker rebate instead of paying the taker fee, one position per event, and holds to
+resolution. A loss costs about ten wins, so it relies on spreading across many unrelated events.
+Dry runs settle their simulated bets, so the dashboard builds a track record before you go live.
+
+**Robinhood crypto trend** (`agent/crypto.py`). Holds BTC and ETH while each is above its 200-day
+average, cash otherwise, within a fixed `budget_usd`. It only sells coins it bought itself, so your
+own crypto in the same account is untouched. Each run backtests the rule against buy-and-hold.
+
+Limits live in `config.json` under `polymarket` and `crypto` (per-market, total, per-order and
+budget caps). To go live:
+
+1. Polymarket: create an API key at polymarket.us/developer. Add secrets `POLYMARKET_KEY_ID` and
+   `POLYMARKET_SECRET_KEY`, then set `"mode": "live"` under `polymarket`.
+2. Robinhood: generate an Ed25519 key pair (`python3 -c "import base64,nacl.signing as s;k=s.SigningKey.generate();print('private:',base64.b64encode(bytes(k)).decode());print('public:',base64.b64encode(bytes(k.verify_key)).decode())"`),
+   paste the public key at robinhood.com/account/crypto → Add key, then add secrets `RH_API_KEY` and
+   `RH_PRIVATE_KEY`, and set `"mode": "live"` under `crypto`.
+
+This repository is public, so anyone can read the dashboard and the Actions logs. Consider that
+before switching a real-money bot to live.
