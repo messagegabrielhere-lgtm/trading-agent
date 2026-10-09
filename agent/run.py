@@ -8,7 +8,7 @@ import json
 from datetime import datetime, timezone
 from pathlib import Path
 
-from . import data, engine
+from . import data, engine, strategies
 
 ROOT = Path(__file__).resolve().parent.parent
 OUT = ROOT / "docs" / "data"
@@ -24,6 +24,7 @@ def run_backtests(dates, adj, cfg):
     bench = adj[cfg["benchmark"]][start:]
     curves = {name: engine.backtest(name, dates, adj, cfg) for name in cfg["strategies"]}
     curves[cfg["benchmark"]] = [cfg["starting_cash"] * p / bench[0] for p in bench]
+    half = len(bench) // 2  # judge each half on its own, so one lucky stretch cannot carry a strategy
 
     d = dates[start:]
     keep = sorted(set(range(0, len(d), 5)) | {len(d) - 1})  # weekly points keep the file small
@@ -33,6 +34,9 @@ def run_backtests(dates, adj, cfg):
         "dates": [d[k] for k in keep],
         "curves": {n: [round(c[k], 2) for k in keep] for n, c in curves.items()},
         "stats": {n: engine.stats(c) for n, c in curves.items()},
+        "halves": {"split": d[half],
+                   "first": {n: engine.stats(c[:half + 1]) for n, c in curves.items()},
+                   "second": {n: engine.stats(c[half:]) for n, c in curves.items()}},
     }
 
 
@@ -95,6 +99,7 @@ def run_paper(dates, close, adj, cfg):
         } for s, q in sorted(pf["positions"].items())],
         "decisions": st["decisions"][-250:],
         "strategy": name, "benchmark": bench,
+        "prices": {s: round(close[s][-1], 4) for s in close},  # last closes, for whole-share orders
         "goal_multiple": cfg["goal_multiple"], "goal_days": cfg["goal_days"],
         "updated": datetime.now(timezone.utc).isoformat(timespec="seconds"),
     })
@@ -103,9 +108,7 @@ def run_paper(dates, close, adj, cfg):
 
 def main():
     cfg = json.loads((ROOT / "config.json").read_text())
-    symbols = set(cfg["universe"]) | {cfg["benchmark"]}
-    symbols |= set(cfg["strategies"]["target_weights"]["weights"])
-    dates, close, adj = data.load(sorted(symbols))
+    dates, close, adj = data.load(sorted(strategies.symbols_of(cfg)))
 
     OUT.mkdir(parents=True, exist_ok=True)
     write(OUT / "backtest.json", run_backtests(dates, adj, cfg))

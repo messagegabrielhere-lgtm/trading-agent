@@ -35,6 +35,76 @@
         "TLT": 0.4
       },
       "drift_threshold": 0.05
+    },
+    "dual_momentum": {
+      "risk": [
+        "SPY",
+        "EFA"
+      ],
+      "safe": "IEF",
+      "cash": "BIL",
+      "lookback_days": 252,
+      "rebalance_days": 21
+    },
+    "vol_target_momentum": {
+      "symbols": [
+        "SPY",
+        "QQQ",
+        "IWM",
+        "EFA",
+        "EEM",
+        "TLT",
+        "GLD",
+        "DBC"
+      ],
+      "lookback_days": 126,
+      "trend_sma_days": 200,
+      "top_n": 3,
+      "target_vol": 0.15,
+      "max_gross": 1.0,
+      "rebalance_days": 21
+    },
+    "leveraged_trend": {
+      "signal": "QQQ",
+      "risk_on": "QLD",
+      "risk_off": "IEF",
+      "sma_days": 200,
+      "band": 0.02
+    },
+    "canary_momentum": {
+      "canary": [
+        "VWO",
+        "BND"
+      ],
+      "offensive": [
+        "SPY",
+        "IWM",
+        "QQQ",
+        "VGK",
+        "EWJ",
+        "VWO",
+        "VNQ",
+        "DBC",
+        "GLD",
+        "TLT",
+        "HYG",
+        "LQD"
+      ],
+      "defensive": [
+        "SHY",
+        "IEF",
+        "LQD"
+      ],
+      "top_n": 3,
+      "rebalance_days": 21
+    },
+    "blend": {
+      "members": [
+        "momentum_rotation",
+        "leveraged_trend",
+        "canary_momentum"
+      ],
+      "rebalance_days": 5
     }
   },
   "polymarket": {

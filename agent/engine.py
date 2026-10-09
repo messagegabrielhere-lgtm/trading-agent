@@ -56,7 +56,7 @@ def step(pf, i, sig, px, last_idx, name, cfg):
     eq = equity(pf, px)
     ctx = {
         "i": i, "sig": sig, "last_idx": last_idx, "universe": cfg["universe"],
-        "params": cfg["strategies"][name],
+        "params": cfg["strategies"][name], "all_params": cfg["strategies"],
         "weights": {s: q * px[s] / eq for s, q in pf["positions"].items()},
     }
     targets, reason, due = STRATEGIES[name](ctx)
@@ -65,8 +65,11 @@ def step(pf, i, sig, px, last_idx, name, cfg):
 
 
 def warmup(cfg):
-    m = cfg["strategies"]["momentum_rotation"]
-    return max(m["lookback_days"], m["trend_sma_days"])
+    """Days of history every strategy needs before its first decision (12-month lookbacks need 253)."""
+    need = [253]
+    for p in cfg["strategies"].values():
+        need += [v for k, v in p.items() if k.endswith("_days") and k != "rebalance_days" and isinstance(v, int)]
+    return max(need) + 1
 
 
 def backtest(name, dates, adj, cfg):

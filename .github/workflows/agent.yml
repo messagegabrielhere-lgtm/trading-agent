@@ -3,6 +3,9 @@ name: Run paper agent
 on:
   schedule:
     - cron: "30 21 * * 1-5" # weekdays, after the US close
+  push:
+    branches: [main]
+    paths: ["agent/strategies.py", "agent/engine.py", "agent/run.py", "config.json"]
   workflow_dispatch:
 
 permissions:

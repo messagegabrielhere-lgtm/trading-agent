@@ -186,7 +186,8 @@ def today():
 
 def sync(api, rep, cfg, ex):
     state = json.loads(STATE.read_text())
-    targets = current_targets(state, set(cfg["universe"]))
+    from .strategies import symbols_of
+    targets = current_targets(state, symbols_of(cfg))
 
     acct, pos = snapshot(api, rep)
     if acct.get("trading_blocked") or acct.get("account_blocked"):
@@ -260,9 +261,23 @@ def sync(api, rep, cfg, ex):
         if notional < ex["min_order_usd"]:
             log(rep, f"Skipped {s} buy: only ${cash:,.2f} cash left.")
             continue
-        o = api.call("POST", "/v2/orders", {
-            "symbol": s, "notional": f"{notional:.2f}", "side": "buy", "type": "market",
-            "time_in_force": "day", "client_order_id": cid(s, "buy")})
+        try:
+            o = api.call("POST", "/v2/orders", {
+                "symbol": s, "notional": f"{notional:.2f}", "side": "buy", "type": "market",
+                "time_in_force": "day", "client_order_id": cid(s, "buy")})
+        except RuntimeError as e:
+            # Some funds (often leveraged ETFs) cannot be bought in fractions: buy whole shares.
+            ref = (state.get("prices") or {}).get(s)
+            if "fraction" not in str(e).lower() or not ref:
+                raise
+            qty = int(notional / (ref * 1.02))
+            if qty < 1:
+                log(rep, f"Skipped {s}: ${notional:,.2f} buys less than one whole share.")
+                continue
+            o = api.call("POST", "/v2/orders", {
+                "symbol": s, "qty": str(qty), "side": "buy", "type": "market",
+                "time_in_force": "day", "client_order_id": cid(s, "buy")})
+            log(rep, f"{s} is not fractionable; bought {qty} whole shares instead.")
         cash -= notional
         buy_ids.append(o["id"]); record(rep, o, why)
         log(rep, f"BUY ${notional:,.2f} of {s}: {why}.")
