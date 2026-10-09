@@ -1,0 +1,13 @@
+{
+ "halted": false,
+ "peak_equity": null,
+ "orders": [],
+ "log": [
+  {
+   "time": "2026-10-09T15:07:34+00:00",
+   "text": "No Alpaca paper keys found (ALPACA_KEY_ID / ALPACA_SECRET_KEY). Nothing placed."
+  }
+ ],
+ "connected": false,
+ "updated": "2026-10-09T15:07:34+00:00"
+}
