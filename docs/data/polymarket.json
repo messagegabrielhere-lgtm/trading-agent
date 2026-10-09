@@ -175,6 +175,10 @@
   {
    "time": "2026-10-09T20:57:50Z",
    "text": "Scanned 10 events ending within 14 days (55 price checks); 1 qualify; 1 order(s) simulated."
+  },
+  {
+   "time": "2026-10-09T21:27:49Z",
+   "text": "Scanned 10 events ending within 14 days (40 price checks); 0 qualify; 0 order(s) simulated."
   }
  ],
  "mode": "dry_run",
@@ -192,24 +196,12 @@
   "pnl_usd": 0,
   "staked_usd": 0
  },
- "updated": "2026-10-09T20:57:50Z",
- "candidates": [
-  {
-   "slug": "rotc-t-othmom-2026-10-12-gte16",
-   "title": "16+",
-   "event": "t-othmom-2026-10-12",
-   "event_title": "Other Mommy Rotten Tomatoes Score?",
-   "ends": "2026-10-12T23:59:00Z",
-   "series": "t",
-   "bid": 0.91,
-   "ask": null,
-   "price": 0.91
-  }
- ],
+ "updated": "2026-10-09T21:27:49Z",
+ "candidates": [],
  "exposure": {
-  "used_usd": 99.13,
+  "used_usd": 123.7,
   "limit_usd": 200,
-  "positions": 4,
+  "positions": 5,
   "open_orders": 0
  },
  "positions": [
@@ -233,6 +225,13 @@
    "cost": 24.25,
    "event_title": "Core CPI YoY in September",
    "series": "uscpicore"
+  },
+  {
+   "slug": "rotc-t-othmom-2026-10-12-gte16",
+   "qty": 27,
+   "cost": 24.57,
+   "event_title": "Other Mommy Rotten Tomatoes Score?",
+   "series": "t"
   },
   {
    "slug": "rotc-t-youcan-2026-10-19-gte90",
