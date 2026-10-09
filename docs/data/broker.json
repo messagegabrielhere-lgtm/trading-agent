@@ -1,13 +1,78 @@
 {
  "halted": false,
- "peak_equity": null,
- "orders": [],
+ "peak_equity": 100000.0,
+ "orders": [
+  {
+   "time": "2026-10-09T16:51:37+00:00",
+   "id": "ac7fe951-2df0-4896-aa93-3bc41fb5e095",
+   "symbol": "QQQ",
+   "side": "buy",
+   "qty": null,
+   "notional": "49770",
+   "status": "filled",
+   "filled_qty": "66.233701076",
+   "filled_avg_price": "751.43",
+   "reason": "new target at 50%"
+  },
+  {
+   "time": "2026-10-09T16:51:37+00:00",
+   "id": "17f3687f-d825-42e6-a1eb-a22798915692",
+   "symbol": "SPY",
+   "side": "buy",
+   "qty": null,
+   "notional": "49978.85",
+   "status": "filled",
+   "filled_qty": "64.184055067",
+   "filled_avg_price": "778.68",
+   "reason": "new target at 50%"
+  }
+ ],
  "log": [
   {
    "time": "2026-10-09T15:07:34+00:00",
    "text": "No Alpaca paper keys found (ALPACA_KEY_ID / ALPACA_SECRET_KEY). Nothing placed."
+  },
+  {
+   "time": "2026-10-09T16:51:37+00:00",
+   "text": "BUY $49,770.00 of QQQ: new target at 50%."
+  },
+  {
+   "time": "2026-10-09T16:51:37+00:00",
+   "text": "BUY $49,978.85 of SPY: new target at 50%."
   }
  ],
- "connected": false,
- "updated": "2026-10-09T15:07:34+00:00"
+ "connected": true,
+ "updated": "2026-10-09T16:51:41+00:00",
+ "account": {
+  "equity": 99993.8,
+  "cash": 251.17,
+  "last_equity": 100000.0,
+  "status": "ACTIVE"
+ },
+ "positions": [
+  {
+   "symbol": "QQQ",
+   "qty": 66.233701076,
+   "price": 751.38,
+   "value": 49766.68,
+   "weight": 0.4977,
+   "unrealized_pl": -3.31,
+   "avg_entry": 751.43
+  },
+  {
+   "symbol": "SPY",
+   "qty": 64.184055067,
+   "price": 778.64,
+   "value": 49976.27,
+   "weight": 0.4998,
+   "unrealized_pl": -2.57,
+   "avg_entry": 778.68
+  }
+ ],
+ "history": [
+  {
+   "date": "2026-10-09",
+   "equity": 99993.8
+  }
+ ]
 }
