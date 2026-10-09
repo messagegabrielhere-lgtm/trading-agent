@@ -39,12 +39,16 @@
   {
    "time": "2026-10-09T16:51:37+00:00",
    "text": "BUY $49,978.85 of SPY: new target at 50%."
+  },
+  {
+   "time": "2026-10-09T17:14:07+00:00",
+   "text": "In line with targets (QQQ 50%, SPY 50%). No orders."
   }
  ],
  "connected": true,
- "updated": "2026-10-09T16:51:41+00:00",
+ "updated": "2026-10-09T17:14:07+00:00",
  "account": {
-  "equity": 99993.8,
+  "equity": 99891.36,
   "cash": 251.17,
   "last_equity": 100000.0,
   "status": "ACTIVE"
@@ -53,26 +57,26 @@
   {
    "symbol": "QQQ",
    "qty": 66.233701076,
-   "price": 751.38,
-   "value": 49766.68,
-   "weight": 0.4977,
-   "unrealized_pl": -3.31,
+   "price": 750.41,
+   "value": 49702.43,
+   "weight": 0.4976,
+   "unrealized_pl": -67.56,
    "avg_entry": 751.43
   },
   {
    "symbol": "SPY",
    "qty": 64.184055067,
-   "price": 778.64,
-   "value": 49976.27,
-   "weight": 0.4998,
-   "unrealized_pl": -2.57,
+   "price": 778.04,
+   "value": 49937.76,
+   "weight": 0.4999,
+   "unrealized_pl": -41.08,
    "avg_entry": 778.68
   }
  ],
  "history": [
   {
    "date": "2026-10-09",
-   "equity": 99993.8
+   "equity": 99891.36
   }
  ]
 }
