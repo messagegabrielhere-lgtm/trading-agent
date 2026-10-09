@@ -2,9 +2,10 @@
 
 A rule-based trading agent that runs on simulated money, with a GitHub Pages dashboard.
 
-**It never places real orders and has no brokerage connection.** When the strategy rebalances, it
-writes tickets (symbol, side, target weight) for a human to review and place manually. Nothing here
-is investment advice.
+**It never touches real money.** When the strategy rebalances, it writes tickets (symbol, side,
+target weight). If you add Alpaca *paper* keys, a second job places those trades automatically in an
+Alpaca paper account (fake money, real market prices). The code is fixed to Alpaca's paper endpoint
+and cannot reach a live account. Nothing here is investment advice.
 
 ## How it works
 
@@ -15,6 +16,8 @@ is investment advice.
   trading day since the last run, and writes `docs/data/*.json`.
 - `docs/index.html` — the dashboard, served by GitHub Pages from `/docs`.
 - `.github/workflows/agent.yml` — runs the agent on weekdays after the US close and commits the data.
+- `agent/broker.py` — mirrors the latest targets into the Alpaca paper account during market hours.
+- `.github/workflows/trade.yml` — runs the broker step on weekdays at 15:00 UTC (late morning ET).
 
 Run it locally (Python 3.9+, no dependencies):
 
@@ -42,3 +45,34 @@ Edit the parameters in `config.json`, or add a function to `agent/strategies.py`
 - Prices are daily closes from Yahoo Finance; fills are simulated at the close with slippage.
 - The paper portfolio is marked at unadjusted closes, so dividends are not credited.
 - Backtests use dividend-adjusted closes and ignore taxes.
+
+## Automatic trading in an Alpaca paper account
+
+1. Sign up at alpaca.markets and open the **Paper Trading** dashboard (it comes with $100,000 of
+   fake money). Under *API Keys*, generate a key pair. Make sure the page says "Paper".
+2. In this repo on GitHub: *Settings → Secrets and variables → Actions → New repository secret*.
+   Add `ALPACA_KEY_ID` and `ALPACA_SECRET_KEY`.
+3. Run it once now: *Actions → Trade paper account → Run workflow* (during market hours,
+   9:30 to 16:00 ET). After that it runs every weekday on its own.
+
+What it does each run: cancels leftover orders, compares the account's positions with the strategy's
+targets, sells what is no longer wanted or is overweight, then buys with cash only (no margin).
+Small differences under `drift_threshold` are left alone. Results land in `docs/data/broker.json`
+and show on the dashboard.
+
+Settings live under `execution` in `config.json`:
+
+| Setting | Default | Meaning |
+|---|---|---|
+| `enabled` | `true` | Set to `false` to stop placing orders. The account is still reported. |
+| `drift_threshold` | `0.03` | Rebalance a symbol only when it is 3% of equity or more off target. |
+| `max_drawdown_halt` | `0.20` | If equity falls 20% below its peak, close everything and stop. |
+| `allocation` | `1.0` | Share of account equity the strategy may use. |
+
+After a drawdown halt, set `"halted": false` in `docs/data/broker.json` to resume.
+
+To test locally against the paper account:
+
+```bash
+ALPACA_KEY_ID=... ALPACA_SECRET_KEY=... python3 -m agent.broker
+```

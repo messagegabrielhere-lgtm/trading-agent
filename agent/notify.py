@@ -19,8 +19,8 @@ def main():
     if not new or (old and old["date"] == new["date"]):
         return
     print(f"New paper tickets for {new['date']}\n")
-    print("The strategy rebalanced its simulated portfolio. Nothing was traded in any real account.")
-    print("If you want these in your own account, review them and place them yourself.\n")
+    print("The strategy rebalanced its simulated portfolio. Nothing was traded in any real-money account.")
+    print("If Alpaca paper keys are set, the next market-hours run mirrors these into the Alpaca paper account.\n")
     print("| Symbol | Side | Target weight | Reference close |\n|---|---|---|---|")
     for t in new["items"]:
         print(f"| {t['symbol']} | {t['side'].upper()} | {t['target_weight']:.0%} | ${t['reference_close']:.2f} |")

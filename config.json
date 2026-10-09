@@ -7,6 +7,12 @@
   "strategy": "momentum_rotation",
   "slippage_bps": 5,
   "min_trade_pct": 0.01,
+  "execution": {
+    "enabled": true,
+    "drift_threshold": 0.03,
+    "max_drawdown_halt": 0.20,
+    "allocation": 1.0
+  },
   "strategies": {
     "momentum_rotation": {
       "lookback_days": 126,

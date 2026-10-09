@@ -41,15 +41,15 @@
   tr:last-child td { border-bottom: 0; }
   .up { color: var(--up); } .down { color: var(--down); }
   .log { max-height: 320px; overflow-y: auto; }
-  #decisions th, #decisions td { text-align: left; }
+  #decisions th, #decisions td, #brokerLog th, #brokerLog td { text-align: left; }
 </style>
 </head>
 <body>
 <main>
   <h1>Paper Trading Agent</h1>
   <div class="sub" id="sub">Loading…</div>
-  <div class="banner">Simulated portfolio. No real money is traded and nothing here is investment advice.
-    The agent never places orders; tickets below are for a human to review and place manually.</div>
+  <div class="banner">Paper trading only. No real money is traded and nothing here is investment advice.
+    When Alpaca paper keys are set, the agent mirrors its targets into an Alpaca paper account (fake money, real quotes).</div>
 
   <div class="tiles" id="tiles"></div>
 
@@ -63,6 +63,18 @@
     <div class="card"><h2>Holdings</h2><div class="scroll"><table id="holdings"></table></div></div>
     <div class="card"><h2>Latest tickets</h2><div class="scroll"><table id="tickets"></table></div>
       <p class="note" id="ticketNote"></p></div>
+  </section>
+
+  <section class="card" id="brokerCard">
+    <h2>Alpaca paper account</h2>
+    <p class="note" id="brokerSub">Not connected yet.</p>
+    <div class="tiles" id="brokerTiles"></div>
+    <div class="grid2">
+      <div><h2>Positions</h2><div class="scroll"><table id="brokerPos"></table></div></div>
+      <div><h2>Recent orders</h2><div class="scroll"><table id="brokerOrders"></table></div></div>
+    </div>
+    <h2 style="margin-top:16px">Execution log</h2>
+    <div class="log scroll"><table id="brokerLog"></table></div>
   </section>
 
   <section class="card">
@@ -175,6 +187,33 @@ async function load() {
   document.getElementById("btNote").textContent =
     `${bt.from} to ${bt.to}, dividend-adjusted closes, 5 bps slippage, no taxes. Past results do not predict future returns.`;
 }
+async function loadBroker() {
+  const r = await fetch(`data/broker.json?t=${Date.now()}`);
+  if (!r.ok) return;
+  const b = await r.json();
+  const sub = document.getElementById("brokerSub");
+  if (!b.connected || !b.account) {
+    sub.textContent = "Not connected. Add ALPACA_KEY_ID and ALPACA_SECRET_KEY (paper keys) as repository secrets to start trading the paper account.";
+  } else {
+    const a = b.account, day = a.equity - a.last_equity, dd = b.peak_equity ? a.equity / b.peak_equity - 1 : 0;
+    sub.textContent = (b.halted ? "HALTED after a drawdown. " : "") + `Updated ${b.updated.replace("T", " ").replace("+00:00", " UTC")}.`;
+    const tiles = [["Account equity", usd(a.equity)], ["Cash", usd(a.cash)],
+      ["Today", (day >= 0 ? "+" : "") + usd(day), day >= 0 ? "up" : "down"],
+      ["Below peak", pct(dd, 2), dd < 0 ? "down" : ""]];
+    document.getElementById("brokerTiles").replaceChildren(...tiles.map(([l, v, c]) => {
+      const d = el("div", "", "card tile"); d.append(el("div", l, "label"), el("div", v, "value " + (c || ""))); return d; }));
+    table("brokerPos", ["Symbol", "Shares", "Price", "Value", "Weight", "Unrealized"],
+      (b.positions || []).map(x => [x.symbol, x.qty.toFixed(4), usd(x.price), usd(x.value),
+        (x.weight * 100).toFixed(1) + "%", [usd(x.unrealized_pl), x.unrealized_pl >= 0 ? "up" : "down"]]), "No positions.");
+  }
+  table("brokerOrders", ["Time", "Side", "Symbol", "Amount", "Status"],
+    (b.orders || []).slice(-12).reverse().map(o => [o.time.slice(0, 16).replace("T", " "),
+      [o.side.toUpperCase(), o.side === "buy" ? "up" : "down"], o.symbol,
+      o.notional ? usd(+o.notional) : (+o.qty).toFixed(4) + " sh", o.status]), "No orders yet.");
+  table("brokerLog", ["Time", "Event"],
+    (b.log || []).slice(-40).reverse().map(l => [l.time.slice(0, 16).replace("T", " "), [l.text, "wrap"]]), "");
+}
+loadBroker().catch(() => {});
 load().catch(e => { document.getElementById("sub").textContent = "Could not load data: " + e.message; });
 </script>
 </body>

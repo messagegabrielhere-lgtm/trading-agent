@@ -1,0 +1,36 @@
+name: Trade paper account
+
+# Mirrors the strategy's targets into the Alpaca paper account during market hours.
+# Needs repository secrets ALPACA_KEY_ID and ALPACA_SECRET_KEY (paper keys).
+on:
+  schedule:
+    - cron: "0 15 * * 1-5" # weekdays 11:00 ET in summer, 10:00 ET in winter
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency: agent
+
+jobs:
+  trade:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Sync the Alpaca paper account
+        env:
+          ALPACA_KEY_ID: ${{ secrets.ALPACA_KEY_ID }}
+          ALPACA_SECRET_KEY: ${{ secrets.ALPACA_SECRET_KEY }}
+        run: python -m agent.broker
+      - name: Commit account data
+        if: always()
+        run: |
+          git config user.name "paper-agent"
+          git config user.email "actions@users.noreply.github.com"
+          git add docs/data/broker.json
+          git diff --cached --quiet && exit 0
+          git commit -m "Paper account sync"
+          git pull --rebase -q && git push

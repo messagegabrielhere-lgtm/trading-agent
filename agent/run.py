@@ -41,6 +41,9 @@ def run_paper(dates, close, adj, cfg):
     if STATE.exists():
         st = json.loads(STATE.read_text())
         first = dates.index(st["last_date"]) + 1
+        if "targets" not in st:  # older state files: take the targets from the last rebalance
+            done = [d for d in st["decisions"] if d["action"] == "rebalance"]
+            st["targets"] = done[-1]["targets"] if done else {}
     else:
         st = {
             "start_date": dates[-1], "start_cash": cfg["starting_cash"],
@@ -59,6 +62,7 @@ def run_paper(dates, close, adj, cfg):
         eq = engine.equity(pf, px)
         if did:
             st["last_rebalance"] = dates[i]
+            st["targets"] = {s: round(w, 4) for s, w in targets.items()}  # what the broker step mirrors
             for f in fills:
                 st["trades"].append({"date": dates[i], **f})
             if fills:
