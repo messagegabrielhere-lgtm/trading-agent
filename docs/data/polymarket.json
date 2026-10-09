@@ -1,0 +1,25 @@
+{
+ "orders": [],
+ "log": [
+  {
+   "time": "2026-10-09T16:52:12Z",
+   "text": "Stopped: RateLimitError: <!doctype html>\n<!--[if lt IE 7]> <html class=\"no-js ie6 oldie\" lang=\"en-US\"> <![endif]-->\n<!--[if IE 7]>    <html class=\"no-js ie7 oldie\" lang=\"en-US\"> <![endif]-->\n<!--[if IE 8]>    <html class=\"no-"
+  }
+ ],
+ "mode": "dry_run",
+ "settings": {
+  "min_price": 0.9,
+  "max_price": 0.97,
+  "max_days_to_end": 14,
+  "max_per_market_usd": 25,
+  "max_total_usd": 200,
+  "max_positions": 10
+ },
+ "dry_run_record": {
+  "settled": 0,
+  "won": 0,
+  "pnl_usd": 0,
+  "staked_usd": 0
+ },
+ "updated": "2026-10-09T16:52:12Z"
+}
