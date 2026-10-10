@@ -5,5 +5,5 @@ COPY requirements-live.txt .
 RUN pip install --no-cache-dir -r requirements-live.txt
 COPY agent agent
 COPY config.json .
-ENV LIVE_STATE=/data/live_state.json PYTHONUNBUFFERED=1
+ENV LIVE_STATE=/data/live_state.json RESEARCH_STATE=/data/research_state.json PYTHONUNBUFFERED=1
 CMD ["python", "-m", "agent.live"]

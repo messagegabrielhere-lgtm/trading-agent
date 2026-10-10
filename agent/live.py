@@ -33,6 +33,9 @@ Environment:
   ANTHROPIC_API_KEY                  optional, turns on the hourly Claude review
   NTFY_TOPIC                         optional, ntfy.sh topic for phone alerts
   LIVE_STATE                         optional, path of the state file (default ./live_state.json)
+  SEC_USER_AGENT                     optional, turns on the research desk (agent/research.py):
+                                     your name and email, which the SEC requires
+  RESEARCH_STATE                     optional, research desk state file (default ./research_state.json)
 """
 import json
 import os
@@ -487,7 +490,14 @@ def main():
         from .brain import review
         brain = lambda summary: review(summary, cfg["crypto"] + cfg["stocks"])  # noqa: E731
     trader = Trader(api, cfg, state_path, brain)
-    alert(f"Trading agent started: {label}, Claude review {'on' if brain else 'off'}.")
+    research_on = bool(os.environ.get("SEC_USER_AGENT"))
+    if research_on:  # overnight SEC research desk (agent/research.py), in its own thread
+        import threading
+        from . import research
+        threading.Thread(target=research.loop, daemon=True, args=(
+            research.load_config(), os.environ.get("RESEARCH_STATE", "research_state.json"), alert)).start()
+    alert(f"Trading agent started: {label}, Claude review {'on' if brain else 'off'}, "
+          f"research desk {'on' if research_on else 'off'}.")
     if getattr(api, "signer", None):
         try:
             acct = api.whoami()

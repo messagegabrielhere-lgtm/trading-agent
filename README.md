@@ -212,3 +212,39 @@ Set up:
 4. Watch `fly logs` in dry run. On start it reports which crypto account the key belongs to
    ("Robinhood key belongs to crypto account ending ...").
 5. Set `RH_ACCOUNT` to that account number and `RH_LIVE=1` to trade for real.
+
+## Overnight research desk (SEC filings, valuations, Berkshire 13F, weekly screen)
+
+`agent/research.py` runs inside the always-on bot as a background thread once `SEC_USER_AGENT` is set.
+It never places orders; it only sends phone alerts through the same ntfy topic.
+
+| Job | When (UTC) | What reaches your phone |
+|---|---|---|
+| **watch** | daily 10:00 (6am New York) | Only when your thesis on a stock is broken. Claude reads every new 10-K, 10-Q and 8-K, every insider open-market buy or sell (Form 4), and the last few days of headlines. Routine filings, price moves and analyst notes don't count. |
+| **berkshire** | daily 11:00, speaks only on a new 13F | Each new or enlarged Berkshire position, today's price against its buy-below price ("STILL CHEAP" or "too late"), and how many days old the trades are (13Fs land up to 45 days after the quarter). |
+| **screen** | Saturdays 13:00 | Values every S&P 500 company, takes the cheapest 8, lets the bear try to kill each one, and sends at most 5 that Warren still wants. "Nothing to buy" is a normal week. |
+
+**Valuation** (`agent/valuation.py`): owner-earnings DCF from up to 10 years of 10-K cash flow
+(operating cash flow minus capital spending, per diluted share). It refuses to value erratic
+businesses (under 7 years of history, or negative free cash flow in more than 1 year in 5).
+Growth is the company's own per-share history, capped at 12% and fading to 3% over 10 years,
+discounted at 10%, plus net cash. **Buy below = intrinsic value minus a 30% margin of safety.**
+All of these are in `config.json` → `research.valuation`. Banks and insurers don't fit this method.
+
+**The bear and Warren** (`agent/analyst.py`): the bear searches the web and builds the strongest
+case against each idea; if it kills the idea, Warren never sees it. Warren, judging in the spirit
+of Buffett's letters, says buy only if the business is understandable and durable, the bear's
+points don't break it, and the price is under the buy-below price.
+
+Set it up:
+
+1. Write your theses in `config.json` → `research.watchlist`, e.g.
+   `"KO": "Global brand with pricing power; volumes steady; dividend covered by free cash flow."`
+2. `fly secrets set SEC_USER_AGENT="Your Name you@example.com"` (the SEC requires a contact).
+   `ANTHROPIC_API_KEY` must be set too.
+3. `fly deploy`. The start-up alert now says "research desk on".
+
+Try it by hand: `python -m agent.research value KO`, `... berkshire`, `... watch`, `... screen`.
+Costs: watch is one Claude call per stock per day; the screen is 8 to 16 Claude calls a week plus
+about 500 free SEC downloads. Data comes from SEC EDGAR, prices from Yahoo, and the S&P 500 list
+from the public datasets/s-and-p-500-companies CSV. Nothing here is investment advice.
