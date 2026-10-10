@@ -178,3 +178,27 @@ docker run -d --restart always -v agent_data:/data --env-file .env trading-agent
 
 Without `ALPACA_MODE=live` it never touches a live account. Alpaca charges about 0.15-0.25% per
 crypto trade, so each round trip costs roughly 0.3-0.5%. Nothing here is investment advice.
+
+### Using Robinhood instead (`BROKER=robinhood`, crypto only)
+
+The same bot can trade crypto through Robinhood's official Crypto Trading API (`agent/rh_broker.py`).
+Robinhood has no official API for stocks, so this mode trades crypto only, around the clock.
+
+- **It trades only its own budget.** `budget_usd` defaults to $20. The bot keeps a book of the coins it bought and only ever
+  sells those, so crypto you hold yourself in the same Robinhood account is never touched.
+- **Price history comes from Coinbase.** Robinhood's API has no candles, so the trend signals use Coinbase's public 15-minute candles. Quotes,
+  spreads and orders come from Robinhood.
+- **Robinhood's spread is wide**, often 1-2% between buy and sell. The Robinhood settings under
+  `live.robinhood` in `config.json` require a bigger move before buying (1.5% over 4 hours) and
+  use wider stops (8% stop-loss, 5% trailing).
+- **Dry run by default.** It logs the trades it would make. Add `RH_LIVE=1` for real orders.
+
+Set up:
+
+1. Make a key pair:
+   `python3 -c "import base64,nacl.signing as s;k=s.SigningKey.generate();print('private:',base64.b64encode(bytes(k)).decode());print('public:',base64.b64encode(bytes(k.verify_key)).decode())"`
+2. At robinhood.com/account/crypto, add an API key with the **public** key. Robinhood shows
+   which crypto account the key trades; the API works only for crypto.
+3. Deploy as above with these secrets:
+   `fly secrets set BROKER=robinhood RH_API_KEY=... RH_PRIVATE_KEY=... NTFY_TOPIC=... ANTHROPIC_API_KEY=...`
+4. Watch `fly logs` in dry run. Then `fly secrets set RH_LIVE=1` to trade for real.

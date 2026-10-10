@@ -11,7 +11,7 @@ Two layers:
     returns risk on/off and which symbols may be bought. It can veto entries; it never places orders.
 
 Safety rails:
-  * Paper by default. Live trading needs ALPACA_MODE=live, set on purpose.
+  * Paper or dry run by default. Real money needs ALPACA_MODE=live or RH_LIVE=1, set on purpose.
   * Cash only (no margin, no shorting). Buys are sized from cash, never buying power.
   * At most `max_positions` positions; a symbol is skipped when its spread is too wide.
   * Account halt: if equity falls `halt_drawdown` below its peak, sell everything and stop buying
@@ -19,9 +19,17 @@ Safety rails:
     new buys until the next UTC day.
   * Every order and halt is printed and, when NTFY_TOPIC is set, pushed to your phone via ntfy.sh.
 
+Brokers (BROKER=alpaca, the default, or BROKER=robinhood):
+  * Alpaca: crypto and stocks. Paper by default; live needs ALPACA_MODE=live.
+  * Robinhood: crypto only, through Robinhood's official Crypto Trading API (agent/rh_broker.py).
+    Dry run by default; real orders need RH_LIVE=1. Trades only its own `budget_usd`.
+
 Environment:
+  BROKER                             "alpaca" (default) or "robinhood"
   ALPACA_KEY_ID, ALPACA_SECRET_KEY   Alpaca API keys (paper or live, matching ALPACA_MODE)
   ALPACA_MODE                        "paper" (default) or "live"
+  RH_API_KEY, RH_PRIVATE_KEY         Robinhood crypto API key and base64 Ed25519 private key
+  RH_LIVE                            "1" to place real Robinhood orders
   ANTHROPIC_API_KEY                  optional, turns on the hourly Claude review
   NTFY_TOPIC                         optional, ntfy.sh topic for phone alerts
   LIVE_STATE                         optional, path of the state file (default ./live_state.json)
@@ -60,6 +68,7 @@ DEFAULTS = {
     "daily_loss_pause": 0.10,    # no new buys after a 10% loss on the day
     "cooldown_minutes": 30,      # don't rebuy a symbol this soon after selling it
     "brain_minutes": 60,
+    "budget_usd": 20.0,          # BROKER=robinhood only: the most the bot may have in play
 }
 
 
@@ -393,19 +402,45 @@ class Trader:
         save_state(self.path, self.s)
 
 
-def main():
-    cfg = {**DEFAULTS, **json.loads((ROOT / "config.json").read_text()).get("live", {})}
+def make_broker(cfg, state_path):
+    """The broker named by BROKER (alpaca or robinhood) and a label for the start-up alert."""
+    broker = os.environ.get("BROKER", "alpaca")
+    if broker == "robinhood":
+        from .rh_broker import RobinhoodCrypto
+        key, priv = os.environ.get("RH_API_KEY"), os.environ.get("RH_PRIVATE_KEY")
+        live = os.environ.get("RH_LIVE") == "1"
+        if live and not (key and priv):
+            sys.exit("RH_LIVE=1 needs RH_API_KEY and RH_PRIVATE_KEY.")
+        api = RobinhoodCrypto(key, priv, str(state_path) + ".rh_book.json", cfg["budget_usd"], live)
+        return api, f"Robinhood crypto {'LIVE' if live else 'DRY RUN'}, budget ${cfg['budget_usd']:,.2f}"
+    if broker != "alpaca":
+        sys.exit(f"BROKER must be alpaca or robinhood, not {broker!r}")
     key, secret = os.environ.get("ALPACA_KEY_ID"), os.environ.get("ALPACA_SECRET_KEY")
     if not (key and secret):
         sys.exit("Set ALPACA_KEY_ID and ALPACA_SECRET_KEY.")
     mode = os.environ.get("ALPACA_MODE", "paper")
-    api = Alpaca(key, secret, mode)
+    return Alpaca(key, secret, mode), f"Alpaca {mode.upper()}"
+
+
+def load_config(broker):
+    live_cfg = json.loads((ROOT / "config.json").read_text()).get("live", {})
+    overrides = live_cfg.pop("robinhood", {})
+    cfg = {**DEFAULTS, **live_cfg}
+    if broker == "robinhood":
+        cfg.update(overrides)
+    return cfg
+
+
+def main():
+    cfg = load_config(os.environ.get("BROKER", "alpaca"))
+    state_path = os.environ.get("LIVE_STATE", "live_state.json")
+    api, label = make_broker(cfg, state_path)
     brain = None
     if os.environ.get("ANTHROPIC_API_KEY"):
         from .brain import review
         brain = lambda summary: review(summary, cfg["crypto"] + cfg["stocks"])  # noqa: E731
-    trader = Trader(api, cfg, os.environ.get("LIVE_STATE", "live_state.json"), brain)
-    alert(f"Trading agent started ({mode.upper()}), Claude review {'on' if brain else 'off'}.")
+    trader = Trader(api, cfg, state_path, brain)
+    alert(f"Trading agent started: {label}, Claude review {'on' if brain else 'off'}.")
     once = "--once" in sys.argv
     while True:
         try:
