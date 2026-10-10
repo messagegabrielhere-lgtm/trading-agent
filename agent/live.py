@@ -70,6 +70,12 @@ DEFAULTS = {
     "brain_minutes": 60,
     "heartbeat_hours": 6,        # push a "still running" summary this often
     "budget_usd": 20.0,          # BROKER=robinhood only: the most the bot may have in play
+    "vol_stops": True,           # size stops to each coin's recent volatility instead of fixed %
+    "stop_k": 2.5,               # stop = stop_k x the typical 4-hour move, clamped to the range below
+    "stop_min": 0.03,
+    "stop_max": 0.12,
+    "trail_k": 2.0,              # trailing distance = trail_k x the typical 4-hour move
+    "thin_hours_utc": [5, 6, 7, 8, 9],  # about 1-6am ET: spreads widen, so require 2x the momentum
 }
 
 
@@ -99,20 +105,35 @@ def signal(closes, cfg):
     mom_4h = closes[-1] / closes[-17] - 1
     chg_1h = closes[-1] / closes[-5] - 1
     uptrend = fast > slow and closes[-1] > slow and slow > slow_prev
+    rets = [b / a - 1 for a, b in zip(closes[-97:-1], closes[-96:])]
+    mean = sum(rets) / len(rets)
+    vol_4h = (sum((r - mean) ** 2 for r in rets) / len(rets)) ** 0.5 * 4  # 16 bars: sqrt(16) = 4
     return {
         "price": closes[-1], "ema_fast": fast, "ema_slow": slow, "mom_4h": mom_4h, "chg_1h": chg_1h,
-        "uptrend": uptrend,
+        "uptrend": uptrend, "vol_4h": vol_4h,
         "buy": uptrend and mom_4h >= cfg["min_momentum"] and chg_1h <= cfg["max_chase"],
     }
 
 
-def exit_decision(entry, price, high, took_half, sig, cfg):
+def stops_for(sig, cfg):
+    """(stop-loss, trailing distance) for a new position. With vol_stops, a jumpy coin gets a wider
+    stop and a calm one a tighter stop, so normal noise doesn't shake the bot out."""
+    if not cfg.get("vol_stops") or not sig or not sig.get("vol_4h"):
+        return cfg["stop_loss"], cfg["trail_pct"]
+    stop = min(max(cfg["stop_k"] * sig["vol_4h"], cfg["stop_min"]), cfg["stop_max"])
+    trail = min(max(cfg["trail_k"] * sig["vol_4h"], cfg["stop_min"]), stop)
+    return stop, trail
+
+
+def exit_decision(entry, price, high, took_half, sig, cfg, stop=None, trail=None):
     """What to do with an open position. Returns (action, reason) with action in
-    None, "half", "all"."""
+    None, "half", "all". `stop` and `trail` default to the fixed settings."""
+    stop = cfg["stop_loss"] if stop is None else stop
+    trail = cfg["trail_pct"] if trail is None else trail
     gain = price / entry - 1
-    if gain <= -cfg["stop_loss"]:
+    if gain <= -stop:
         return "all", f"stop-loss ({gain:+.1%})"
-    if high / entry - 1 >= cfg["trail_start"] and price <= high * (1 - cfg["trail_pct"]):
+    if high / entry - 1 >= cfg["trail_start"] and price <= high * (1 - trail):
         return "all", f"trailing stop ({price / high - 1:+.1%} from high, {gain:+.1%} overall)"
     if sig is not None and not sig["uptrend"] and sig["ema_fast"] < sig["ema_slow"]:
         return "all", f"trend broke ({gain:+.1%})"
@@ -121,12 +142,14 @@ def exit_decision(entry, price, high, took_half, sig, cfg):
     return None, ""
 
 
-def pick_entries(signals, quotes, held, allowed, slots, cfg):
-    """Symbols to buy, best first."""
+def pick_entries(signals, quotes, held, allowed, slots, cfg, thin=False):
+    """Symbols to buy, best first. In thin hours a symbol needs twice the usual momentum."""
     cands = []
     for sym, sig in signals.items():
         q = quotes.get(sym)
         if not sig or not sig["buy"] or sym in held or sym not in allowed or not q:
+            continue
+        if thin and sig["mom_4h"] < 2 * cfg["min_momentum"]:
             continue
         if q["spread"] > cfg["max_spread"]:
             continue
@@ -333,7 +356,7 @@ class Trader:
             track = s["positions"].setdefault(psym, {"high": price, "took_half": False})
             track["high"] = max(track["high"], price)
             action, why = exit_decision(entry, price, track["high"], track["took_half"],
-                                        self.signals.get(sym), cfg)
+                                        self.signals.get(sym), cfg, track.get("stop"), track.get("trail"))
             if not action:
                 continue
             self.api.sell(sym, 0.5 if action == "half" else 1)
@@ -373,7 +396,7 @@ class Trader:
                    if datetime.fromisoformat(s["cooldown"].get(norm(a), "2000-01-01T00:00:00+00:00")) < cutoff}
         slots = cfg["max_positions"] - len(positions)
         for sym in pick_entries(self.signals, quotes, {by_norm.get(p, p) for p in positions},
-                                allowed, slots, cfg):
+                                allowed, slots, cfg, thin=now().hour in cfg["thin_hours_utc"]):
             usd = round(min(equity * cfg["position_pct"], cash * 0.98), 2)
             if usd < cfg["min_order_usd"]:
                 break
@@ -384,8 +407,11 @@ class Trader:
                 continue
             cash -= usd
             sig = self.signals[sym]
-            s["positions"][norm(sym)] = {"high": quotes[sym]["ask"], "took_half": False}
-            alert(f"{self.tag()}BUY ${usd:,.2f} {sym} @ {quotes[sym]['ask']:,.4g}: uptrend, 4h {sig['mom_4h']:+.1%}")
+            stop, trail = stops_for(sig, cfg)
+            s["positions"][norm(sym)] = {"high": quotes[sym]["ask"], "took_half": False,
+                                         "stop": stop, "trail": trail}
+            alert(f"{self.tag()}BUY ${usd:,.2f} {sym} @ {quotes[sym]['ask']:,.4g}: uptrend, 4h {sig['mom_4h']:+.1%}, "
+                  f"stop -{stop:.1%}")
         self._save()
 
     def heartbeat(self, equity, cash, positions):
@@ -413,7 +439,8 @@ class Trader:
                              "spread": round(quotes[sym]["spread"], 4) if sym in quotes else None})
         held = [{"symbol": k, "qty": v["qty"], "entry": v["avg_entry_price"],
                  "unrealized_plpc": v.get("unrealized_plpc")} for k, v in positions.items()]
-        return {"time": stamp(), "equity": equity, "cash": cash, "peak_equity": self.s["peak_equity"],
+        return {"time": stamp(), "hour_utc": now().hour, "thin_hours_utc": self.cfg["thin_hours_utc"],
+                "equity": equity, "cash": cash, "peak_equity": self.s["peak_equity"],
                 "positions": held, "symbols": rows}
 
     def _save(self):

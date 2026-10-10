@@ -132,13 +132,18 @@ open, in an Alpaca **paper** account by default.
   - **Trailing stop:** once a position is 2% up, sells if it falls 4% from its high.
   - **Take profit:** sells half at +10%.
   - **Trend break:** sells if the 15-minute trend turns down.
+- **Stops sized per coin.** Stops and trailing distances come from each coin's recent volatility
+  (2.5x and 2x its typical 4-hour move, between 3% and 12%), so a jumpy coin gets room and a
+  calm one a tight stop. Set `vol_stops` to false for the fixed percentages below.
+- **Stricter in quiet hours.** Between 05:00 and 09:00 UTC (about 1-6am ET), when spreads widen,
+  a symbol needs twice the usual momentum to be bought.
 - Every minute it recomputes 15-minute trend signals. It buys a symbol only when all of these hold:
   - the trend is up (9-bar average above 21-bar average, and the 21-bar average is rising);
   - it rose at least 0.5% over the last 4 hours;
   - it rose no more than 8% in the last hour, so it isn't chasing a spike;
   - its bid/ask spread is under 0.5%.
 - **Positions and sizing:** at most 2 positions, each sized at half of equity, paid from cash only. No margin, no shorting.
-- **Claude review:** once an hour, if `ANTHROPIC_API_KEY` is set, Claude (`claude-opus-5-5`, `agent/brain.py`) reads a market summary and returns risk on/off plus which symbols may be bought. It can only block buys; it never places orders.
+- **Claude review:** once an hour, if `ANTHROPIC_API_KEY` is set, Claude (`claude-opus-5-5`, `agent/brain.py`) reads a market summary, checks the news and social sentiment with web search, and returns risk on/off plus which symbols may be bought. It can only block buys; it never places orders.
 - **Brakes:**
   - At 25% below peak equity, it sells everything and stops until you set `"halted": false` in the state file.
   - After a 10% loss in a day, it pauses new buys until the next UTC day.

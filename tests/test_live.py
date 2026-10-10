@@ -160,3 +160,28 @@ class Heartbeat(unittest.TestCase):
             finally:
                 live.alert = orig
             self.assertEqual(len([m for m in sent if m.startswith("Still running")]), 1)
+
+
+class VolatilityStops(unittest.TestCase):
+    def test_jumpy_coin_gets_a_wider_stop_than_a_calm_one(self):
+        calm = [100 * (1 + 0.001 * ((-1) ** i)) * 1.001 ** i for i in range(120)]
+        jumpy = [100 * (1 + 0.02 * ((-1) ** i)) * 1.001 ** i for i in range(120)]
+        s_calm, _ = live.stops_for(live.signal(calm, CFG), CFG)
+        s_jumpy, _ = live.stops_for(live.signal(jumpy, CFG), CFG)
+        self.assertEqual(s_calm, CFG["stop_min"])
+        self.assertGreater(s_jumpy, s_calm)
+        self.assertLessEqual(s_jumpy, CFG["stop_max"])
+
+    def test_position_stop_overrides_the_default(self):
+        up = {"uptrend": True, "ema_fast": 2, "ema_slow": 1}
+        self.assertIsNone(live.exit_decision(100, 95, 100, False, up, CFG, stop=0.08, trail=0.05)[0])
+        self.assertEqual(live.exit_decision(100, 91, 100, False, up, CFG, stop=0.08, trail=0.05)[0], "all")
+
+
+class ThinHours(unittest.TestCase):
+    def test_thin_hours_need_double_momentum(self):
+        sig = {"buy": True, "mom_4h": CFG["min_momentum"] * 1.5}
+        quotes = {"BTC/USD": q(100)}
+        args = ({"BTC/USD": sig}, quotes, set(), {"BTC/USD"}, 1, CFG)
+        self.assertEqual(live.pick_entries(*args), ["BTC/USD"])
+        self.assertEqual(live.pick_entries(*args, thin=True), [])
