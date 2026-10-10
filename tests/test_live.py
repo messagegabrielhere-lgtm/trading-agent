@@ -145,3 +145,18 @@ class Loop(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class Heartbeat(unittest.TestCase):
+    def test_pushes_once_per_period(self):
+        with tempfile.TemporaryDirectory() as d:
+            api = FakeAlpaca()
+            t = live.Trader(api, CFG, Path(d) / "s.json")
+            sent = []
+            orig, live.alert = live.alert, sent.append
+            try:
+                t.tick()
+                t.tick()
+            finally:
+                live.alert = orig
+            self.assertEqual(len([m for m in sent if m.startswith("Still running")]), 1)

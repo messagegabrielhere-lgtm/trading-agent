@@ -143,6 +143,7 @@ open, in an Alpaca **paper** account by default.
   - At 25% below peak equity, it sells everything and stops until you set `"halted": false` in the state file.
   - After a 10% loss in a day, it pauses new buys until the next UTC day.
 - **Alerts:** every buy, sell and halt is printed and, with `NTFY_TOPIC` set, pushed to your phone.
+  A "Still running" summary (equity, cash, positions) goes out every 6 hours.
   To get them, install the ntfy app and subscribe to that topic. Pick a long, random topic name.
 
 All thresholds live under `live` in `config.json`.
@@ -203,4 +204,6 @@ Set up:
    `fly secrets set BROKER=robinhood RH_API_KEY=... RH_PRIVATE_KEY=... RH_ACCOUNT=... NTFY_TOPIC=... ANTHROPIC_API_KEY=...`
    `RH_ACCOUNT` is the crypto account number the bot may trade. On every check it asks Robinhood which
    account the key belongs to, and places nothing if that isn't `RH_ACCOUNT`.
-4. Watch `fly logs` in dry run. Then `fly secrets set RH_LIVE=1` to trade for real.
+4. Watch `fly logs` in dry run. On start it reports which crypto account the key belongs to
+   ("Robinhood key belongs to crypto account ending ...").
+5. Set `RH_ACCOUNT` to that account number and `RH_LIVE=1` to trade for real.

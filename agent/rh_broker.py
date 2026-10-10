@@ -101,6 +101,10 @@ class RobinhoodCrypto:
     def cost_basis(self):
         return sum(c["qty"] * c["entry"] for c in self.book["coins"].values())
 
+    def whoami(self):
+        """The crypto account this API key belongs to."""
+        return self.call("GET", "/api/v1/crypto/trading/accounts/")
+
     def account(self):
         bot_cash = self.budget + self.book["realized"] - self.cost_basis()
         cash = bot_cash

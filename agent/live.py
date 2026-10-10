@@ -68,6 +68,7 @@ DEFAULTS = {
     "daily_loss_pause": 0.10,    # no new buys after a 10% loss on the day
     "cooldown_minutes": 30,      # don't rebuy a symbol this soon after selling it
     "brain_minutes": 60,
+    "heartbeat_hours": 6,        # push a "still running" summary this often
     "budget_usd": 20.0,          # BROKER=robinhood only: the most the bot may have in play
 }
 
@@ -297,6 +298,7 @@ class Trader:
         s["peak_equity"] = max(equity, s["peak_equity"] or equity)
 
         positions = {p["symbol"]: p for p in self.api.positions()}
+        self.heartbeat(equity, cash, positions)
         stocks_open = self.api.market_open()
         crypto, stocks = self.universe(stocks_open)
         quotes = self.api.quotes(crypto, stocks)
@@ -386,6 +388,17 @@ class Trader:
             alert(f"BUY ${usd:,.2f} {sym} @ {quotes[sym]['ask']:,.4g}: uptrend, 4h {sig['mom_4h']:+.1%}")
         self._save()
 
+    def heartbeat(self, equity, cash, positions):
+        last = self.s.get("last_heartbeat")
+        if last and now() - datetime.fromisoformat(last) < timedelta(hours=self.cfg["heartbeat_hours"]):
+            return
+        self.s["last_heartbeat"] = stamp()
+        held = ", ".join(f"{k} {float(v['current_price']) / float(v['avg_entry_price']) - 1:+.1%}"
+                         for k, v in positions.items()) or "no positions"
+        state = "HALTED" if self.s["halted"] else f"Claude risk {self.s['brain'].get('risk', 'on')}"
+        alert(f"Still running. Equity ${equity:,.2f} (peak ${self.s['peak_equity'] or equity:,.2f}), "
+              f"cash ${cash:,.2f}, {held}. {state}.")
+
     def summary(self, equity, cash, positions, quotes):
         rows = []
         for sym, sig in self.signals.items():
@@ -443,6 +456,16 @@ def main():
         brain = lambda summary: review(summary, cfg["crypto"] + cfg["stocks"])  # noqa: E731
     trader = Trader(api, cfg, state_path, brain)
     alert(f"Trading agent started: {label}, Claude review {'on' if brain else 'off'}.")
+    if getattr(api, "signer", None):
+        try:
+            acct = api.whoami()
+            want = os.environ.get("RH_ACCOUNT")
+            match = "" if not want else (" = RH_ACCOUNT, OK to trade" if str(acct["account_number"]) == want
+                                        else f" but RH_ACCOUNT ends {want[-4:]}: it will NOT trade")
+            alert(f"Robinhood key belongs to crypto account ending {str(acct['account_number'])[-4:]} "
+                  f"({acct.get('status')}, buying power ${float(acct.get('buying_power') or 0):,.2f}){match}.")
+        except Exception as e:
+            alert(f"Could not read the Robinhood account for this key: {e}")
     once = "--once" in sys.argv
     while True:
         try:
