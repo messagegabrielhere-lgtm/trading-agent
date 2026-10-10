@@ -118,3 +118,63 @@ crash moved faster than the 200-day average could react), which is why it failed
 limit set before the test. It runs in the Alpaca paper account to see how that behaves live.
 Caveat: 2017-2026 was a strong decade for the Nasdaq; a 2x fund in 2000-2002 or 2008 would have
 been far worse, and the trend filter only partly protects against that.
+
+## Always-on trading (Alpaca)
+
+`agent/live.py` is a separate bot that runs nonstop on a small server instead of on a GitHub Actions
+schedule. It trades crypto around the clock and a few stocks and leveraged ETFs while the market is
+open, in an Alpaca **paper** account by default.
+
+**How it decides**
+
+- Every 15 seconds it checks quotes and positions and enforces the exits:
+  - **Stop-loss:** sells if a position is 6% below entry.
+  - **Trailing stop:** once a position is 2% up, sells if it falls 4% from its high.
+  - **Take profit:** sells half at +10%.
+  - **Trend break:** sells if the 15-minute trend turns down.
+- Every minute it recomputes 15-minute trend signals. It buys a symbol only when all of these hold:
+  - the trend is up (9-bar average above 21-bar average, and the 21-bar average is rising);
+  - it rose at least 0.5% over the last 4 hours;
+  - it rose no more than 8% in the last hour, so it isn't chasing a spike;
+  - its bid/ask spread is under 0.5%.
+- **Positions and sizing:** at most 2 positions, each sized at half of equity, paid from cash only. No margin, no shorting.
+- **Claude review:** once an hour, if `ANTHROPIC_API_KEY` is set, Claude (`claude-opus-5-5`, `agent/brain.py`) reads a market summary and returns risk on/off plus which symbols may be bought. It can only block buys; it never places orders.
+- **Brakes:**
+  - At 25% below peak equity, it sells everything and stops until you set `"halted": false` in the state file.
+  - After a 10% loss in a day, it pauses new buys until the next UTC day.
+- **Alerts:** every buy, sell and halt is printed and, with `NTFY_TOPIC` set, pushed to your phone.
+  To get them, install the ntfy app and subscribe to that topic. Pick a long, random topic name.
+
+All thresholds live under `live` in `config.json`.
+
+**Run it locally**
+
+```bash
+ALPACA_KEY_ID=... ALPACA_SECRET_KEY=... python3 -m agent.live --once   # one check, then exit
+python3 -m unittest discover -s tests -t .                              # tests
+```
+
+**Deploy on Fly.io** (about $2-5 a month)
+
+```bash
+fly launch --no-deploy --copy-config      # pick a unique app name when asked
+fly volumes create agent_data --size 1
+fly secrets set ALPACA_KEY_ID=... ALPACA_SECRET_KEY=... ANTHROPIC_API_KEY=... NTFY_TOPIC=...
+fly deploy
+fly logs                                  # watch it trade
+```
+
+The same `Dockerfile` runs on Railway, Render, or any VPS:
+
+```bash
+docker run -d --restart always -v agent_data:/data --env-file .env trading-agent
+```
+
+**Going live with real money**
+
+1. Run on paper for a few weeks and read the logs.
+2. Generate **live** API keys in the Alpaca dashboard.
+3. Set `ALPACA_MODE=live` along with the live keys.
+
+Without `ALPACA_MODE=live` it never touches a live account. Alpaca charges about 0.15-0.25% per
+crypto trade, so each round trip costs roughly 0.3-0.5%. Nothing here is investment advice.

@@ -126,5 +126,31 @@
     "sma_days": 200,
     "budget_usd": 500,
     "max_order_usd": 300
+  },
+  "live": {
+    "crypto": [
+      "BTC/USD",
+      "ETH/USD",
+      "SOL/USD",
+      "DOGE/USD",
+      "AVAX/USD",
+      "LINK/USD",
+      "XRP/USD"
+    ],
+    "stocks": [
+      "TQQQ",
+      "SOXL",
+      "TNA",
+      "QQQ",
+      "SPY"
+    ],
+    "max_positions": 2,
+    "position_pct": 0.5,
+    "stop_loss": 0.06,
+    "trail_start": 0.02,
+    "trail_pct": 0.04,
+    "take_half_at": 0.1,
+    "halt_drawdown": 0.25,
+    "daily_loss_pause": 0.1
   }
 }

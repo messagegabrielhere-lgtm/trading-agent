@@ -1,2 +1,4 @@
 __pycache__/
 .DS_Store
+live_state.json
+live_state.json.tmp

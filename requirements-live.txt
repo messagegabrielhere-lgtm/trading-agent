@@ -1,0 +1,2 @@
+# agent/live.py uses the standard library; anthropic is only for the optional hourly Claude review.
+anthropic>=1.13

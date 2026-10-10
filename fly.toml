@@ -1,0 +1,13 @@
+# Fly.io deploy for the always-on trading agent. See README "Always-on trading (Alpaca)".
+app = "trading-agent-live"
+primary_region = "iad"
+
+[build]
+
+[mounts]
+  source = "agent_data"
+  destination = "/data"
+
+[[vm]]
+  size = "shared-cpu-1x"
+  memory = "256mb"
