@@ -165,8 +165,10 @@ CONCEPTS = {
     "shares": ["WeightedAverageNumberOfDilutedSharesOutstanding", "WeightedAverageNumberOfSharesOutstandingBasic"],
     "cash": ["CashAndCashEquivalentsAtCarryingValue"],
     "debt": ["LongTermDebt", "LongTermDebtNoncurrent"],
+    "equity": ["StockholdersEquity", "StockholdersEquityIncludingPortionAttributableToNoncontrollingInterest"],
+    "gross_profit": ["GrossProfit"],
 }
-FLOWS = {"revenue", "net_income", "ocf", "capex", "shares"}  # reported over a year, not at a date
+FLOWS = {"revenue", "net_income", "ocf", "capex", "shares", "gross_profit"}  # reported over a year, not at a date
 
 
 def company_facts(cik):

@@ -222,7 +222,7 @@ It never places orders; it only sends phone alerts through the same ntfy topic.
 |---|---|---|
 | **watch** | daily 10:00 (6am New York) | Only when your thesis on a stock is broken. Claude reads every new 10-K, 10-Q and 8-K, every insider open-market buy or sell (Form 4), and the last few days of headlines. Routine filings, price moves and analyst notes don't count. |
 | **berkshire** | daily 11:00, speaks only on a new 13F | Each new or enlarged Berkshire position, today's price against its buy-below price ("STILL CHEAP" or "too late"), and how many days old the trades are (13Fs land up to 45 days after the quarter). |
-| **screen** | Saturdays 13:00 | Values every S&P 500 company, takes the cheapest 8, lets the bear try to kill each one, and sends at most 5 that Warren still wants. "Nothing to buy" is a normal week. |
+| **screen** | Saturdays 13:00 | Values every S&P 500 company, drops the cheap ones that fail the quality checklist (value traps), takes the cheapest 8 that remain, lets the bear try to kill each one, and sends at most 5 that Warren still wants. "Nothing to buy" is a normal week. |
 
 **Valuation** (`agent/valuation.py`): owner-earnings DCF from up to 10 years of 10-K cash flow
 (operating cash flow minus capital spending, per diluted share). It refuses to value erratic
@@ -231,10 +231,20 @@ Growth is the company's own per-share history, capped at 12% and fading to 3% ov
 discounted at 10%, plus net cash. **Buy below = intrinsic value minus a 30% margin of safety.**
 All of these are in `config.json` → `research.valuation`. Banks and insurers don't fit this method.
 
+**Quality checklist** (`valuation.quality`): cheap isn't enough; it has to be a wonderful business.
+From the same 10 years of filings: median return on equity at least 15%; profitable in all but at
+most one year; long-term debt payable from 4 years of free cash flow; share count up no more than
+10% (no dilution); earnings higher than a decade ago; gross margin steady (pricing power). Checks the
+filings can't answer (a bank has no gross margin) don't count, but at least 4 must be answered and
+all answered ones must pass. Berkshire alerts show the score (e.g. "quality 6/6").
+
 **The bear and Warren** (`agent/analyst.py`): the bear searches the web and builds the strongest
 case against each idea; if it kills the idea, Warren never sees it. Warren, judging in the spirit
-of Buffett's letters, says buy only if the business is understandable and durable, the bear's
-points don't break it, and the price is under the buy-below price.
+of Buffett's letters, sees the quality checklist and lives by his rules: never lose money, circle
+of competence, a moat, candid management that allocates capital well, no turnarounds or
+debt-hungry businesses, greedy when others are fearful, buy as if the market closes for 10 years.
+It says buy only if the business passes those, the bear's points don't break it, and the price is
+under the buy-below price.
 
 Set it up:
 

@@ -171,12 +171,17 @@
     "screen_hour_utc": 13,
     "screen_max": 5,
     "screen_debate": 8,
+    "require_quality": true,
     "valuation": {
       "discount_rate": 0.1,
       "terminal_growth": 0.03,
       "max_growth": 0.12,
       "margin_of_safety": 0.3,
-      "min_years": 7
+      "min_years": 7,
+      "min_roe": 0.15,
+      "max_debt_years": 4,
+      "max_dilution": 0.1,
+      "max_margin_swing": 0.05
     }
   }
 }

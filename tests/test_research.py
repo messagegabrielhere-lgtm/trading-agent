@@ -12,8 +12,49 @@ def steady_years(n=10, fcf=10.0, growth=0.08, shares=100.0, cash=500.0, debt=200
     out = {}
     for i in range(n):
         f = fcf * (1 + growth) ** i * shares
-        out[2015 + i] = {"ocf": f + 50.0, "capex": 50.0, "shares": shares, "cash": cash, "debt": debt}
+        out[2015 + i] = {"ocf": f + 50.0, "capex": 50.0, "shares": shares, "cash": cash, "debt": debt,
+                         "net_income": f, "equity": f / 0.2, "revenue": f * 4, "gross_profit": f * 4 * 0.6}
     return out
+
+
+class Quality(unittest.TestCase):
+    def checks(self, years):
+        return {c["rule"]: c["ok"] for c in valuation.quality(years)["checks"]}
+
+    def test_wonderful_business_passes(self):
+        q = valuation.quality(steady_years())
+        self.assertTrue(q["passed"])
+        self.assertEqual(q["score"], "6/6")
+
+    def test_each_rule_can_fail(self):
+        y = steady_years()
+        for i, row in enumerate(y.values()):
+            row["equity"] = row["net_income"] / 0.05            # 5% returns
+            row["shares"] = 100.0 * (1 + 0.05 * i)               # ~45% dilution
+            row["gross_profit"] = row["revenue"] * (0.3 if i % 2 else 0.6)
+        y[2016]["net_income"] = y[2018]["net_income"] = -1.0     # two loss years
+        y[2024]["debt"] = 1e9
+        c = self.checks(y)
+        self.assertFalse(any(c[r] for r in ("high_returns", "steady_earnings", "low_debt",
+                                            "no_dilution", "pricing_power")))
+        self.assertFalse(valuation.quality(y)["passed"])
+
+    def test_unanswerable_checks_dont_count(self):
+        y = steady_years()
+        for row in y.values():
+            row.pop("gross_profit")
+        q = valuation.quality(y)
+        self.assertIsNone(self.checks(y)["pricing_power"])
+        self.assertTrue(q["passed"])
+        self.assertEqual(q["score"], "5/5")
+
+    def test_negative_equity_from_buybacks_is_not_a_fail(self):
+        y = steady_years()
+        y[2024]["equity"] = -5.0
+        self.assertIsNone(self.checks(y)["high_returns"])
+
+    def test_too_little_evidence_does_not_pass(self):
+        self.assertFalse(valuation.quality(steady_years(n=3))["passed"])
 
 
 class Valuation(unittest.TestCase):
@@ -225,6 +266,7 @@ class Desk(unittest.TestCase):
         lines = d.berkshire()
         self.assertEqual(len(lines), 2)
         self.assertIn("AAPL (added +20%): STILL CHEAP", lines[0])
+        self.assertIn("quality 6/6", lines[0])
         self.assertIn("MYSTERY CORP (new): couldn't match a ticker", lines[1])
         self.assertIn("days old", self.sent[0])
         self.assertIsNone(d.berkshire())  # same 13F: silent
@@ -234,7 +276,12 @@ class Desk(unittest.TestCase):
         good, v = steady_years(), valuation.value(steady_years())
         companies = {t: (i, t, good) for i, t in enumerate(["A", "B", "C", "D", "E", "F", "G"], 1)}
         companies["BAD"] = (99, "BAD", steady_years(n=3))
+        trap = steady_years()
+        for row in trap.values():
+            row["equity"] = row["net_income"] / 0.04  # cheap, but a 4% return on equity
+        companies["TRAP"] = (98, "TRAP", trap)
         cheap_px = {t: v["buy_below"] * (0.5 + i / 100) for i, t in enumerate("ABCDEFG")}
+        cheap_px["TRAP"] = v["buy_below"] * 0.1  # the cheapest of all, and still never debated
         an = FakeAnalyst(buy="ABCDEF")
         d = self.desk(FakeEdgar(companies), an, prices=cheap_px, universe=list(companies), screen_max=5)
         picks = d.screen()
@@ -245,6 +292,8 @@ class Desk(unittest.TestCase):
         self.assertEqual(d2.screen(), [])
         self.assertEqual(an2.debated, ["A", "B", "C"])
         self.assertIn("nothing to buy", self.sent[-1])
+        self.assertIn("1 failed the quality checklist", self.sent[-1])
+        self.assertNotIn("TRAP", an.debated + an2.debated)
 
     def test_due_runs_each_job_once_a_day_on_schedule(self):
         ed = FakeEdgar({"KO": (1, "Coca-Cola", {})}, filings={1: []})

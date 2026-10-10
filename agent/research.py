@@ -47,6 +47,7 @@ DEFAULTS = {
     "screen_hour_utc": 13,
     "screen_max": 5,              # names sent at most
     "screen_debate": 8,           # cheapest names the bear and Warren look at
+    "require_quality": True,      # screen only businesses that pass valuation.quality()
     "universe_url": SP500_URL,
     "valuation": {},              # overrides for agent/valuation.py DEFAULTS
 }
@@ -100,14 +101,16 @@ class Desk:
     # ---------- valuation ----------
 
     def value(self, ticker):
-        """{"ticker", "company", "price", "valuation", "verdict"} for one stock."""
+        """{"ticker", "company", "price", "valuation", "quality", "verdict"} for one stock."""
         cik = self.ed.cik_for(ticker)
         if not cik:
             return {"ticker": ticker, "valuation": {"ok": False, "reason": "not found in SEC ticker list"}}
         company = self.ed.ticker_map().get(ticker.upper(), {}).get("title", ticker)
-        val = valuation.value(self.ed.annual_facts(self.ed.company_facts(cik)), self.cfg["valuation"])
+        years = self.ed.annual_facts(self.ed.company_facts(cik))
+        val = valuation.value(years, self.cfg["valuation"])
         price = self.price(ticker) if val["ok"] else None
         return {"ticker": ticker, "company": company, "price": price, "valuation": val,
+                "quality": valuation.quality(years, self.cfg["valuation"]),
                 "verdict": valuation.verdict(price, val)}
 
     # ---------- watch: thesis checks ----------
@@ -171,7 +174,9 @@ class Desk:
             if not v["ok"]:
                 lines.append(f"{ticker} ({kind}): can't value, {v['reason']}")
             elif vd["label"] == "cheap":
-                lines.append(f"{ticker} ({kind}): STILL CHEAP at ${r['price']:.2f}, buy below ${v['buy_below']:.2f}")
+                q = r["quality"]
+                lines.append(f"{ticker} ({kind}): STILL CHEAP at ${r['price']:.2f}, buy below ${v['buy_below']:.2f}, "
+                             f"quality {q['score']}{'' if q['passed'] else ' (fails the checklist)'}")
             else:
                 lines.append(f"{ticker} ({kind}): too late, ${r['price']:.2f} is above the buy-below ${v['buy_below']:.2f}")
         self.s["berkshire_seen"] = latest["accession"]
@@ -186,7 +191,7 @@ class Desk:
     def screen(self):
         """Value the universe, debate the cheapest, push at most screen_max names. Returns the picks."""
         tickers = self.universe(self.cfg["universe_url"])
-        cheap, valued = [], 0
+        cheap, valued, weak = [], 0, 0
         for t in tickers:
             try:
                 r = self.value(t)
@@ -196,17 +201,20 @@ class Desk:
             if r["valuation"].get("ok"):
                 valued += 1
                 if r["verdict"] and r["verdict"]["label"] == "cheap":
-                    cheap.append(r)
+                    if self.cfg["require_quality"] and not r["quality"]["passed"]:
+                        weak += 1  # cheap but not a wonderful business: a value trap until proven otherwise
+                    else:
+                        cheap.append(r)
         cheap.sort(key=lambda r: -r["verdict"]["discount"])
         picks = []
         for r in cheap[: self.cfg["screen_debate"]]:
-            d = self.an.debate(r["ticker"], r["company"], r["valuation"], r["price"])
+            d = self.an.debate(r["ticker"], r["company"], {**r["valuation"], "quality": r["quality"]}, r["price"])
             if d["buy"]:
                 picks.append({**r, "reason": d["reason"]})
                 if len(picks) >= self.cfg["screen_max"]:
                     break
         self.s["last_screen"] = {"date": utcnow().date().isoformat(), "universe": len(tickers), "valued": valued,
-                                 "cheap": [r["ticker"] for r in cheap], "picks": [p["ticker"] for p in picks]}
+                                 "cheap": [r["ticker"] for r in cheap], "cheap_but_weak": weak, "picks": [p["ticker"] for p in picks]}
         self._save()
         if picks:
             lines = [f"{p['ticker']} ${p['price']:.2f} (buy below ${p['valuation']['buy_below']:.2f}, "
@@ -214,7 +222,8 @@ class Desk:
             self.alert(f"Saturday screen: {len(picks)} to look at.\n" + "\n".join(lines))
         else:
             self.alert(f"Saturday screen: nothing to buy. {valued} of {len(tickers)} companies could be valued, "
-                       f"{len(cheap)} were under their buy-below price, none survived the bear and Warren.")
+                       f"{len(cheap) + weak} were under their buy-below price ({weak} failed the quality checklist), "
+                       f"none survived the bear and Warren.")
         return picks
 
     # ---------- schedule ----------
