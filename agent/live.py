@@ -499,11 +499,20 @@ def main():
         except Exception as e:
             alert(f"Could not read the Robinhood account for this key: {e}")
     once = "--once" in sys.argv
+    failing_since = last_fail_alert = None
     while True:
         try:
             trader.tick()
+            if failing_since:
+                alert(f"Recovered: ticks working again after failing since {failing_since:%H:%M} UTC.")
+                failing_since = last_fail_alert = None
         except Exception as e:  # keep running through network blips; the next tick retries
             log(f"Tick failed: {e}")
+            failing_since = failing_since or now()
+            # A tick that keeps failing stops the heartbeat too, so say so: once when it starts, then hourly.
+            if not last_fail_alert or now() - last_fail_alert >= timedelta(hours=1):
+                alert(f"Ticks failing since {failing_since:%H:%M} UTC, no trading: {str(e)[:200]}")
+                last_fail_alert = now()
         if once:
             break
         time.sleep(cfg["tick_seconds"])
