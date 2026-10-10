@@ -200,5 +200,7 @@ Set up:
 2. At robinhood.com/account/crypto, add an API key with the **public** key. Robinhood shows
    which crypto account the key trades; the API works only for crypto.
 3. Deploy as above with these secrets:
-   `fly secrets set BROKER=robinhood RH_API_KEY=... RH_PRIVATE_KEY=... NTFY_TOPIC=... ANTHROPIC_API_KEY=...`
+   `fly secrets set BROKER=robinhood RH_API_KEY=... RH_PRIVATE_KEY=... RH_ACCOUNT=... NTFY_TOPIC=... ANTHROPIC_API_KEY=...`
+   `RH_ACCOUNT` is the crypto account number the bot may trade. On every check it asks Robinhood which
+   account the key belongs to, and places nothing if that isn't `RH_ACCOUNT`.
 4. Watch `fly logs` in dry run. Then `fly secrets set RH_LIVE=1` to trade for real.

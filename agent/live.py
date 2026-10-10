@@ -409,9 +409,11 @@ def make_broker(cfg, state_path):
         from .rh_broker import RobinhoodCrypto
         key, priv = os.environ.get("RH_API_KEY"), os.environ.get("RH_PRIVATE_KEY")
         live = os.environ.get("RH_LIVE") == "1"
-        if live and not (key and priv):
-            sys.exit("RH_LIVE=1 needs RH_API_KEY and RH_PRIVATE_KEY.")
-        api = RobinhoodCrypto(key, priv, str(state_path) + ".rh_book.json", cfg["budget_usd"], live)
+        account = os.environ.get("RH_ACCOUNT")
+        if live and not (key and priv and account):
+            sys.exit("RH_LIVE=1 needs RH_API_KEY, RH_PRIVATE_KEY and RH_ACCOUNT (the crypto account number "
+                     "the bot may trade; it refuses any other).")
+        api = RobinhoodCrypto(key, priv, str(state_path) + ".rh_book.json", cfg["budget_usd"], live, account)
         return api, f"Robinhood crypto {'LIVE' if live else 'DRY RUN'}, budget ${cfg['budget_usd']:,.2f}"
     if broker != "alpaca":
         sys.exit(f"BROKER must be alpaca or robinhood, not {broker!r}")

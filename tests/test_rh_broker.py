@@ -89,3 +89,20 @@ class EndToEndDryRun(unittest.TestCase):
             [p] = rh.positions()
             self.assertEqual(p["symbol"], "SOLUSD")
             self.assertAlmostEqual(float(rh.account()["cash"]), 10.0, places=2)
+
+
+class AccountGuard(unittest.TestCase):
+    def test_live_refuses_a_different_crypto_account(self):
+        with tempfile.TemporaryDirectory() as d:
+            rh = RobinhoodCrypto(None, None, Path(d) / "b.json", 20, live=True, expected_account="311263566994")
+            rh.call = lambda method, path, body=None: {"account_number": "311044089704", "status": "active",
+                                                       "buying_power": "100"}
+            with self.assertRaisesRegex(RuntimeError, "ending 9704"):
+                rh.account()
+
+    def test_live_accepts_the_expected_account(self):
+        with tempfile.TemporaryDirectory() as d:
+            rh = RobinhoodCrypto(None, None, Path(d) / "b.json", 20, live=True, expected_account="311263566994")
+            rh.call = lambda method, path, body=None: {"account_number": "311263566994", "status": "active",
+                                                       "buying_power": "8"}
+            self.assertEqual(float(rh.account()["cash"]), 8.0)

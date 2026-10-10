@@ -58,8 +58,9 @@ def http_json(req, tries=4):
 
 
 class RobinhoodCrypto:
-    def __init__(self, api_key, private_key_b64, book_path, budget_usd, live=False):
+    def __init__(self, api_key, private_key_b64, book_path, budget_usd, live=False, expected_account=None):
         self.key, self.live, self.budget = api_key, live, float(budget_usd)
+        self.expected_account = expected_account  # live orders only go to this crypto account number
         self.signer = None
         if private_key_b64:
             from nacl.signing import SigningKey
@@ -105,6 +106,10 @@ class RobinhoodCrypto:
         cash = bot_cash
         if self.live:
             acct = self.call("GET", "/api/v1/crypto/trading/accounts/")
+            if str(acct.get("account_number")) != str(self.expected_account):
+                raise RuntimeError(
+                    f"this API key trades crypto account ending {str(acct.get('account_number'))[-4:]}, "
+                    f"not the one in RH_ACCOUNT (ending {str(self.expected_account)[-4:]}). Nothing placed.")
             if acct.get("status") != "active":
                 return {"equity": "0", "cash": "0", "trading_blocked": True}
             cash = min(bot_cash, float(acct["buying_power"]))
