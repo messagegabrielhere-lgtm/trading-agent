@@ -338,7 +338,7 @@ class Trader:
                 continue
             self.api.sell(sym, 0.5 if action == "half" else 1)
             pnl = (price - entry) * float(p["qty"]) * (0.5 if action == "half" else 1)
-            alert(f"SELL {'half ' if action == 'half' else ''}{sym} @ {price:,.4g}: {why}, P&L ${pnl:+,.2f}")
+            alert(f"{self.tag()}SELL {'half ' if action == 'half' else ''}{sym} @ {price:,.4g}: {why}, P&L ${pnl:+,.2f}")
             if action == "half":
                 track["took_half"] = True
             else:
@@ -385,7 +385,7 @@ class Trader:
             cash -= usd
             sig = self.signals[sym]
             s["positions"][norm(sym)] = {"high": quotes[sym]["ask"], "took_half": False}
-            alert(f"BUY ${usd:,.2f} {sym} @ {quotes[sym]['ask']:,.4g}: uptrend, 4h {sig['mom_4h']:+.1%}")
+            alert(f"{self.tag()}BUY ${usd:,.2f} {sym} @ {quotes[sym]['ask']:,.4g}: uptrend, 4h {sig['mom_4h']:+.1%}")
         self._save()
 
     def heartbeat(self, equity, cash, positions):
@@ -396,8 +396,13 @@ class Trader:
         held = ", ".join(f"{k} {float(v['current_price']) / float(v['avg_entry_price']) - 1:+.1%}"
                          for k, v in positions.items()) or "no positions"
         state = "HALTED" if self.s["halted"] else f"Claude risk {self.s['brain'].get('risk', 'on')}"
-        alert(f"Still running. Equity ${equity:,.2f} (peak ${self.s['peak_equity'] or equity:,.2f}), "
-              f"cash ${cash:,.2f}, {held}. {state}.")
+        perf = f" {self.api.performance()}." if hasattr(self.api, "performance") else ""
+        alert(f"{self.tag()}Still running. Equity ${equity:,.2f} (peak ${self.s['peak_equity'] or equity:,.2f}), "
+              f"cash ${cash:,.2f}, {held}. {state}.{perf}")
+
+    def tag(self):
+        """Prefix for alerts, so simulated trades never look like real ones."""
+        return "[DRY RUN] " if getattr(self.api, "live", True) is False else ""
 
     def summary(self, equity, cash, positions, quotes):
         rows = []

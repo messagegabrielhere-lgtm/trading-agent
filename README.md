@@ -185,7 +185,7 @@ crypto trade, so each round trip costs roughly 0.3-0.5%. Nothing here is investm
 The same bot can trade crypto through Robinhood's official Crypto Trading API (`agent/rh_broker.py`).
 Robinhood has no official API for stocks, so this mode trades crypto only, around the clock.
 
-- **It trades only its own budget.** `budget_usd` defaults to $20. The bot keeps a book of the coins it bought and only ever
+- **It trades only its own budget.** `budget_usd` is set to $50 in config.json. The bot keeps a book of the coins it bought and only ever
   sells those, so crypto you hold yourself in the same Robinhood account is never touched.
 - **Price history comes from Coinbase.** Robinhood's API has no candles, so the trend signals use Coinbase's public 15-minute candles. Quotes,
   spreads and orders come from Robinhood.

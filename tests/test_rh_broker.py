@@ -120,3 +120,22 @@ class PrivateKeyCheck(unittest.TestCase):
         with tempfile.TemporaryDirectory() as d:
             rh = RobinhoodCrypto("k", f"  private: {key}\n", Path(d) / "b.json", 20)
             self.assertIsNotNone(rh.signer)
+
+
+class Performance(unittest.TestCase):
+    def test_summary_counts_sells_and_pnl(self):
+        with tempfile.TemporaryDirectory() as d:
+            rh = RobinhoodCrypto(None, None, Path(d) / "b.json", 50, live=False)
+            rh._last_quotes = {"SOL/USD": q(99, 100)}
+            rh.buy("SOL/USD", 10, True)
+            rh._last_quotes = {"SOL/USD": q(110, 111)}
+            rh.sell("SOL/USD", 1)
+            line = rh.performance()
+            self.assertIn("DRY RUN", line)
+            self.assertIn("1 sells, 1 winners", line)
+            self.assertIn("+1.00 USD", line)
+
+    def test_dry_run_alerts_are_tagged(self):
+        with tempfile.TemporaryDirectory() as d:
+            rh = RobinhoodCrypto(None, None, Path(d) / "b.json", 50, live=False)
+            self.assertEqual(live.Trader(rh, live.load_config("robinhood"), Path(d) / "s.json").tag(), "[DRY RUN] ")

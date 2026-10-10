@@ -82,6 +82,8 @@ class RobinhoodCrypto:
             self.book = {}
         self.book.setdefault("coins", {})       # "BTC/USD" -> {"qty": float, "entry": float}
         self.book.setdefault("realized", 0.0)
+        self.book.setdefault("closed", [])      # one row per sell, for the performance summary
+        self.book.setdefault("started", time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()))
         self._pairs = {}
         self._last_quotes = {}
 
@@ -110,6 +112,17 @@ class RobinhoodCrypto:
 
     def cost_basis(self):
         return sum(c["qty"] * c["entry"] for c in self.book["coins"].values())
+
+    def performance(self):
+        """One line on how the bot has done since it started (realized + open P&L vs the budget)."""
+        closed = self.book["closed"]
+        wins = sum(1 for t in closed if t["pnl"] > 0)
+        open_pnl = self.open_value() - self.cost_basis()
+        total = self.book["realized"] + open_pnl
+        mode = "LIVE" if self.live else "DRY RUN"
+        return (f"{mode} since {self.book['started'][:16].replace('T', ' ')} UTC: {total:+.2f} USD "
+                f"({total / self.budget:+.1%} of ${self.budget:,.0f}); {len(closed)} sells, {wins} winners, "
+                f"realized {self.book['realized']:+.2f}, open {open_pnl:+.2f}")
 
     def whoami(self):
         """The crypto account this API key belongs to."""
@@ -232,6 +245,9 @@ class RobinhoodCrypto:
         else:
             filled, price = want, self._last_quotes.get(sym, {}).get("bid", c["entry"])
         self.book["realized"] += filled * (price - c["entry"])
+        self.book["closed"] = (self.book["closed"] + [{
+            "time": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()), "symbol": sym, "qty": filled,
+            "entry": c["entry"], "exit": price, "pnl": round(filled * (price - c["entry"]), 4)}])[-500:]
         c["qty"] -= filled
         if c["qty"] * max(price, c["entry"]) < 0.01:  # sold out (leftover dust is unsellable)
             self.book["coins"].pop(sym)
