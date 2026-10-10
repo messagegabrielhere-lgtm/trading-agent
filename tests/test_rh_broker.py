@@ -106,3 +106,17 @@ class AccountGuard(unittest.TestCase):
             rh.call = lambda method, path, body=None: {"account_number": "311263566994", "status": "active",
                                                        "buying_power": "8"}
             self.assertEqual(float(rh.account()["cash"]), 8.0)
+
+
+class PrivateKeyCheck(unittest.TestCase):
+    def test_bad_key_gives_a_clear_message(self):
+        with tempfile.TemporaryDirectory() as d:
+            with self.assertRaisesRegex(SystemExit, "decodes to"):
+                RobinhoodCrypto("k", "rh-api-1234-not-a-key", Path(d) / "b.json", 20)
+
+    def test_accepts_key_with_label_and_spaces(self):
+        import base64
+        key = base64.b64encode(bytes(range(32))).decode()
+        with tempfile.TemporaryDirectory() as d:
+            rh = RobinhoodCrypto("k", f"  private: {key}\n", Path(d) / "b.json", 20)
+            self.assertIsNotNone(rh.signer)

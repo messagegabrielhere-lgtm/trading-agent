@@ -64,7 +64,17 @@ class RobinhoodCrypto:
         self.signer = None
         if private_key_b64:
             from nacl.signing import SigningKey
-            self.signer = SigningKey(base64.b64decode(private_key_b64)[:32])
+            text = private_key_b64.strip().removeprefix("private:").strip()
+            try:
+                seed = base64.b64decode(text, validate=True)
+            except ValueError:
+                seed = b""
+            if len(seed) not in (32, 64):
+                raise SystemExit(
+                    f"RH_PRIVATE_KEY is not a valid private key (it decodes to {len(seed)} bytes; a private key "
+                    "decodes to 32). Set it again with just the long code after 'private:', not the API key "
+                    "or the public key.")
+            self.signer = SigningKey(seed[:32])
         self.book_path = Path(book_path)
         try:
             self.book = json.loads(self.book_path.read_text())
