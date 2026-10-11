@@ -3,6 +3,7 @@
     python -m agent.research watch           # check every watchlist thesis now
     python -m agent.research value KO        # value one company from its SEC filings
     python -m agent.research berkshire       # latest Berkshire 13F: are its buys still cheap?
+    python -m agent.research scan            # scan for validated price/volume setups now
     python -m agent.research screen          # value the S&P 500 and debate the cheapest
     python -m agent.research due             # run whatever the schedule says is due (what the bot does)
 
@@ -13,6 +14,13 @@ Jobs (times in UTC; agent/live.py runs them in a background thread when SEC_USER
   berkshire  daily at berkshire_hour_utc, but it only speaks when Berkshire files a new 13F
              (about 45 days after each quarter ends). For each new or enlarged position: the
              price today against the buy-below price, and how many days old the trade is.
+  scan       weekdays at scan_hour_utc (after the US close). The research factory: collects a
+             year of daily bars for the scan universe, detects what changed on the last bar
+             (breakouts, breakdowns, trend turns, volume surges), validates each one against
+             that ticker's own history and the S&P 500, then lets Claude check the cause only
+             for the few survivors. Sends at most scan_max setups with entry, stop and target,
+             or nothing. It also scores every signal it sent once the horizon has passed, so
+             each message carries the desk's real hit rate.
   screen     Saturdays at screen_hour_utc. Values every S&P 500 company from 10 years of filings,
              takes the cheapest few, lets the bear attack each one, and sends at most screen_max
              names that Warren still wants to buy. Zero is a normal answer.
@@ -34,7 +42,7 @@ import urllib.request
 from datetime import date, datetime, timezone
 from pathlib import Path
 
-from . import analyst, edgar, valuation
+from . import analyst, edgar, signals, valuation
 
 ROOT = Path(__file__).resolve().parent.parent
 SP500_URL = "https://raw.githubusercontent.com/datasets/s-and-p-500-companies/main/data/constituents.csv"
@@ -50,6 +58,13 @@ DEFAULTS = {
     "require_quality": True,      # screen only businesses that pass valuation.quality()
     "universe_url": SP500_URL,
     "valuation": {},              # overrides for agent/valuation.py DEFAULTS
+    "scan_hour_utc": 21,          # weekdays, after the 4pm New York close
+    "scan_universe": ["SPY", "QQQ", "IWM", "TQQQ", "SOXL", "TNA", "NVDA", "AMD", "AAPL", "MSFT", "AMZN",
+                      "META", "GOOGL", "TSLA", "AVGO", "PLTR", "SOFI", "RGTI", "COIN", "HOOD", "MU",
+                      "NFLX", "UBER", "SMCI", "ARM", "MSTR", "IONQ", "F", "INTC", "BAC"],  # or "sp500"
+    "scan_max": 3,                # setups sent at most
+    "scan_validate": 6,           # top-ranked survivors Claude checks (the expensive step)
+    "signals": {},                # overrides for agent/signals.py DEFAULTS
 }
 FORMS = {"10-K", "10-Q", "8-K", "4"}
 EXCERPT = {"8-K": 8000, "10-Q": 15000, "10-K": 25000}
@@ -68,6 +83,22 @@ def yahoo_price(ticker):
     return float(meta["regularMarketPrice"])
 
 
+def yahoo_history(ticker, range_="1y"):
+    """Daily bars [(date, close, high, low, volume)], oldest first, from Yahoo's chart endpoint."""
+    url = (f"https://query1.finance.yahoo.com/v8/finance/chart/{ticker.replace('.', '-')}"
+           f"?range={range_}&interval=1d")
+    req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0"})
+    with urllib.request.urlopen(req, timeout=30) as r:
+        res = json.load(r)["chart"]["result"][0]
+    q = res["indicators"]["quote"][0]
+    bars = []
+    for i, ts in enumerate(res.get("timestamp") or []):
+        row = (q["close"][i], q["high"][i], q["low"][i], q["volume"][i])
+        if None not in row:
+            bars.append((datetime.fromtimestamp(ts, timezone.utc).date().isoformat(), *map(float, row)))
+    return bars
+
+
 def sp500(url=SP500_URL):
     req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0"})
     with urllib.request.urlopen(req, timeout=30) as r:
@@ -83,15 +114,17 @@ def load_config():
 class Desk:
     """The research jobs. Network and Claude calls go through attributes so tests can swap them."""
 
-    def __init__(self, cfg, state_path, alert, ed=edgar, an=analyst, price=yahoo_price, universe=sp500):
+    def __init__(self, cfg, state_path, alert, ed=edgar, an=analyst, price=yahoo_price, universe=sp500,
+                 history=yahoo_history):
         self.cfg, self.path, self.alert = {**DEFAULTS, **cfg}, Path(state_path), alert
-        self.ed, self.an, self.price, self.universe = ed, an, price, universe
+        self.ed, self.an, self.price, self.universe, self.history = ed, an, price, universe, history
         try:
             self.s = json.loads(self.path.read_text())
         except (FileNotFoundError, json.JSONDecodeError):
             self.s = {}
-        for key in ("seen", "last_run", "theses"):
+        for key in ("seen", "last_run", "theses", "signals_seen", "scan_filings"):
             self.s.setdefault(key, {})
+        self.s.setdefault("signals_sent", [])
 
     def _save(self):
         tmp = self.path.with_suffix(".tmp")
@@ -226,6 +259,128 @@ class Desk:
                        f"none survived the bear and Warren.")
         return picks
 
+    # ---------- scan: the research factory ----------
+
+    def _score_past_signals(self, bars_by_ticker):
+        """Close out signals whose horizon has passed: did price reach the target, the stop, or neither?"""
+        for sig in self.s["signals_sent"]:
+            if "outcome" in sig or sig["ticker"] not in bars_by_ticker:
+                continue
+            after = [b for b in bars_by_ticker[sig["ticker"]] if b[0] > sig["date"]][: sig["plan"]["horizon_days"]]
+            if len(after) < sig["plan"]["horizon_days"]:
+                continue
+            bull, p = sig["direction"] == "long", sig["plan"]
+            outcome = None
+            for _, _, hi, lo, _ in after:
+                hit_stop = lo <= p["stop"] if bull else hi >= p["stop"]
+                hit_target = hi >= p["target"] if bull else lo <= p["target"]
+                if hit_stop:  # assume the worse fill when both happen on one day
+                    outcome = "stop"
+                    break
+                if hit_target:
+                    outcome = "target"
+                    break
+            last = after[-1][1]
+            ret = (last / p["entry"] - 1) * (1 if bull else -1)
+            sig["outcome"] = outcome or ("win" if ret > 0 else "loss")
+            sig["return"] = round(ret, 4)
+
+    def track_record(self):
+        done = [s for s in self.s["signals_sent"] if "outcome" in s]
+        wins = sum(s["outcome"] in ("target", "win") for s in done)
+        return {"scored": len(done), "wins": wins, "open": len(self.s["signals_sent"]) - len(done)}
+
+    def scan(self):
+        """Collect, detect, validate, update. Returns the setups sent."""
+        sc = self.cfg["scan_universe"]
+        tickers = self.universe(self.cfg["universe_url"]) if sc == "sp500" else list(sc)
+        tickers = list(dict.fromkeys([t.upper() for t in tickers] + [t.upper() for t in self.cfg["watchlist"]]))
+        spy = self.history("SPY")
+        spy_20 = spy[-1][1] / spy[-21][1] - 1 if len(spy) > 21 else None
+        bars_by, cands, stats = {"SPY": spy}, [], {"tickers": len(tickers), "detected": 0, "passed_math": 0,
+                                                     "sent_to_claude": 0, "approved": 0, "errors": 0}
+        for t in tickers:
+            try:
+                bars = spy if t == "SPY" else self.history(t)
+            except Exception as e:  # one bad ticker must not sink the scan
+                print(f"scan: {t} failed: {e}", flush=True)
+                stats["errors"] += 1
+                continue
+            bars_by[t] = bars
+            if not bars:
+                continue
+            seen = self.s["signals_seen"].setdefault(t, [])
+            survivors, rejected = signals.scan(bars, self.cfg["signals"], spy_20)
+            day = bars[-1][0]
+            fresh = [x for x in survivors if f"{day}:{x['kind']}" not in seen]  # detect: only what changed
+            stats["detected"] += len(fresh) + len(rejected)
+            for x in fresh:
+                seen.append(f"{day}:{x['kind']}")
+            if fresh:  # one setup per ticker: the signal with the best historical edge
+                cands.append({"ticker": t, "date": day, **max(fresh, key=signals.score)})
+            self.s["signals_seen"][t] = seen[-50:]
+        stats["passed_math"] = len(cands)
+        self._score_past_signals(bars_by)
+
+        cands.sort(key=signals.score, reverse=True)
+        sent = []
+        for c in cands[: self.cfg["scan_validate"]]:
+            if len(sent) >= self.cfg["scan_max"]:
+                break
+            stats["sent_to_claude"] += 1
+            filings = self._new_filings(c["ticker"])
+            v = self.an.validate_signal(c["ticker"], {k: c[k] for k in ("kind", "direction", "backtest",
+                                                                         "features", "plan")}, filings)
+            if v["approve"]:
+                stats["approved"] += 1
+                sent.append({**c, "check": v})
+        for c in sent:
+            self.s["signals_sent"].append({k: c[k] for k in ("ticker", "date", "kind", "direction", "plan")})
+        self.s["signals_sent"] = self.s["signals_sent"][-300:]
+        self.s["last_scan"] = {"date": utcnow().date().isoformat(), **stats, "sent": [c["ticker"] for c in sent]}
+        self._save()
+
+        tr = self.track_record()
+        record = (f"Desk record: {tr['wins']}/{tr['scored']} scored signals worked" if tr["scored"]
+                  else "Desk record: no signals scored yet")
+        funnel = (f"{stats['tickers']} scanned, {stats['detected']} changed, {stats['passed_math']} passed the "
+                  f"backtest, {stats['sent_to_claude']} checked by Claude, {len(sent)} sent")
+        if sent:
+            lines = []
+            for c in sent:
+                p, bt = c["plan"], c["backtest"]
+                lines.append(f"{c['ticker']} {c['kind'].replace('_', ' ')} -> {c['direction'].upper()} "
+                             f"@ {p['entry']} stop {p['stop']} target {p['target']} ({p['horizon_days']}d). "
+                             f"History: {bt['hit_rate']:.0%} of {bt['n']}, avg {bt['avg']:+.1%}. "
+                             f"{c['check']['reason']}")
+            self.alert(f"Scan: {len(sent)} setup(s).\n" + "\n".join(lines) + f"\n{funnel}. {record}."[:1800])
+        else:
+            self.alert(f"Scan: nothing survived. {funnel}. {record}.")
+        return sent
+
+    def _new_filings(self, ticker):
+        """8-Ks and insider trades since this ticker was last checked (cheap: one SEC call, only for survivors)."""
+        try:
+            cik = self.ed.cik_for(ticker)
+            if not cik:
+                return []
+            filings = self.ed.recent_filings(cik, {"8-K", "4"})[:15]
+        except Exception:  # ETFs and SEC hiccups: validate on news alone
+            return []
+        seen = set(self.s["scan_filings"].get(ticker, []))
+        out = []
+        for f in filings:
+            if f["accession"] in seen or len(out) >= 5:
+                continue
+            if f["form"] == "4":
+                trades = self.ed.insider_trades(f)
+                if trades:
+                    out.append({"form": "4", "filed": f["date"], "trades": trades})
+            else:
+                out.append({"form": "8-K", "filed": f["date"], "excerpt": self.ed.filing_text(f, 4000)})
+        self.s["scan_filings"][ticker] = sorted(seen | {f["accession"] for f in filings})[-60:]
+        return out
+
     # ---------- schedule ----------
 
     def due(self, now=None):
@@ -233,10 +388,11 @@ class Desk:
         now = now or utcnow()
         jobs = [("watch", self.cfg["watch_hour_utc"], None, self.watch),
                 ("berkshire", self.cfg["berkshire_hour_utc"], None, self.berkshire),
-                ("screen", self.cfg["screen_hour_utc"], self.cfg["screen_weekday"], self.screen)]
+                ("screen", self.cfg["screen_hour_utc"], {self.cfg["screen_weekday"]}, self.screen),
+                ("scan", self.cfg["scan_hour_utc"], {0, 1, 2, 3, 4}, self.scan)]
         ran = []
-        for name, hour, weekday, job in jobs:
-            if now.hour < hour or (weekday is not None and now.weekday() != weekday):
+        for name, hour, weekdays, job in jobs:
+            if now.hour < hour or (weekdays is not None and now.weekday() not in weekdays):
                 continue
             if self.s["last_run"].get(name) == now.date().isoformat():
                 continue
@@ -277,6 +433,8 @@ def main(argv):
         desk.berkshire(force=True)
     elif cmd == "screen":
         desk.screen()
+    elif cmd == "scan":
+        desk.scan()
     elif cmd == "due":
         print("ran:", desk.due())
     else:

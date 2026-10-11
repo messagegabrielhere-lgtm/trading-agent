@@ -8,6 +8,10 @@
                 and says buy only if the business is understandable, durable and cheap after the
                 bear has had its say.
 
+  validate_signal  The last gate in the scan: a price/volume signal that already passed a
+                backtest. Reads the news and any new filings and decides whether the move has a
+                real cause that should continue, or is noise, already priced in, or a trap.
+
 None of these place orders. research.py decides what to push to your phone.
 """
 import json
@@ -97,6 +101,34 @@ WARREN_SCHEMA = {
     "additionalProperties": False,
 }
 
+SIGNAL_SYSTEM = """You are the last check before a trading signal reaches a trader's phone. A \
+scanner flagged a price/volume event (a breakout, breakdown, trend turn or volume surge) on a \
+liquid US stock, and its own history on this ticker says the pattern has paid more often than not. \
+You get the numbers, the trade plan, and any filings or insider trades since the last scan; search \
+the web for what happened in the last few days.
+
+Approve only when there is a concrete cause that should keep working over the plan's horizon (an \
+earnings beat with raised guidance, a contract win, an upgrade with substance, insider buying, a \
+sector rotation with legs). Reject when the move is unexplained noise, a one-off already priced in, \
+an index rebalance, a buyout already announced (no upside left), a squeeze in a weak business, or \
+when earnings or a binary event land inside the horizon. Most signals should fail. When in doubt, \
+reject.
+
+Call submit_signal_check once, last, with a one-sentence reason a trader can read on a phone."""
+
+SIGNAL_SCHEMA = {
+    "type": "object",
+    "properties": {
+        "approve": {"type": "boolean"},
+        "confidence": {"type": "string", "enum": ["low", "medium", "high"]},
+        "catalyst": {"type": "string"},
+        "risk": {"type": "string"},
+        "reason": {"type": "string"},
+    },
+    "required": ["approve", "confidence", "catalyst", "risk", "reason"],
+    "additionalProperties": False,
+}
+
 _client = None
 
 
@@ -153,3 +185,8 @@ def debate(ticker, company, valuation, price):
         return {"buy": False, "reason": f"Bear killed it: {bear['summary']}", "bear": bear}
     decision = warren(ticker, company, valuation, price, bear)
     return {**decision, "bear": bear}
+
+
+def validate_signal(ticker, signal, filings):
+    return _ask(SIGNAL_SYSTEM, {"ticker": ticker, "signal": signal, "new_filings": filings},
+                "submit_signal_check", SIGNAL_SCHEMA, web=True)

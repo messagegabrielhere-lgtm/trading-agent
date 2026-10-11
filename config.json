@@ -172,6 +172,11 @@
     "screen_max": 5,
     "screen_debate": 8,
     "require_quality": true,
+    "scan_hour_utc": 21,
+    "scan_universe": ["SPY", "QQQ", "IWM", "TQQQ", "SOXL", "TNA", "NVDA", "AMD", "AAPL", "MSFT", "AMZN", "META", "GOOGL", "TSLA", "AVGO", "PLTR", "SOFI", "RGTI", "COIN", "HOOD", "MU", "NFLX", "UBER", "SMCI", "ARM", "MSTR", "IONQ", "F", "INTC", "BAC"],
+    "scan_max": 3,
+    "scan_validate": 6,
+    "signals": {"horizon": 5, "min_events": 5, "min_hit_rate": 0.55, "min_dollar_volume": 20000000, "max_day_move": 0.08, "stop_atr": 1.5},
     "valuation": {
       "discount_rate": 0.1,
       "terminal_growth": 0.03,
