@@ -45,9 +45,9 @@
    "side": "sell",
    "qty": "64.184055067",
    "notional": null,
-   "status": "partially_filled",
-   "filled_qty": "52",
-   "filled_avg_price": "779.029038",
+   "status": "filled",
+   "filled_qty": "64.184055067",
+   "filled_avg_price": "778.994768",
    "reason": "SPY is no longer a target"
   },
   {
@@ -61,6 +61,18 @@
    "filled_qty": "547.442199199",
    "filled_avg_price": "97.541275",
    "reason": "new target at 100%"
+  },
+  {
+   "time": "2026-10-12T14:08:50+00:00",
+   "id": "2a9ea56b-8092-4984-a94d-67739f3dbd3a",
+   "symbol": "QLD",
+   "side": "buy",
+   "qty": null,
+   "notional": "46140.42",
+   "status": "filled",
+   "filled_qty": "474.939886773",
+   "filled_avg_price": "97.15",
+   "reason": "53.4% held vs 100% target"
   }
  ],
  "log": [
@@ -143,34 +155,29 @@
   {
    "time": "2026-10-12T13:33:40+00:00",
    "text": "BUY $53,398.22 of QLD: new target at 100%."
+  },
+  {
+   "time": "2026-10-12T14:08:50+00:00",
+   "text": "BUY $46,140.42 of QLD: 53.4% held vs 100% target."
   }
  ],
  "connected": true,
- "updated": "2026-10-12T13:34:25+00:00",
+ "updated": "2026-10-12T14:08:53+00:00",
  "account": {
-  "equity": 99739.17,
-  "cash": 36882.75,
+  "equity": 99525.92,
+  "cash": 231.87,
   "last_equity": 99982.33,
   "status": "ACTIVE"
  },
  "positions": [
   {
    "symbol": "QLD",
-   "qty": 547.442199199,
-   "price": 97.47,
-   "value": 53359.19,
-   "weight": 0.535,
-   "unrealized_pl": -39.02,
-   "avg_entry": 97.54
-  },
-  {
-   "symbol": "SPY",
-   "qty": 12.184055067,
-   "price": 779.02,
-   "value": 9491.62,
-   "weight": 0.0952,
-   "unrealized_pl": 4.14,
-   "avg_entry": 778.68
+   "qty": 1022.382085972,
+   "price": 97.12,
+   "value": 99293.75,
+   "weight": 0.9977,
+   "unrealized_pl": -244.87,
+   "avg_entry": 97.36
   }
  ],
  "history": [
@@ -180,7 +187,7 @@
   },
   {
    "date": "2026-10-12",
-   "equity": 99739.17
+   "equity": 99525.92
   }
  ]
 }
