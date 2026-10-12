@@ -727,6 +727,10 @@
   {
    "time": "2026-10-12T18:32:35Z",
    "text": "Scanned 9 events ending within 14 days (29 price checks); 0 qualify; 0 order(s) simulated."
+  },
+  {
+   "time": "2026-10-12T19:01:41Z",
+   "text": "Scanned 10 events ending within 14 days (37 price checks); 0 qualify; 0 order(s) simulated."
   }
  ],
  "mode": "dry_run",
@@ -744,7 +748,7 @@
   "pnl_usd": 0,
   "staked_usd": 0
  },
- "updated": "2026-10-12T18:32:35Z",
+ "updated": "2026-10-12T19:01:41Z",
  "candidates": [],
  "exposure": {
   "used_usd": 123.7,
