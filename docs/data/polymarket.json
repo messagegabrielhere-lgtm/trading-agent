@@ -699,6 +699,10 @@
   {
    "time": "2026-10-12T15:03:32Z",
    "text": "Stopped: PermissionDeniedError: HTTP 403 (an HTML error page)"
+  },
+  {
+   "time": "2026-10-12T15:30:12Z",
+   "text": "Scanned 9 events ending within 14 days (29 price checks); 0 qualify; 0 order(s) simulated."
   }
  ],
  "mode": "dry_run",
@@ -716,7 +720,7 @@
   "pnl_usd": 0,
   "staked_usd": 0
  },
- "updated": "2026-10-12T15:03:32Z",
+ "updated": "2026-10-12T15:30:12Z",
  "candidates": [],
  "exposure": {
   "used_usd": 123.7,
