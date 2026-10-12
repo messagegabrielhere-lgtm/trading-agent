@@ -25,6 +25,42 @@
    "filled_qty": "64.184055067",
    "filled_avg_price": "778.68",
    "reason": "new target at 50%"
+  },
+  {
+   "time": "2026-10-12T13:32:07+00:00",
+   "id": "a40822fb-b1f3-4548-ab0b-c48ecc0afc79",
+   "symbol": "QQQ",
+   "side": "sell",
+   "qty": "66.233701076",
+   "notional": null,
+   "status": "filled",
+   "filled_qty": "66.233701076",
+   "filled_avg_price": "747.66",
+   "reason": "QQQ is no longer a target"
+  },
+  {
+   "time": "2026-10-12T13:32:07+00:00",
+   "id": "d50c98e2-e30e-4ff5-a9c7-ec39407ac14e",
+   "symbol": "SPY",
+   "side": "sell",
+   "qty": "64.184055067",
+   "notional": null,
+   "status": "partially_filled",
+   "filled_qty": "52",
+   "filled_avg_price": "779.029038",
+   "reason": "SPY is no longer a target"
+  },
+  {
+   "time": "2026-10-12T13:33:40+00:00",
+   "id": "dff64484-1cca-480f-8219-80bba8f63c14",
+   "symbol": "QLD",
+   "side": "buy",
+   "qty": null,
+   "notional": "53398.22",
+   "status": "filled",
+   "filled_qty": "547.442199199",
+   "filled_avg_price": "97.541275",
+   "reason": "new target at 100%"
   }
  ],
  "log": [
@@ -91,33 +127,49 @@
   {
    "time": "2026-10-09T20:58:14+00:00",
    "text": "Market is closed. Account snapshot only."
+  },
+  {
+   "time": "2026-10-12T13:32:07+00:00",
+   "text": "SELL all QQQ: QQQ is no longer a target."
+  },
+  {
+   "time": "2026-10-12T13:32:07+00:00",
+   "text": "SELL all SPY: SPY is no longer a target."
+  },
+  {
+   "time": "2026-10-12T13:33:40+00:00",
+   "text": "Sell of SPY ended as partially_filled."
+  },
+  {
+   "time": "2026-10-12T13:33:40+00:00",
+   "text": "BUY $53,398.22 of QLD: new target at 100%."
   }
  ],
  "connected": true,
- "updated": "2026-10-09T20:58:15+00:00",
+ "updated": "2026-10-12T13:34:25+00:00",
  "account": {
-  "equity": 100032.0,
-  "cash": 251.17,
-  "last_equity": 100000.0,
+  "equity": 99739.17,
+  "cash": 36882.75,
+  "last_equity": 99982.33,
   "status": "ACTIVE"
  },
  "positions": [
   {
-   "symbol": "QQQ",
-   "qty": 66.233701076,
-   "price": 751.7,
-   "value": 49787.87,
-   "weight": 0.4977,
-   "unrealized_pl": 17.88,
-   "avg_entry": 751.43
+   "symbol": "QLD",
+   "qty": 547.442199199,
+   "price": 97.47,
+   "value": 53359.19,
+   "weight": 0.535,
+   "unrealized_pl": -39.02,
+   "avg_entry": 97.54
   },
   {
    "symbol": "SPY",
-   "qty": 64.184055067,
-   "price": 778.9,
-   "value": 49992.96,
-   "weight": 0.4998,
-   "unrealized_pl": 14.12,
+   "qty": 12.184055067,
+   "price": 779.02,
+   "value": 9491.62,
+   "weight": 0.0952,
+   "unrealized_pl": 4.14,
    "avg_entry": 778.68
   }
  ],
@@ -125,6 +177,10 @@
   {
    "date": "2026-10-09",
    "equity": 100032.0
+  },
+  {
+   "date": "2026-10-12",
+   "equity": 99739.17
   }
  ]
 }
