@@ -159,12 +159,16 @@
   {
    "time": "2026-10-12T14:08:50+00:00",
    "text": "BUY $46,140.42 of QLD: 53.4% held vs 100% target."
+  },
+  {
+   "time": "2026-10-12T14:39:53+00:00",
+   "text": "In line with targets (QLD 100%). No orders."
   }
  ],
  "connected": true,
- "updated": "2026-10-12T14:08:53+00:00",
+ "updated": "2026-10-12T14:39:53+00:00",
  "account": {
-  "equity": 99525.92,
+  "equity": 99442.4,
   "cash": 231.87,
   "last_equity": 99982.33,
   "status": "ACTIVE"
@@ -173,10 +177,10 @@
   {
    "symbol": "QLD",
    "qty": 1022.382085972,
-   "price": 97.12,
-   "value": 99293.75,
+   "price": 97.04,
+   "value": 99210.53,
    "weight": 0.9977,
-   "unrealized_pl": -244.87,
+   "unrealized_pl": -328.09,
    "avg_entry": 97.36
   }
  ],
@@ -187,7 +191,7 @@
   },
   {
    "date": "2026-10-12",
-   "equity": 99525.92
+   "equity": 99442.4
   }
  ]
 }
