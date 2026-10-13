@@ -867,6 +867,10 @@
   {
    "time": "2026-10-13T05:03:35Z",
    "text": "Scanned 16 events ending within 14 days (86 price checks); 1 qualify; 1 order(s) simulated."
+  },
+  {
+   "time": "2026-10-13T05:33:50Z",
+   "text": "Scanned 16 events ending within 14 days (75 price checks); 0 qualify; 0 order(s) simulated."
   }
  ],
  "mode": "dry_run",
@@ -884,27 +888,22 @@
   "pnl_usd": 2.43,
   "staked_usd": 24.57
  },
- "updated": "2026-10-13T05:03:35Z",
- "candidates": [
-  {
-   "slug": "ccrc-ntflx-1shwus-2026-10-13-below",
-   "title": "Below: Limited Series",
-   "event": "ntflx-1shwus-2026-10-13",
-   "event_title": "Top US Netflix Show This Week?",
-   "ends": "2026-10-13T23:59:00Z",
-   "series": "ntflx",
-   "bid": 0.96,
-   "ask": 0.99,
-   "price": 0.97
-  }
- ],
+ "updated": "2026-10-13T05:33:50Z",
+ "candidates": [],
  "exposure": {
-  "used_usd": 148.22,
+  "used_usd": 172.47,
   "limit_usd": 200,
-  "positions": 6,
+  "positions": 7,
   "open_orders": 0
  },
  "positions": [
+  {
+   "slug": "ccrc-ntflx-1shwus-2026-10-13-below",
+   "qty": 25,
+   "cost": 24.25,
+   "event_title": "Top US Netflix Show This Week?",
+   "series": "ntflx"
+  },
   {
    "slug": "cpic-uscpi-september-mom-2026-10-14-gt0pt2pct",
    "qty": 26,
