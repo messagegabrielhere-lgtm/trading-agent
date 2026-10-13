@@ -68,6 +68,22 @@
    "cost": 24.57,
    "max_profit": 2.43,
    "mode": "dry_run",
+   "status": "dry run",
+   "result": "won",
+   "pnl": 2.43
+  },
+  {
+   "time": "2026-10-13T00:46:39Z",
+   "slug": "rotc-t-wildwd-2026-10-26-gte80",
+   "title": "80+",
+   "event": "Wildwood Rotten Tomatoes Score?",
+   "ends": "2026-10-26T23:59:00Z",
+   "series": "t",
+   "price": 0.97,
+   "qty": 25,
+   "cost": 24.25,
+   "max_profit": 0.75,
+   "mode": "dry_run",
    "status": "dry run"
   }
  ],
@@ -771,6 +787,14 @@
   {
    "time": "2026-10-13T00:00:16Z",
    "text": "Scanned 15 events ending within 14 days (91 price checks); 0 qualify; 0 order(s) simulated."
+  },
+  {
+   "time": "2026-10-13T00:46:39Z",
+   "text": "Would place BUY YES 25 x rotc-t-wildwd-2026-10-26-gte80 at $0.97 ($24.25, pays $25 if it resolves YES; ends 2026-10-26T23:59:00Z). dry run."
+  },
+  {
+   "time": "2026-10-13T00:46:39Z",
+   "text": "Scanned 16 events ending within 14 days (98 price checks); 1 qualify; 1 order(s) simulated."
   }
  ],
  "mode": "dry_run",
@@ -783,17 +807,29 @@
   "max_positions": 10
  },
  "dry_run_record": {
-  "settled": 0,
-  "won": 0,
-  "pnl_usd": 0,
-  "staked_usd": 0
+  "settled": 1,
+  "won": 1,
+  "pnl_usd": 2.43,
+  "staked_usd": 24.57
  },
- "updated": "2026-10-13T00:00:16Z",
- "candidates": [],
+ "updated": "2026-10-13T00:46:39Z",
+ "candidates": [
+  {
+   "slug": "rotc-t-wildwd-2026-10-26-gte80",
+   "title": "80+",
+   "event": "t-wildwd-2026-10-26",
+   "event_title": "Wildwood Rotten Tomatoes Score?",
+   "ends": "2026-10-26T23:59:00Z",
+   "series": "t",
+   "bid": 0.97,
+   "ask": 0.98,
+   "price": 0.97
+  }
+ ],
  "exposure": {
-  "used_usd": 123.7,
+  "used_usd": 99.13,
   "limit_usd": 200,
-  "positions": 5,
+  "positions": 4,
   "open_orders": 0
  },
  "positions": [
@@ -817,13 +853,6 @@
    "cost": 24.25,
    "event_title": "Core CPI YoY in September",
    "series": "uscpicore"
-  },
-  {
-   "slug": "rotc-t-othmom-2026-10-12-gte16",
-   "qty": 27,
-   "cost": 24.57,
-   "event_title": "Other Mommy Rotten Tomatoes Score?",
-   "series": "t"
   },
   {
    "slug": "rotc-t-youcan-2026-10-19-gte90",
