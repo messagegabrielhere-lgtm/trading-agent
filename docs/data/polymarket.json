@@ -85,6 +85,20 @@
    "max_profit": 0.75,
    "mode": "dry_run",
    "status": "dry run"
+  },
+  {
+   "time": "2026-10-13T01:36:18Z",
+   "slug": "rdc-boi-2026-10-21-nochng",
+   "title": "No Change",
+   "event": "Bank of Israel Decision in October?",
+   "ends": "2026-10-21T23:59:00Z",
+   "series": "boi",
+   "price": 0.92,
+   "qty": 27,
+   "cost": 24.84,
+   "max_profit": 2.16,
+   "mode": "dry_run",
+   "status": "dry run"
   }
  ],
  "log": [
@@ -799,6 +813,14 @@
   {
    "time": "2026-10-13T01:13:39Z",
    "text": "Scanned 16 events ending within 14 days (91 price checks); 0 qualify; 0 order(s) simulated."
+  },
+  {
+   "time": "2026-10-13T01:36:18Z",
+   "text": "Would place BUY YES 27 x rdc-boi-2026-10-21-nochng at $0.92 ($24.84, pays $27 if it resolves YES; ends 2026-10-21T23:59:00Z). dry run."
+  },
+  {
+   "time": "2026-10-13T01:36:18Z",
+   "text": "Scanned 15 events ending within 14 days (80 price checks); 1 qualify; 1 order(s) simulated."
   }
  ],
  "mode": "dry_run",
@@ -816,8 +838,20 @@
   "pnl_usd": 2.43,
   "staked_usd": 24.57
  },
- "updated": "2026-10-13T01:13:39Z",
- "candidates": [],
+ "updated": "2026-10-13T01:36:18Z",
+ "candidates": [
+  {
+   "slug": "rdc-boi-2026-10-21-nochng",
+   "title": "No Change",
+   "event": "boi-2026-10-21",
+   "event_title": "Bank of Israel Decision in October?",
+   "ends": "2026-10-21T23:59:00Z",
+   "series": "boi",
+   "bid": 0.91,
+   "ask": 0.97,
+   "price": 0.92
+  }
+ ],
  "exposure": {
   "used_usd": 123.38,
   "limit_usd": 200,
