@@ -132,10 +132,6 @@
  "log": [
   {
    "time": "2026-10-09T17:07:35Z",
-   "text": "Would place BUY YES 25 x cpic-uscpicore-september-yoy-2026-10-14-gt2pt2pct at $0.97 ($24.25, pays $25 if it resolves YES; ends 2026-10-14T23:59:00Z). dry run."
-  },
-  {
-   "time": "2026-10-09T17:07:35Z",
    "text": "Would place BUY YES 26 x rotc-t-youcan-2026-10-19-gte90 at $0.96 ($24.96, pays $26 if it resolves YES; ends 2026-10-19T23:59:00Z). dry run."
   },
   {
@@ -929,6 +925,10 @@
   {
    "time": "2026-10-13T15:04:52Z",
    "text": "Scanned 17 events ending within 14 days (80 price checks); 0 qualify; 0 order(s) simulated."
+  },
+  {
+   "time": "2026-10-13T15:35:43Z",
+   "text": "Scanned 17 events ending within 14 days (80 price checks); 0 qualify; 0 order(s) simulated."
   }
  ],
  "mode": "dry_run",
@@ -946,7 +946,7 @@
   "pnl_usd": 2.43,
   "staked_usd": 24.57
  },
- "updated": "2026-10-13T15:04:52Z",
+ "updated": "2026-10-13T15:35:43Z",
  "candidates": [],
  "exposure": {
   "used_usd": 196.91,
