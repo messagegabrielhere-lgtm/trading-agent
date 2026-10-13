@@ -131,10 +131,6 @@
  ],
  "log": [
   {
-   "time": "2026-10-09T16:59:58Z",
-   "text": "Cleared the first simulated batch (4 of 5 were on one CPI release). One position per series from now on."
-  },
-  {
    "time": "2026-10-09T17:07:35Z",
    "text": "Would place BUY YES 26 x cpic-uscpi-september-mom-2026-10-14-gt0pt2pct at $0.96 ($24.96, pays $26 if it resolves YES; ends 2026-10-14T23:59:00Z). dry run."
   },
@@ -929,6 +925,10 @@
   {
    "time": "2026-10-13T14:07:35Z",
    "text": "Scanned 17 events ending within 14 days (80 price checks); 0 qualify; 0 order(s) simulated."
+  },
+  {
+   "time": "2026-10-13T14:36:55Z",
+   "text": "Scanned 17 events ending within 14 days (80 price checks); 0 qualify; 0 order(s) simulated."
   }
  ],
  "mode": "dry_run",
@@ -946,7 +946,7 @@
   "pnl_usd": 2.43,
   "staked_usd": 24.57
  },
- "updated": "2026-10-13T14:07:35Z",
+ "updated": "2026-10-13T14:36:55Z",
  "candidates": [],
  "exposure": {
   "used_usd": 196.91,
