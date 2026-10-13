@@ -821,6 +821,10 @@
   {
    "time": "2026-10-13T01:36:18Z",
    "text": "Scanned 15 events ending within 14 days (80 price checks); 1 qualify; 1 order(s) simulated."
+  },
+  {
+   "time": "2026-10-13T02:01:38Z",
+   "text": "Scanned 16 events ending within 14 days (86 price checks); 0 qualify; 0 order(s) simulated."
   }
  ],
  "mode": "dry_run",
@@ -838,24 +842,12 @@
   "pnl_usd": 2.43,
   "staked_usd": 24.57
  },
- "updated": "2026-10-13T01:36:18Z",
- "candidates": [
-  {
-   "slug": "rdc-boi-2026-10-21-nochng",
-   "title": "No Change",
-   "event": "boi-2026-10-21",
-   "event_title": "Bank of Israel Decision in October?",
-   "ends": "2026-10-21T23:59:00Z",
-   "series": "boi",
-   "bid": 0.91,
-   "ask": 0.97,
-   "price": 0.92
-  }
- ],
+ "updated": "2026-10-13T02:01:38Z",
+ "candidates": [],
  "exposure": {
-  "used_usd": 123.38,
+  "used_usd": 148.22,
   "limit_usd": 200,
-  "positions": 5,
+  "positions": 6,
   "open_orders": 0
  },
  "positions": [
@@ -879,6 +871,13 @@
    "cost": 24.25,
    "event_title": "Core CPI YoY in September",
    "series": "uscpicore"
+  },
+  {
+   "slug": "rdc-boi-2026-10-21-nochng",
+   "qty": 27,
+   "cost": 24.84,
+   "event_title": "Bank of Israel Decision in October?",
+   "series": "boi"
   },
   {
    "slug": "rotc-t-wildwd-2026-10-26-gte80",
