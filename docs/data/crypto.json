@@ -27,14 +27,6 @@
  ],
  "log": [
   {
-   "time": "2026-10-11T01:55:44+00:00",
-   "text": "BTC $82,934 is above its 200-day average $71,918. Bot holds $250.42 vs $250.00 target. No trade."
-  },
-  {
-   "time": "2026-10-11T01:55:44+00:00",
-   "text": "ETH $2,507 is above its 200-day average $2,132. Bot holds $251.41 vs $250.00 target. No trade."
-  },
-  {
    "time": "2026-10-11T02:27:41+00:00",
    "text": "BTC $82,971 is above its 200-day average $71,919. Bot holds $250.53 vs $250.00 target. No trade."
   },
@@ -825,6 +817,14 @@
   {
    "time": "2026-10-13T04:03:18+00:00",
    "text": "ETH $2,507 is above its 200-day average $2,136. Bot holds $251.34 vs $250.00 target. No trade."
+  },
+  {
+   "time": "2026-10-13T04:35:39+00:00",
+   "text": "BTC $83,416 is above its 200-day average $72,053. Bot holds $251.88 vs $250.00 target. No trade."
+  },
+  {
+   "time": "2026-10-13T04:35:39+00:00",
+   "text": "ETH $2,515 is above its 200-day average $2,136. Bot holds $252.15 vs $250.00 target. No trade."
   }
  ],
  "mode": "dry_run",
@@ -839,13 +839,13 @@
  },
  "signals": {
   "BTC": {
-   "close": 83267.63,
-   "sma": 72052.49,
+   "close": 83416.15,
+   "sma": 72053.24,
    "above": true
   },
   "ETH": {
-   "close": 2506.57,
-   "sma": 2136.1,
+   "close": 2514.69,
+   "sma": 2136.14,
    "above": true
   }
  },
@@ -1730,7 +1730,7 @@
    21.6682,
    20.9383,
    21.3114,
-   20.1913
+   20.2419
   ],
   "hold": [
    1.0,
@@ -2170,22 +2170,22 @@
    10.0829,
    9.7433,
    9.9169,
-   9.3957
+   9.4192
   ],
   "stats": {
    "trend": {
-    "cagr": 0.4313,
+    "cagr": 0.4317,
     "vol": 0.4582,
-    "sharpe": 1.014,
+    "sharpe": 1.0147,
     "max_drawdown": -0.5935,
-    "total_multiple": 20.1913
+    "total_multiple": 20.2419
    },
    "hold": {
-    "cagr": 0.3064,
+    "cagr": 0.3068,
     "vol": 0.6774,
-    "sharpe": 0.7392,
+    "sharpe": 0.7397,
     "max_drawdown": -0.7631,
-    "total_multiple": 9.3957
+    "total_multiple": 9.4192
    }
   }
  },
@@ -2194,6 +2194,6 @@
   "ETH": 250.0
  },
  "book": "sim_qty",
- "bot_value_usd": 502.76,
- "updated": "2026-10-13T04:03:18+00:00"
+ "bot_value_usd": 504.03,
+ "updated": "2026-10-13T04:35:39+00:00"
 }
