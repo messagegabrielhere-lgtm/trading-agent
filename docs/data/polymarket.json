@@ -131,10 +131,6 @@
  ],
  "log": [
   {
-   "time": "2026-10-09T17:56:57Z",
-   "text": "Scanned 10 events ending within 14 days (49 price checks); 0 qualify; 0 order(s) simulated."
-  },
-  {
    "time": "2026-10-09T18:09:35Z",
    "text": "Scanned 10 events ending within 14 days (55 price checks); 0 qualify; 0 order(s) simulated."
   },
@@ -929,6 +925,10 @@
   {
    "time": "2026-10-13T19:13:09Z",
    "text": "Scanned 14 events ending within 14 days (62 price checks); 0 qualify; 0 order(s) simulated."
+  },
+  {
+   "time": "2026-10-13T19:45:12Z",
+   "text": "Scanned 11 events ending within 14 days (40 price checks); 0 qualify; 0 order(s) simulated."
   }
  ],
  "mode": "dry_run",
@@ -946,7 +946,7 @@
   "pnl_usd": 2.43,
   "staked_usd": 24.57
  },
- "updated": "2026-10-13T19:13:09Z",
+ "updated": "2026-10-13T19:45:12Z",
  "candidates": [],
  "exposure": {
   "used_usd": 196.91,
