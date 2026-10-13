@@ -132,10 +132,6 @@
  "log": [
   {
    "time": "2026-10-09T16:59:58Z",
-   "text": "Scanned 10 events ending within 14 days (93 price checks); 5 qualify; 5 order(s) simulated."
-  },
-  {
-   "time": "2026-10-09T16:59:58Z",
    "text": "Cleared the first simulated batch (4 of 5 were on one CPI release). One position per series from now on."
   },
   {
@@ -929,6 +925,10 @@
   {
    "time": "2026-10-13T13:40:57Z",
    "text": "Scanned 17 events ending within 14 days (80 price checks); 0 qualify; 0 order(s) simulated."
+  },
+  {
+   "time": "2026-10-13T14:07:35Z",
+   "text": "Scanned 17 events ending within 14 days (80 price checks); 0 qualify; 0 order(s) simulated."
   }
  ],
  "mode": "dry_run",
@@ -946,7 +946,7 @@
   "pnl_usd": 2.43,
   "staked_usd": 24.57
  },
- "updated": "2026-10-13T13:40:57Z",
+ "updated": "2026-10-13T14:07:35Z",
  "candidates": [],
  "exposure": {
   "used_usd": 196.91,
