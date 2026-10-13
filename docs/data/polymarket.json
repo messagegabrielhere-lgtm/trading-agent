@@ -921,6 +921,10 @@
   {
    "time": "2026-10-13T09:35:10Z",
    "text": "Scanned 16 events ending within 14 days (75 price checks); 1 qualify; 1 order(s) simulated."
+  },
+  {
+   "time": "2026-10-13T10:02:01Z",
+   "text": "Scanned 17 events ending within 14 days (80 price checks); 0 qualify; 0 order(s) simulated."
   }
  ],
  "mode": "dry_run",
@@ -938,27 +942,22 @@
   "pnl_usd": 2.43,
   "staked_usd": 24.57
  },
- "updated": "2026-10-13T09:35:10Z",
- "candidates": [
-  {
-   "slug": "ccrc-bilbrd-solecl-2026-10-13-rank5",
-   "title": "Rank 5",
-   "event": "bilbrd-solecl-2026-10-13",
-   "event_title": "'Solar Eclipse' (Drake & Don Toliver) Week 1 Billboard Rank",
-   "ends": "2026-10-13T23:59:00Z",
-   "series": "bilbrd",
-   "bid": 0.93,
-   "ask": 0.99,
-   "price": 0.94
-  }
- ],
+ "updated": "2026-10-13T10:02:01Z",
+ "candidates": [],
  "exposure": {
-  "used_usd": 172.47,
+  "used_usd": 196.91,
   "limit_usd": 200,
-  "positions": 7,
+  "positions": 8,
   "open_orders": 0
  },
  "positions": [
+  {
+   "slug": "ccrc-bilbrd-solecl-2026-10-13-rank5",
+   "qty": 26,
+   "cost": 24.44,
+   "event_title": "'Solar Eclipse' (Drake & Don Toliver) Week 1 Billboard Rank",
+   "series": "bilbrd"
+  },
   {
    "slug": "ccrc-ntflx-1shwus-2026-10-13-below",
    "qty": 25,
