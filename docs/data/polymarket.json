@@ -112,7 +112,9 @@
    "cost": 24.25,
    "max_profit": 0.75,
    "mode": "dry_run",
-   "status": "dry run"
+   "status": "dry run",
+   "result": "won",
+   "pnl": 0.75
   },
   {
    "time": "2026-10-13T09:35:10Z",
@@ -126,14 +128,12 @@
    "cost": 24.44,
    "max_profit": 1.56,
    "mode": "dry_run",
-   "status": "dry run"
+   "status": "dry run",
+   "result": "won",
+   "pnl": 1.56
   }
  ],
  "log": [
-  {
-   "time": "2026-10-09T20:57:50Z",
-   "text": "Would place BUY YES 27 x rotc-t-othmom-2026-10-12-gte16 at $0.91 ($24.57, pays $27 if it resolves YES; ends 2026-10-12T23:59:00Z). dry run."
-  },
   {
    "time": "2026-10-09T20:57:50Z",
    "text": "Scanned 10 events ending within 14 days (55 price checks); 1 qualify; 1 order(s) simulated."
@@ -929,6 +929,10 @@
   {
    "time": "2026-10-13T23:38:14Z",
    "text": "Scanned 14 events ending within 14 days (73 price checks); 0 qualify; 0 order(s) simulated."
+  },
+  {
+   "time": "2026-10-14T00:04:40Z",
+   "text": "Scanned 14 events ending within 14 days (73 price checks); 0 qualify; 0 order(s) simulated."
   }
  ],
  "mode": "dry_run",
@@ -941,34 +945,20 @@
   "max_positions": 10
  },
  "dry_run_record": {
-  "settled": 1,
-  "won": 1,
-  "pnl_usd": 2.43,
-  "staked_usd": 24.57
+  "settled": 3,
+  "won": 3,
+  "pnl_usd": 4.74,
+  "staked_usd": 73.26
  },
- "updated": "2026-10-13T23:38:14Z",
+ "updated": "2026-10-14T00:04:40Z",
  "candidates": [],
  "exposure": {
-  "used_usd": 196.91,
+  "used_usd": 148.22,
   "limit_usd": 200,
-  "positions": 8,
+  "positions": 6,
   "open_orders": 0
  },
  "positions": [
-  {
-   "slug": "ccrc-bilbrd-solecl-2026-10-13-rank5",
-   "qty": 26,
-   "cost": 24.44,
-   "event_title": "'Solar Eclipse' (Drake & Don Toliver) Week 1 Billboard Rank",
-   "series": "bilbrd"
-  },
-  {
-   "slug": "ccrc-ntflx-1shwus-2026-10-13-below",
-   "qty": 25,
-   "cost": 24.25,
-   "event_title": "Top US Netflix Show This Week?",
-   "series": "ntflx"
-  },
   {
    "slug": "cpic-uscpi-september-mom-2026-10-14-gt0pt2pct",
    "qty": 26,
