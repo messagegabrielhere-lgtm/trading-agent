@@ -135,10 +135,6 @@
  ],
  "log": [
   {
-   "time": "2026-10-10T12:31:48Z",
-   "text": "Scanned 11 events ending within 14 days (45 price checks); 0 qualify; 0 order(s) simulated."
-  },
-  {
    "time": "2026-10-10T12:59:04Z",
    "text": "Scanned 11 events ending within 14 days (45 price checks); 0 qualify; 0 order(s) simulated."
   },
@@ -933,6 +929,10 @@
   {
    "time": "2026-10-14T22:08:20Z",
    "text": "Stopped: PermissionDeniedError: HTTP 403 (an HTML error page)"
+  },
+  {
+   "time": "2026-10-14T22:44:37Z",
+   "text": "Scanned 11 events ending within 14 days (70 price checks); 0 qualify; 0 order(s) simulated."
   }
  ],
  "mode": "dry_run",
@@ -950,7 +950,7 @@
   "pnl_usd": 4.74,
   "staked_usd": 73.26
  },
- "updated": "2026-10-14T22:08:20Z",
+ "updated": "2026-10-14T22:44:37Z",
  "candidates": [],
  "exposure": {
   "used_usd": 148.22,
