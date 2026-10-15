@@ -12,7 +12,9 @@
    "cost": 24.96,
    "max_profit": 1.04,
    "mode": "dry_run",
-   "status": "dry run"
+   "status": "dry run",
+   "result": "won",
+   "pnl": 1.04
   },
   {
    "time": "2026-10-09T17:07:35Z",
@@ -40,7 +42,9 @@
    "cost": 24.96,
    "max_profit": 1.04,
    "mode": "dry_run",
-   "status": "dry run"
+   "status": "dry run",
+   "result": "won",
+   "pnl": 1.04
   },
   {
    "time": "2026-10-09T17:13:55Z",
@@ -54,7 +58,9 @@
    "cost": 24.25,
    "max_profit": 0.75,
    "mode": "dry_run",
-   "status": "dry run"
+   "status": "dry run",
+   "result": "won",
+   "pnl": 0.75
   },
   {
    "time": "2026-10-09T20:57:50Z",
@@ -131,17 +137,23 @@
    "status": "dry run",
    "result": "won",
    "pnl": 1.56
+  },
+  {
+   "time": "2026-10-15T00:51:24Z",
+   "slug": "rdc-cbr-2026-10-23-nochng",
+   "title": "No Change",
+   "event": "Bank of Russia Decision in October?",
+   "ends": "2026-10-24T03:59:00Z",
+   "series": "cbr",
+   "price": 0.9,
+   "qty": 27,
+   "cost": 24.3,
+   "max_profit": 2.7,
+   "mode": "dry_run",
+   "status": "dry run"
   }
  ],
  "log": [
-  {
-   "time": "2026-10-10T14:26:42Z",
-   "text": "Scanned 11 events ending within 14 days (45 price checks); 0 qualify; 0 order(s) simulated."
-  },
-  {
-   "time": "2026-10-10T14:54:31Z",
-   "text": "Scanned 11 events ending within 14 days (45 price checks); 0 qualify; 0 order(s) simulated."
-  },
   {
    "time": "2026-10-10T15:26:48Z",
    "text": "Scanned 11 events ending within 14 days (45 price checks); 0 qualify; 0 order(s) simulated."
@@ -933,6 +945,14 @@
   {
    "time": "2026-10-15T00:03:08Z",
    "text": "Scanned 11 events ending within 14 days (70 price checks); 0 qualify; 0 order(s) simulated."
+  },
+  {
+   "time": "2026-10-15T00:51:24Z",
+   "text": "Would place BUY YES 27 x rdc-cbr-2026-10-23-nochng at $0.90 ($24.30, pays $27 if it resolves YES; ends 2026-10-24T03:59:00Z). dry run."
+  },
+  {
+   "time": "2026-10-15T00:51:24Z",
+   "text": "Scanned 11 events ending within 14 days (70 price checks); 1 qualify; 1 order(s) simulated."
   }
  ],
  "mode": "dry_run",
@@ -945,41 +965,32 @@
   "max_positions": 10
  },
  "dry_run_record": {
-  "settled": 3,
-  "won": 3,
-  "pnl_usd": 4.74,
-  "staked_usd": 73.26
+  "settled": 6,
+  "won": 6,
+  "pnl_usd": 7.57,
+  "staked_usd": 147.43
  },
- "updated": "2026-10-15T00:03:08Z",
- "candidates": [],
+ "updated": "2026-10-15T00:51:24Z",
+ "candidates": [
+  {
+   "slug": "rdc-cbr-2026-10-23-nochng",
+   "title": "No Change",
+   "event": "cbr-2026-10-23",
+   "event_title": "Bank of Russia Decision in October?",
+   "ends": "2026-10-24T03:59:00Z",
+   "series": "cbr",
+   "bid": 0.89,
+   "ask": 0.91,
+   "price": 0.9
+  }
+ ],
  "exposure": {
-  "used_usd": 148.22,
+  "used_usd": 74.05,
   "limit_usd": 200,
-  "positions": 6,
+  "positions": 3,
   "open_orders": 0
  },
  "positions": [
-  {
-   "slug": "cpic-uscpi-september-mom-2026-10-14-gt0pt2pct",
-   "qty": 26,
-   "cost": 24.96,
-   "event_title": "CPI MoM in September",
-   "series": "cpic"
-  },
-  {
-   "slug": "cpic-uscpi-september-yoy-2026-10-14-gt3pt3pct",
-   "qty": 26,
-   "cost": 24.96,
-   "event_title": "CPI YoY in September",
-   "series": "uscpi"
-  },
-  {
-   "slug": "cpic-uscpicore-september-yoy-2026-10-14-gt2pt2pct",
-   "qty": 25,
-   "cost": 24.25,
-   "event_title": "Core CPI YoY in September",
-   "series": "uscpicore"
-  },
   {
    "slug": "rdc-boi-2026-10-21-nochng",
    "qty": 27,
