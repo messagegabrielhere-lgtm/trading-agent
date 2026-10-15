@@ -155,10 +155,6 @@
  ],
  "log": [
   {
-   "time": "2026-10-10T15:26:48Z",
-   "text": "Scanned 11 events ending within 14 days (45 price checks); 0 qualify; 0 order(s) simulated."
-  },
-  {
    "time": "2026-10-10T15:54:49Z",
    "text": "Scanned 11 events ending within 14 days (45 price checks); 0 qualify; 0 order(s) simulated."
   },
@@ -953,6 +949,10 @@
   {
    "time": "2026-10-15T00:51:24Z",
    "text": "Scanned 11 events ending within 14 days (70 price checks); 1 qualify; 1 order(s) simulated."
+  },
+  {
+   "time": "2026-10-15T01:41:15Z",
+   "text": "Scanned 11 events ending within 14 days (65 price checks); 0 qualify; 0 order(s) simulated."
   }
  ],
  "mode": "dry_run",
@@ -970,24 +970,12 @@
   "pnl_usd": 7.57,
   "staked_usd": 147.43
  },
- "updated": "2026-10-15T00:51:24Z",
- "candidates": [
-  {
-   "slug": "rdc-cbr-2026-10-23-nochng",
-   "title": "No Change",
-   "event": "cbr-2026-10-23",
-   "event_title": "Bank of Russia Decision in October?",
-   "ends": "2026-10-24T03:59:00Z",
-   "series": "cbr",
-   "bid": 0.89,
-   "ask": 0.91,
-   "price": 0.9
-  }
- ],
+ "updated": "2026-10-15T01:41:15Z",
+ "candidates": [],
  "exposure": {
-  "used_usd": 74.05,
+  "used_usd": 98.35,
   "limit_usd": 200,
-  "positions": 3,
+  "positions": 4,
   "open_orders": 0
  },
  "positions": [
@@ -997,6 +985,13 @@
    "cost": 24.84,
    "event_title": "Bank of Israel Decision in October?",
    "series": "boi"
+  },
+  {
+   "slug": "rdc-cbr-2026-10-23-nochng",
+   "qty": 27,
+   "cost": 24.3,
+   "event_title": "Bank of Russia Decision in October?",
+   "series": "cbr"
   },
   {
    "slug": "rotc-t-wildwd-2026-10-26-gte80",
