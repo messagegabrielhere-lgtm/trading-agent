@@ -155,10 +155,6 @@
  ],
  "log": [
   {
-   "time": "2026-10-11T10:27:38Z",
-   "text": "Scanned 11 events ending within 14 days (45 price checks); 0 qualify; 0 order(s) simulated."
-  },
-  {
    "time": "2026-10-11T10:55:40Z",
    "text": "Scanned 11 events ending within 14 days (45 price checks); 0 qualify; 0 order(s) simulated."
   },
@@ -953,6 +949,10 @@
   {
    "time": "2026-10-16T03:50:12Z",
    "text": "Scanned 16 events ending within 14 days (99 price checks); 0 qualify; 0 order(s) simulated."
+  },
+  {
+   "time": "2026-10-16T04:44:05Z",
+   "text": "Scanned 17 events ending within 14 days (102 price checks); 2 qualify; 0 order(s) simulated."
   }
  ],
  "mode": "dry_run",
@@ -970,8 +970,31 @@
   "pnl_usd": 7.57,
   "staked_usd": 147.43
  },
- "updated": "2026-10-16T03:50:12Z",
- "candidates": [],
+ "updated": "2026-10-16T04:44:05Z",
+ "candidates": [
+  {
+   "slug": "gdpc-us-saa-q3-2026-10-29-gt1pt0",
+   "title": "Above 1.0%",
+   "event": "us-saa-q3-2026-10-29",
+   "event_title": "US GDP Growth in Q3 2026?",
+   "ends": "2026-10-30T03:59:00Z",
+   "series": "us",
+   "bid": 0.97,
+   "ask": 0.98,
+   "price": 0.97
+  },
+  {
+   "slug": "rdc-ecb-2026-10-29-nochng",
+   "title": "No Change",
+   "event": "ecb-2026-10-29",
+   "event_title": "European Central Bank Decision in October?",
+   "ends": "2026-10-30T03:59:00Z",
+   "series": "ecb",
+   "bid": 0.93,
+   "ask": 0.94,
+   "price": 0.93
+  }
+ ],
  "exposure": {
   "used_usd": 98.35,
   "limit_usd": 200,
