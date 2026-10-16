@@ -155,10 +155,6 @@
  ],
  "log": [
   {
-   "time": "2026-10-11T18:30:41Z",
-   "text": "Scanned 11 events ending within 14 days (45 price checks); 0 qualify; 0 order(s) simulated."
-  },
-  {
    "time": "2026-10-11T18:58:17Z",
    "text": "Scanned 11 events ending within 14 days (45 price checks); 0 qualify; 0 order(s) simulated."
   },
@@ -953,6 +949,10 @@
   {
    "time": "2026-10-16T16:21:55Z",
    "text": "Scanned 20 events ending within 14 days (150 price checks); 3 qualify; 0 order(s) simulated."
+  },
+  {
+   "time": "2026-10-16T17:18:47Z",
+   "text": "Scanned 20 events ending within 14 days (150 price checks); 3 qualify; 0 order(s) simulated."
   }
  ],
  "mode": "dry_run",
@@ -970,17 +970,17 @@
   "pnl_usd": 7.57,
   "staked_usd": 147.43
  },
- "updated": "2026-10-16T16:21:55Z",
+ "updated": "2026-10-16T17:18:47Z",
  "candidates": [
   {
-   "slug": "cpc-btc-above-wk-2026-10-16-64000",
-   "title": "$64,000 or above",
+   "slug": "cpc-btc-above-wk-2026-10-16-79500",
+   "title": "$79,500 or above",
    "event": "btc-above-wk-2026-10-16",
    "event_title": "BTC Price at 5:00PM ET on Fri, Oct 16",
    "ends": "2026-10-16T21:00:00Z",
    "series": "btc",
-   "bid": 0.96,
-   "ask": null,
+   "bid": 0.95,
+   "ask": 0.99,
    "price": 0.96
   },
   {
@@ -1001,9 +1001,9 @@
    "event_title": "European Central Bank Decision in October?",
    "ends": "2026-10-30T03:59:00Z",
    "series": "ecb",
-   "bid": 0.93,
-   "ask": 0.94,
-   "price": 0.93
+   "bid": 0.96,
+   "ask": 0.97,
+   "price": 0.96
   }
  ],
  "exposure": {
