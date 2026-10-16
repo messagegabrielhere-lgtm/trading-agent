@@ -155,10 +155,6 @@
  ],
  "log": [
   {
-   "time": "2026-10-11T09:28:15Z",
-   "text": "Scanned 11 events ending within 14 days (45 price checks); 0 qualify; 0 order(s) simulated."
-  },
-  {
    "time": "2026-10-11T09:56:02Z",
    "text": "Scanned 11 events ending within 14 days (45 price checks); 0 qualify; 0 order(s) simulated."
   },
@@ -953,6 +949,10 @@
   {
    "time": "2026-10-16T02:50:28Z",
    "text": "Scanned 17 events ending within 14 days (150 price checks); 1 qualify; 0 order(s) simulated."
+  },
+  {
+   "time": "2026-10-16T03:20:00Z",
+   "text": "Scanned 17 events ending within 14 days (150 price checks); 1 qualify; 0 order(s) simulated."
   }
  ],
  "mode": "dry_run",
@@ -970,7 +970,7 @@
   "pnl_usd": 7.57,
   "staked_usd": 147.43
  },
- "updated": "2026-10-16T02:50:28Z",
+ "updated": "2026-10-16T03:20:00Z",
  "candidates": [
   {
    "slug": "cpc-btc-above-wk-2026-10-16-79500",
