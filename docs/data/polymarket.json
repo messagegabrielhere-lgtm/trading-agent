@@ -155,10 +155,6 @@
  ],
  "log": [
   {
-   "time": "2026-10-11T17:27:01Z",
-   "text": "Scanned 11 events ending within 14 days (45 price checks); 0 qualify; 0 order(s) simulated."
-  },
-  {
    "time": "2026-10-11T17:54:46Z",
    "text": "Scanned 11 events ending within 14 days (45 price checks); 0 qualify; 0 order(s) simulated."
   },
@@ -953,6 +949,10 @@
   {
    "time": "2026-10-16T14:51:13Z",
    "text": "Scanned 20 events ending within 14 days (150 price checks); 3 qualify; 0 order(s) simulated."
+  },
+  {
+   "time": "2026-10-16T15:48:02Z",
+   "text": "Scanned 20 events ending within 14 days (150 price checks); 3 qualify; 0 order(s) simulated."
   }
  ],
  "mode": "dry_run",
@@ -970,18 +970,18 @@
   "pnl_usd": 7.57,
   "staked_usd": 147.43
  },
- "updated": "2026-10-16T14:51:13Z",
+ "updated": "2026-10-16T15:48:02Z",
  "candidates": [
   {
-   "slug": "cpc-btc-above-wk-2026-10-16-64000",
-   "title": "$64,000 or above",
+   "slug": "cpc-btc-above-wk-2026-10-16-80500",
+   "title": "$80,500 or above",
    "event": "btc-above-wk-2026-10-16",
    "event_title": "BTC Price at 5:00PM ET on Fri, Oct 16",
    "ends": "2026-10-16T21:00:00Z",
    "series": "btc",
-   "bid": 0.97,
-   "ask": null,
-   "price": 0.97
+   "bid": 0.92,
+   "ask": 0.99,
+   "price": 0.93
   },
   {
    "slug": "gdpc-us-saa-q3-2026-10-29-gt1pt0",
