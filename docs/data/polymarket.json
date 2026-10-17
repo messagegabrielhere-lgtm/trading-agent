@@ -155,10 +155,6 @@
  ],
  "log": [
   {
-   "time": "2026-10-12T07:58:36Z",
-   "text": "Stopped: PermissionDeniedError: HTTP 403 (an HTML error page)"
-  },
-  {
    "time": "2026-10-12T08:35:45Z",
    "text": "Scanned 11 events ending within 14 days (45 price checks); 0 qualify; 0 order(s) simulated."
   },
@@ -953,6 +949,10 @@
   {
    "time": "2026-10-17T07:43:46Z",
    "text": "Scanned 17 events ending within 14 days (99 price checks); 3 qualify; 0 order(s) simulated."
+  },
+  {
+   "time": "2026-10-17T08:09:51Z",
+   "text": "Scanned 17 events ending within 14 days (99 price checks); 3 qualify; 0 order(s) simulated."
   }
  ],
  "mode": "dry_run",
@@ -970,7 +970,7 @@
   "pnl_usd": 7.57,
   "staked_usd": 147.43
  },
- "updated": "2026-10-17T07:43:46Z",
+ "updated": "2026-10-17T08:09:51Z",
  "candidates": [
   {
    "slug": "gdpc-us-saa-q3-2026-10-29-gt1pt0",
