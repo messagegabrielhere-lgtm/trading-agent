@@ -155,10 +155,6 @@
  ],
  "log": [
   {
-   "time": "2026-10-12T09:01:23Z",
-   "text": "Scanned 11 events ending within 14 days (45 price checks); 0 qualify; 0 order(s) simulated."
-  },
-  {
    "time": "2026-10-12T09:33:54Z",
    "text": "Scanned 11 events ending within 14 days (45 price checks); 0 qualify; 0 order(s) simulated."
   },
@@ -953,6 +949,10 @@
   {
    "time": "2026-10-17T08:42:41Z",
    "text": "Scanned 17 events ending within 14 days (99 price checks); 3 qualify; 0 order(s) simulated."
+  },
+  {
+   "time": "2026-10-17T09:10:07Z",
+   "text": "Scanned 17 events ending within 14 days (99 price checks); 3 qualify; 0 order(s) simulated."
   }
  ],
  "mode": "dry_run",
@@ -970,7 +970,7 @@
   "pnl_usd": 7.57,
   "staked_usd": 147.43
  },
- "updated": "2026-10-17T08:42:41Z",
+ "updated": "2026-10-17T09:10:07Z",
  "candidates": [
   {
    "slug": "gdpc-us-saa-q3-2026-10-29-gt1pt0",
@@ -990,9 +990,9 @@
    "event_title": "European Central Bank Decision in October?",
    "ends": "2026-10-30T03:59:00Z",
    "series": "ecb",
-   "bid": 0.91,
+   "bid": 0.95,
    "ask": 0.96,
-   "price": 0.92
+   "price": 0.95
   },
   {
    "slug": "rdc-boj-2026-10-30-nochng",
