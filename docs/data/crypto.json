@@ -27,14 +27,6 @@
  ],
  "log": [
   {
-   "time": "2026-10-14T07:50:06+00:00",
-   "text": "BTC $83,419 is above its 200-day average $72,214. Bot holds $251.89 vs $250.00 target. No trade."
-  },
-  {
-   "time": "2026-10-14T07:50:06+00:00",
-   "text": "ETH $2,505 is above its 200-day average $2,141. Bot holds $251.22 vs $250.00 target. No trade."
-  },
-  {
    "time": "2026-10-14T08:45:20+00:00",
    "text": "BTC $83,377 is above its 200-day average $72,214. Bot holds $251.76 vs $250.00 target. No trade."
   },
@@ -825,6 +817,14 @@
   {
    "time": "2026-10-17T04:12:49+00:00",
    "text": "ETH $2,424 is above its 200-day average $2,145. Bot holds $243.10 vs $250.00 target. No trade."
+  },
+  {
+   "time": "2026-10-17T04:42:41+00:00",
+   "text": "BTC $81,439 is above its 200-day average $72,360. Bot holds $245.91 vs $250.00 target. No trade."
+  },
+  {
+   "time": "2026-10-17T04:42:41+00:00",
+   "text": "ETH $2,425 is above its 200-day average $2,145. Bot holds $243.13 vs $250.00 target. No trade."
   }
  ],
  "mode": "dry_run",
@@ -839,12 +839,12 @@
  },
  "signals": {
   "BTC": {
-   "close": 81458.89,
-   "sma": 72359.74,
+   "close": 81439.05,
+   "sma": 72359.64,
    "above": true
   },
   "ETH": {
-   "close": 2424.38,
+   "close": 2424.68,
    "sma": 2144.74,
    "above": true
   }
@@ -1732,7 +1732,7 @@
    20.9383,
    21.3114,
    19.7584,
-   19.6415
+   19.6403
   ],
   "hold": [
    1.0,
@@ -2173,7 +2173,7 @@
    9.7433,
    9.9169,
    9.1942,
-   9.1398
+   9.1393
   ],
   "stats": {
    "trend": {
@@ -2181,14 +2181,14 @@
     "vol": 0.4581,
     "sharpe": 1.0058,
     "max_drawdown": -0.5935,
-    "total_multiple": 19.6415
+    "total_multiple": 19.6403
    },
    "hold": {
     "cagr": 0.3017,
     "vol": 0.6771,
     "sharpe": 0.7339,
     "max_drawdown": -0.7631,
-    "total_multiple": 9.1398
+    "total_multiple": 9.1393
    }
   }
  },
@@ -2197,6 +2197,6 @@
   "ETH": 250.0
  },
  "book": "sim_qty",
- "bot_value_usd": 489.06,
- "updated": "2026-10-17T04:12:49+00:00"
+ "bot_value_usd": 489.03,
+ "updated": "2026-10-17T04:42:41+00:00"
 }
