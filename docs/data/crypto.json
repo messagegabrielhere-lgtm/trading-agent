@@ -27,14 +27,6 @@
  ],
  "log": [
   {
-   "time": "2026-10-14T12:58:53+00:00",
-   "text": "BTC $82,700 is above its 200-day average $72,211. Bot holds $249.71 vs $250.00 target. No trade."
-  },
-  {
-   "time": "2026-10-14T12:58:53+00:00",
-   "text": "ETH $2,475 is above its 200-day average $2,141. Bot holds $248.20 vs $250.00 target. No trade."
-  },
-  {
    "time": "2026-10-14T13:47:36+00:00",
    "text": "BTC $82,924 is above its 200-day average $72,212. Bot holds $250.39 vs $250.00 target. No trade."
   },
@@ -825,6 +817,14 @@
   {
    "time": "2026-10-17T08:09:52+00:00",
    "text": "ETH $2,430 is above its 200-day average $2,146. Bot holds $243.70 vs $250.00 target. No trade."
+  },
+  {
+   "time": "2026-10-17T08:42:41+00:00",
+   "text": "BTC $81,581 is above its 200-day average $72,427. Bot holds $246.34 vs $250.00 target. No trade."
+  },
+  {
+   "time": "2026-10-17T08:42:41+00:00",
+   "text": "ETH $2,431 is above its 200-day average $2,146. Bot holds $243.72 vs $250.00 target. No trade."
   }
  ],
  "mode": "dry_run",
@@ -839,12 +839,12 @@
  },
  "signals": {
   "BTC": {
-   "close": 81593.93,
-   "sma": 72426.75,
+   "close": 81581.2,
+   "sma": 72426.69,
    "above": true
   },
   "ETH": {
-   "close": 2430.44,
+   "close": 2430.61,
    "sma": 2146.35,
    "above": true
   }
@@ -1732,7 +1732,7 @@
    20.9383,
    21.3114,
    19.7584,
-   19.6823
+   19.6815
   ],
   "hold": [
    1.0,
@@ -2173,7 +2173,7 @@
    9.7433,
    9.9169,
    9.1942,
-   9.1588
+   9.1584
   ],
   "stats": {
    "trend": {
@@ -2181,14 +2181,14 @@
     "vol": 0.458,
     "sharpe": 1.0062,
     "max_drawdown": -0.5935,
-    "total_multiple": 19.6823
+    "total_multiple": 19.6815
    },
    "hold": {
     "cagr": 0.3019,
     "vol": 0.677,
     "sharpe": 0.7341,
     "max_drawdown": -0.7631,
-    "total_multiple": 9.1588
+    "total_multiple": 9.1584
    }
   }
  },
@@ -2197,6 +2197,6 @@
   "ETH": 250.0
  },
  "book": "sim_qty",
- "bot_value_usd": 490.08,
- "updated": "2026-10-17T08:09:52+00:00"
+ "bot_value_usd": 490.06,
+ "updated": "2026-10-17T08:42:41+00:00"
 }
