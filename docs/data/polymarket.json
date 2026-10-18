@@ -155,10 +155,6 @@
  ],
  "log": [
   {
-   "time": "2026-10-13T00:00:16Z",
-   "text": "Scanned 15 events ending within 14 days (91 price checks); 0 qualify; 0 order(s) simulated."
-  },
-  {
    "time": "2026-10-13T00:46:39Z",
    "text": "Would place BUY YES 25 x rotc-t-wildwd-2026-10-26-gte80 at $0.97 ($24.25, pays $25 if it resolves YES; ends 2026-10-26T23:59:00Z). dry run."
   },
@@ -953,6 +949,10 @@
   {
    "time": "2026-10-17T23:36:04Z",
    "text": "Scanned 17 events ending within 14 days (99 price checks); 3 qualify; 0 order(s) simulated."
+  },
+  {
+   "time": "2026-10-18T00:02:20Z",
+   "text": "Scanned 17 events ending within 14 days (99 price checks); 3 qualify; 0 order(s) simulated."
   }
  ],
  "mode": "dry_run",
@@ -970,7 +970,7 @@
   "pnl_usd": 7.57,
   "staked_usd": 147.43
  },
- "updated": "2026-10-17T23:36:04Z",
+ "updated": "2026-10-18T00:02:20Z",
  "candidates": [
   {
    "slug": "gdpc-us-saa-q3-2026-10-29-gt1pt0",
