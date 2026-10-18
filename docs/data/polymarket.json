@@ -155,10 +155,6 @@
  ],
  "log": [
   {
-   "time": "2026-10-13T02:33:54Z",
-   "text": "Scanned 16 events ending within 14 days (86 price checks); 0 qualify; 0 order(s) simulated."
-  },
-  {
    "time": "2026-10-13T03:01:53Z",
    "text": "Scanned 16 events ending within 14 days (86 price checks); 0 qualify; 0 order(s) simulated."
   },
@@ -953,6 +949,10 @@
   {
    "time": "2026-10-18T03:41:50Z",
    "text": "Scanned 17 events ending within 14 days (99 price checks); 3 qualify; 0 order(s) simulated."
+  },
+  {
+   "time": "2026-10-18T04:17:21Z",
+   "text": "Scanned 22 events ending within 14 days (147 price checks); 4 qualify; 0 order(s) simulated."
   }
  ],
  "mode": "dry_run",
@@ -970,7 +970,7 @@
   "pnl_usd": 7.57,
   "staked_usd": 147.43
  },
- "updated": "2026-10-18T03:41:50Z",
+ "updated": "2026-10-18T04:17:21Z",
  "candidates": [
   {
    "slug": "gdpc-us-saa-q3-2026-10-29-gt1pt0",
@@ -1004,6 +1004,17 @@
    "bid": 0.93,
    "ask": 0.96,
    "price": 0.94
+  },
+  {
+   "slug": "pnwpc-elonmusk-2026-10-31-above-800b",
+   "title": "Above $800 Billion",
+   "event": "elonmusk-2026-10-31-above",
+   "event_title": "Elon Musk Net Worth on October 31?",
+   "ends": "2026-11-01T03:59:00Z",
+   "series": "elonmusk",
+   "bid": 0.96,
+   "ask": 0.97,
+   "price": 0.96
   }
  ],
  "exposure": {
