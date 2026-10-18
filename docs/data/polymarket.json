@@ -156,10 +156,6 @@
  "log": [
   {
    "time": "2026-10-13T01:36:18Z",
-   "text": "Would place BUY YES 27 x rdc-boi-2026-10-21-nochng at $0.92 ($24.84, pays $27 if it resolves YES; ends 2026-10-21T23:59:00Z). dry run."
-  },
-  {
-   "time": "2026-10-13T01:36:18Z",
    "text": "Scanned 15 events ending within 14 days (80 price checks); 1 qualify; 1 order(s) simulated."
   },
   {
@@ -953,6 +949,10 @@
   {
    "time": "2026-10-18T02:13:07Z",
    "text": "Scanned 17 events ending within 14 days (99 price checks); 3 qualify; 0 order(s) simulated."
+  },
+  {
+   "time": "2026-10-18T02:42:18Z",
+   "text": "Scanned 17 events ending within 14 days (99 price checks); 3 qualify; 0 order(s) simulated."
   }
  ],
  "mode": "dry_run",
@@ -970,7 +970,7 @@
   "pnl_usd": 7.57,
   "staked_usd": 147.43
  },
- "updated": "2026-10-18T02:13:07Z",
+ "updated": "2026-10-18T02:42:18Z",
  "candidates": [
   {
    "slug": "gdpc-us-saa-q3-2026-10-29-gt1pt0",
