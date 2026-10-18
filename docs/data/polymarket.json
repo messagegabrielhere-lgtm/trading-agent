@@ -156,10 +156,6 @@
  "log": [
   {
    "time": "2026-10-13T05:03:35Z",
-   "text": "Would place BUY YES 25 x ccrc-ntflx-1shwus-2026-10-13-below at $0.97 ($24.25, pays $25 if it resolves YES; ends 2026-10-13T23:59:00Z). dry run."
-  },
-  {
-   "time": "2026-10-13T05:03:35Z",
    "text": "Scanned 16 events ending within 14 days (86 price checks); 1 qualify; 1 order(s) simulated."
   },
   {
@@ -953,6 +949,10 @@
   {
    "time": "2026-10-18T06:13:28Z",
    "text": "Scanned 22 events ending within 14 days (147 price checks); 4 qualify; 0 order(s) simulated."
+  },
+  {
+   "time": "2026-10-18T06:51:07Z",
+   "text": "Scanned 22 events ending within 14 days (147 price checks); 4 qualify; 0 order(s) simulated."
   }
  ],
  "mode": "dry_run",
@@ -970,7 +970,7 @@
   "pnl_usd": 7.57,
   "staked_usd": 147.43
  },
- "updated": "2026-10-18T06:13:28Z",
+ "updated": "2026-10-18T06:51:07Z",
  "candidates": [
   {
    "slug": "gdpc-us-saa-q3-2026-10-29-gt1pt0",
