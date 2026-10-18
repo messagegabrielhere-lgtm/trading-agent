@@ -155,10 +155,6 @@
  ],
  "log": [
   {
-   "time": "2026-10-13T00:46:39Z",
-   "text": "Scanned 16 events ending within 14 days (98 price checks); 1 qualify; 1 order(s) simulated."
-  },
-  {
    "time": "2026-10-13T01:13:39Z",
    "text": "Scanned 16 events ending within 14 days (91 price checks); 0 qualify; 0 order(s) simulated."
   },
@@ -953,6 +949,10 @@
   {
    "time": "2026-10-18T00:54:24Z",
    "text": "Scanned 17 events ending within 14 days (99 price checks); 3 qualify; 0 order(s) simulated."
+  },
+  {
+   "time": "2026-10-18T01:42:41Z",
+   "text": "Scanned 17 events ending within 14 days (99 price checks); 3 qualify; 0 order(s) simulated."
   }
  ],
  "mode": "dry_run",
@@ -970,7 +970,7 @@
   "pnl_usd": 7.57,
   "staked_usd": 147.43
  },
- "updated": "2026-10-18T00:54:24Z",
+ "updated": "2026-10-18T01:42:41Z",
  "candidates": [
   {
    "slug": "gdpc-us-saa-q3-2026-10-29-gt1pt0",
@@ -1001,9 +1001,9 @@
    "event_title": "Bank of Japan Decision in October?",
    "ends": "2026-10-31T03:59:00Z",
    "series": "boj",
-   "bid": 0.95,
+   "bid": 0.93,
    "ask": 0.96,
-   "price": 0.95
+   "price": 0.94
   }
  ],
  "exposure": {
