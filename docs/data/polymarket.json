@@ -155,10 +155,6 @@
  ],
  "log": [
   {
-   "time": "2026-10-13T09:35:10Z",
-   "text": "Scanned 16 events ending within 14 days (75 price checks); 1 qualify; 1 order(s) simulated."
-  },
-  {
    "time": "2026-10-13T10:02:01Z",
    "text": "Scanned 17 events ending within 14 days (80 price checks); 0 qualify; 0 order(s) simulated."
   },
@@ -953,6 +949,10 @@
   {
    "time": "2026-10-18T12:08:51Z",
    "text": "Scanned 22 events ending within 14 days (147 price checks); 4 qualify; 0 order(s) simulated."
+  },
+  {
+   "time": "2026-10-18T12:49:48Z",
+   "text": "Scanned 22 events ending within 14 days (147 price checks); 4 qualify; 0 order(s) simulated."
   }
  ],
  "mode": "dry_run",
@@ -970,7 +970,7 @@
   "pnl_usd": 7.57,
   "staked_usd": 147.43
  },
- "updated": "2026-10-18T12:08:51Z",
+ "updated": "2026-10-18T12:49:48Z",
  "candidates": [
   {
    "slug": "gdpc-us-saa-q3-2026-10-29-gt1pt0",
