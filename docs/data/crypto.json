@@ -27,14 +27,6 @@
  ],
  "log": [
   {
-   "time": "2026-10-17T14:39:31+00:00",
-   "text": "BTC $81,468 is above its 200-day average $72,426. Bot holds $245.99 vs $250.00 target. No trade."
-  },
-  {
-   "time": "2026-10-17T14:39:31+00:00",
-   "text": "ETH $2,424 is above its 200-day average $2,146. Bot holds $243.11 vs $250.00 target. No trade."
-  },
-  {
    "time": "2026-10-17T15:06:23+00:00",
    "text": "BTC $81,447 is above its 200-day average $72,426. Bot holds $245.93 vs $250.00 target. No trade."
   },
@@ -825,6 +817,14 @@
   {
    "time": "2026-10-20T03:52:02+00:00",
    "text": "ETH $2,409 is above its 200-day average $2,149. Bot holds $241.59 vs $250.00 target. No trade."
+  },
+  {
+   "time": "2026-10-20T04:45:03+00:00",
+   "text": "BTC $81,967 is above its 200-day average $72,571. Bot holds $247.50 vs $250.00 target. No trade."
+  },
+  {
+   "time": "2026-10-20T04:45:03+00:00",
+   "text": "ETH $2,409 is above its 200-day average $2,149. Bot holds $241.59 vs $250.00 target. No trade."
   }
  ],
  "mode": "dry_run",
@@ -839,12 +839,12 @@
  },
  "signals": {
   "BTC": {
-   "close": 81965.82,
-   "sma": 72570.77,
+   "close": 81966.74,
+   "sma": 72570.78,
    "above": true
   },
   "ETH": {
-   "close": 2409.39,
+   "close": 2409.33,
    "sma": 2149.31,
    "above": true
   }
@@ -1732,7 +1732,7 @@
    20.9383,
    21.3114,
    19.7584,
-   19.6416
+   19.6415
   ],
   "hold": [
    1.0,
@@ -2173,7 +2173,7 @@
    9.7433,
    9.9169,
    9.1942,
-   9.1399
+   9.1398
   ],
   "stats": {
    "trend": {
@@ -2181,14 +2181,14 @@
     "vol": 0.4579,
     "sharpe": 1.0053,
     "max_drawdown": -0.5935,
-    "total_multiple": 19.6416
+    "total_multiple": 19.6415
    },
    "hold": {
     "cagr": 0.3014,
     "vol": 0.6768,
     "sharpe": 0.7335,
     "max_drawdown": -0.7631,
-    "total_multiple": 9.1399
+    "total_multiple": 9.1398
    }
   }
  },
@@ -2198,5 +2198,5 @@
  },
  "book": "sim_qty",
  "bot_value_usd": 489.09,
- "updated": "2026-10-20T03:52:02+00:00"
+ "updated": "2026-10-20T04:45:03+00:00"
 }
