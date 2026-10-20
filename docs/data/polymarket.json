@@ -157,10 +157,6 @@
  ],
  "log": [
   {
-   "time": "2026-10-15T00:03:08Z",
-   "text": "Scanned 11 events ending within 14 days (70 price checks); 0 qualify; 0 order(s) simulated."
-  },
-  {
    "time": "2026-10-15T00:51:24Z",
    "text": "Would place BUY YES 27 x rdc-cbr-2026-10-23-nochng at $0.90 ($24.30, pays $27 if it resolves YES; ends 2026-10-24T03:59:00Z). dry run."
   },
@@ -955,6 +951,10 @@
   {
    "time": "2026-10-20T06:57:53Z",
    "text": "Scanned 20 events ending within 14 days (120 price checks); 4 qualify; 0 order(s) simulated."
+  },
+  {
+   "time": "2026-10-20T07:54:06Z",
+   "text": "Scanned 20 events ending within 14 days (120 price checks); 4 qualify; 0 order(s) simulated."
   }
  ],
  "mode": "dry_run",
@@ -972,7 +972,7 @@
   "pnl_usd": 8.61,
   "staked_usd": 172.39
  },
- "updated": "2026-10-20T06:57:53Z",
+ "updated": "2026-10-20T07:54:06Z",
  "candidates": [
   {
    "slug": "gdpc-us-saa-q3-2026-10-29-gt1pt0",
@@ -1003,9 +1003,9 @@
    "event_title": "Bank of Japan Decision in October?",
    "ends": "2026-10-31T03:59:00Z",
    "series": "boj",
-   "bid": 0.95,
+   "bid": 0.94,
    "ask": 0.97,
-   "price": 0.96
+   "price": 0.95
   },
   {
    "slug": "pnwpc-elonmusk-2026-10-31-above-800b",
