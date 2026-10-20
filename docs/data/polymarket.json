@@ -28,7 +28,9 @@
    "cost": 24.96,
    "max_profit": 1.04,
    "mode": "dry_run",
-   "status": "dry run"
+   "status": "dry run",
+   "result": "won",
+   "pnl": 1.04
   },
   {
    "time": "2026-10-09T17:13:55Z",
@@ -154,10 +156,6 @@
   }
  ],
  "log": [
-  {
-   "time": "2026-10-14T18:13:24Z",
-   "text": "Scanned 11 events ending within 14 days (68 price checks); 0 qualify; 0 order(s) simulated."
-  },
   {
    "time": "2026-10-14T18:54:54Z",
    "text": "Scanned 11 events ending within 14 days (68 price checks); 0 qualify; 0 order(s) simulated."
@@ -953,6 +951,10 @@
   {
    "time": "2026-10-19T23:44:42Z",
    "text": "Scanned 19 events ending within 14 days (119 price checks); 4 qualify; 0 order(s) simulated."
+  },
+  {
+   "time": "2026-10-20T00:12:01Z",
+   "text": "Scanned 19 events ending within 14 days (119 price checks); 4 qualify; 0 order(s) simulated."
   }
  ],
  "mode": "dry_run",
@@ -965,12 +967,12 @@
   "max_positions": 10
  },
  "dry_run_record": {
-  "settled": 6,
-  "won": 6,
-  "pnl_usd": 7.57,
-  "staked_usd": 147.43
+  "settled": 7,
+  "won": 7,
+  "pnl_usd": 8.61,
+  "staked_usd": 172.39
  },
- "updated": "2026-10-19T23:44:42Z",
+ "updated": "2026-10-20T00:12:01Z",
  "candidates": [
   {
    "slug": "gdpc-us-saa-q3-2026-10-29-gt1pt0",
@@ -1018,9 +1020,9 @@
   }
  ],
  "exposure": {
-  "used_usd": 98.35,
+  "used_usd": 73.39,
   "limit_usd": 200,
-  "positions": 4,
+  "positions": 3,
   "open_orders": 0
  },
  "positions": [
@@ -1044,13 +1046,6 @@
    "cost": 24.25,
    "event_title": "Wildwood Rotten Tomatoes Score?",
    "series": "t"
-  },
-  {
-   "slug": "rotc-t-youcan-2026-10-19-gte90",
-   "qty": 26,
-   "cost": 24.96,
-   "event_title": "You Can See Everything Rotten Tomatoes Score?",
-   "series": "rotc"
   }
  ]
 }
