@@ -157,10 +157,6 @@
  ],
  "log": [
   {
-   "time": "2026-10-15T05:42:37Z",
-   "text": "Scanned 13 events ending within 14 days (75 price checks); 0 qualify; 0 order(s) simulated."
-  },
-  {
    "time": "2026-10-15T06:13:43Z",
    "text": "Scanned 13 events ending within 14 days (75 price checks); 0 qualify; 0 order(s) simulated."
   },
@@ -955,6 +951,10 @@
   {
    "time": "2026-10-21T17:17:26Z",
    "text": "Scanned 293 events ending within 14 days (150 price checks); 7 qualify; 0 order(s) simulated."
+  },
+  {
+   "time": "2026-10-21T20:47:12Z",
+   "text": "Scanned 293 events ending within 14 days (150 price checks); 6 qualify; 0 order(s) simulated."
   }
  ],
  "mode": "dry_run",
@@ -972,7 +972,7 @@
   "pnl_usd": 8.61,
   "staked_usd": 172.39
  },
- "updated": "2026-10-21T17:17:26Z",
+ "updated": "2026-10-21T20:47:12Z",
  "candidates": [
   {
    "slug": "gdpc-us-saa-q3-2026-10-29-gt1pt0",
@@ -992,9 +992,9 @@
    "event_title": "U.S House Midterm Winner",
    "ends": "2026-11-04T04:59:00Z",
    "series": "usho",
-   "bid": 0.9,
-   "ask": 0.901,
-   "price": 0.9
+   "bid": 0.905,
+   "ask": 0.906,
+   "price": 0.905
   },
   {
    "slug": "ewc-usgub-mi-2026-11-03-dem",
@@ -1028,17 +1028,6 @@
    "bid": 0.94,
    "ask": 0.95,
    "price": 0.94
-  },
-  {
-   "slug": "scc-hrep-rep-2026-11-03-gte180",
-   "title": "180+",
-   "event": "hrep-rep-2026-11-03",
-   "event_title": "2026 Midterms: Republican House Seats?",
-   "ends": "2026-11-04T04:59:00Z",
-   "series": "hrep",
-   "bid": 0.91,
-   "ask": 0.92,
-   "price": 0.91
   },
   {
    "slug": "ushrewc-ushr-al-01-2026-11-03-rep",
