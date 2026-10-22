@@ -159,10 +159,6 @@
  ],
  "log": [
   {
-   "time": "2026-10-15T10:17:52Z",
-   "text": "Scanned 13 events ending within 14 days (75 price checks); 0 qualify; 0 order(s) simulated."
-  },
-  {
    "time": "2026-10-15T11:07:19Z",
    "text": "Scanned 0 events ending within 14 days (0 price checks); 0 qualify; 0 order(s) simulated."
   },
@@ -957,6 +953,10 @@
   {
    "time": "2026-10-22T18:20:31Z",
    "text": "Scanned 293 events ending within 14 days (150 price checks); 6 qualify; 0 order(s) simulated."
+  },
+  {
+   "time": "2026-10-22T21:46:30Z",
+   "text": "Scanned 293 events ending within 14 days (150 price checks); 7 qualify; 0 order(s) simulated."
   }
  ],
  "mode": "dry_run",
@@ -974,7 +974,7 @@
   "pnl_usd": 10.77,
   "staked_usd": 197.23
  },
- "updated": "2026-10-22T18:20:31Z",
+ "updated": "2026-10-22T21:46:30Z",
  "candidates": [
   {
    "slug": "rdc-usfed-fomc-2026-10-28-nochng",
@@ -1005,9 +1005,9 @@
    "event_title": "U.S House Midterm Winner",
    "ends": "2026-11-04T04:59:00Z",
    "series": "usho",
-   "bid": 0.914,
-   "ask": 0.915,
-   "price": 0.914
+   "bid": 0.909,
+   "ask": 0.91,
+   "price": 0.909
   },
   {
    "slug": "ewc-usgub-mi-2026-11-03-dem",
@@ -1016,9 +1016,9 @@
    "event_title": "Michigan Governor Election Winner",
    "ends": "2026-11-04T04:59:00Z",
    "series": "usgub",
-   "bid": 0.9,
-   "ask": 0.91,
-   "price": 0.9
+   "bid": 0.92,
+   "ask": 0.93,
+   "price": 0.92
   },
   {
    "slug": "ewc-usse-ga-2026-11-03-dem",
@@ -1041,6 +1041,17 @@
    "bid": 0.95,
    "ask": 0.96,
    "price": 0.95
+  },
+  {
+   "slug": "ushrewc-ushr-al-01-2026-11-03-rep",
+   "title": "Jerry Carl (R)",
+   "event": "ushr-al-01-2026-11-03",
+   "event_title": "AL-01 House Election Winner",
+   "ends": "2026-11-04T04:59:00Z",
+   "series": "ushr",
+   "bid": 0.96,
+   "ask": 0.99,
+   "price": 0.97
   }
  ],
  "exposure": {
