@@ -159,10 +159,6 @@
  ],
  "log": [
   {
-   "time": "2026-10-15T09:44:51Z",
-   "text": "Scanned 13 events ending within 14 days (75 price checks); 0 qualify; 0 order(s) simulated."
-  },
-  {
    "time": "2026-10-15T10:17:52Z",
    "text": "Scanned 13 events ending within 14 days (75 price checks); 0 qualify; 0 order(s) simulated."
   },
@@ -957,6 +953,10 @@
   {
    "time": "2026-10-22T13:21:52Z",
    "text": "Scanned 293 events ending within 14 days (150 price checks); 6 qualify; 0 order(s) simulated."
+  },
+  {
+   "time": "2026-10-22T18:20:31Z",
+   "text": "Scanned 293 events ending within 14 days (150 price checks); 6 qualify; 0 order(s) simulated."
   }
  ],
  "mode": "dry_run",
@@ -974,7 +974,7 @@
   "pnl_usd": 10.77,
   "staked_usd": 197.23
  },
- "updated": "2026-10-22T13:21:52Z",
+ "updated": "2026-10-22T18:20:31Z",
  "candidates": [
   {
    "slug": "rdc-usfed-fomc-2026-10-28-nochng",
@@ -983,9 +983,9 @@
    "event_title": "Fed Decision in October",
    "ends": "2026-10-29T03:59:00Z",
    "series": "usfed",
-   "bid": 0.9,
-   "ask": 0.91,
-   "price": 0.9
+   "bid": 0.94,
+   "ask": 0.95,
+   "price": 0.94
   },
   {
    "slug": "gdpc-us-saa-q3-2026-10-29-gt1pt5",
@@ -1005,9 +1005,9 @@
    "event_title": "U.S House Midterm Winner",
    "ends": "2026-11-04T04:59:00Z",
    "series": "usho",
-   "bid": 0.908,
-   "ask": 0.909,
-   "price": 0.908
+   "bid": 0.914,
+   "ask": 0.915,
+   "price": 0.914
   },
   {
    "slug": "ewc-usgub-mi-2026-11-03-dem",
@@ -1027,9 +1027,9 @@
    "event_title": "Georgia Senate Election Winner",
    "ends": "2026-11-04T04:59:00Z",
    "series": "usse",
-   "bid": 0.95,
-   "ask": 0.96,
-   "price": 0.95
+   "bid": 0.94,
+   "ask": 0.95,
+   "price": 0.94
   },
   {
    "slug": "pvwc-housepopw-2026-11-03-dem",
@@ -1038,9 +1038,9 @@
    "event_title": "2026 Midterms: House Popular Vote Winner?",
    "ends": "2026-11-04T04:59:00Z",
    "series": "housepopw",
-   "bid": 0.93,
-   "ask": 0.94,
-   "price": 0.93
+   "bid": 0.95,
+   "ask": 0.96,
+   "price": 0.95
   }
  ],
  "exposure": {
