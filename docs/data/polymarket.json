@@ -106,7 +106,9 @@
    "cost": 24.84,
    "max_profit": 2.16,
    "mode": "dry_run",
-   "status": "dry run"
+   "status": "dry run",
+   "result": "won",
+   "pnl": 2.16
   },
   {
    "time": "2026-10-13T05:03:35Z",
@@ -156,10 +158,6 @@
   }
  ],
  "log": [
-  {
-   "time": "2026-10-15T06:57:51Z",
-   "text": "Scanned 13 events ending within 14 days (75 price checks); 0 qualify; 0 order(s) simulated."
-  },
   {
    "time": "2026-10-15T07:50:30Z",
    "text": "Scanned 13 events ending within 14 days (75 price checks); 0 qualify; 0 order(s) simulated."
@@ -955,6 +953,10 @@
   {
    "time": "2026-10-21T23:40:54Z",
    "text": "Scanned 293 events ending within 14 days (150 price checks); 6 qualify; 0 order(s) simulated."
+  },
+  {
+   "time": "2026-10-22T02:02:29Z",
+   "text": "Scanned 293 events ending within 14 days (150 price checks); 6 qualify; 0 order(s) simulated."
   }
  ],
  "mode": "dry_run",
@@ -967,12 +969,12 @@
   "max_positions": 10
  },
  "dry_run_record": {
-  "settled": 7,
-  "won": 7,
-  "pnl_usd": 8.61,
-  "staked_usd": 172.39
+  "settled": 8,
+  "won": 8,
+  "pnl_usd": 10.77,
+  "staked_usd": 197.23
  },
- "updated": "2026-10-21T23:40:54Z",
+ "updated": "2026-10-22T02:02:29Z",
  "candidates": [
   {
    "slug": "gdpc-us-saa-q3-2026-10-29-gt1pt0",
@@ -1025,9 +1027,9 @@
    "event_title": "2026 Midterms: House Popular Vote Winner?",
    "ends": "2026-11-04T04:59:00Z",
    "series": "housepopw",
-   "bid": 0.94,
-   "ask": 0.95,
-   "price": 0.94
+   "bid": 0.93,
+   "ask": 0.94,
+   "price": 0.93
   },
   {
    "slug": "ushrewc-ushr-al-01-2026-11-03-rep",
@@ -1042,19 +1044,12 @@
   }
  ],
  "exposure": {
-  "used_usd": 73.39,
+  "used_usd": 48.55,
   "limit_usd": 200,
-  "positions": 3,
+  "positions": 2,
   "open_orders": 0
  },
  "positions": [
-  {
-   "slug": "rdc-boi-2026-10-21-nochng",
-   "qty": 27,
-   "cost": 24.84,
-   "event_title": "Bank of Israel Decision in October?",
-   "series": "boi"
-  },
   {
    "slug": "rdc-cbr-2026-10-23-nochng",
    "qty": 27,
