@@ -159,10 +159,6 @@
  ],
  "log": [
   {
-   "time": "2026-10-15T08:46:06Z",
-   "text": "Scanned 13 events ending within 14 days (75 price checks); 0 qualify; 0 order(s) simulated."
-  },
-  {
    "time": "2026-10-15T09:44:51Z",
    "text": "Scanned 13 events ending within 14 days (75 price checks); 0 qualify; 0 order(s) simulated."
   },
@@ -957,6 +953,10 @@
   {
    "time": "2026-10-22T07:40:40Z",
    "text": "Scanned 293 events ending within 14 days (150 price checks); 6 qualify; 0 order(s) simulated."
+  },
+  {
+   "time": "2026-10-22T13:21:52Z",
+   "text": "Scanned 293 events ending within 14 days (150 price checks); 6 qualify; 0 order(s) simulated."
   }
  ],
  "mode": "dry_run",
@@ -974,18 +974,29 @@
   "pnl_usd": 10.77,
   "staked_usd": 197.23
  },
- "updated": "2026-10-22T07:40:40Z",
+ "updated": "2026-10-22T13:21:52Z",
  "candidates": [
   {
-   "slug": "gdpc-us-saa-q3-2026-10-29-gt1pt0",
-   "title": "Above 1.0%",
+   "slug": "rdc-usfed-fomc-2026-10-28-nochng",
+   "title": "No Change",
+   "event": "usfed-fomc-2026-10-28",
+   "event_title": "Fed Decision in October",
+   "ends": "2026-10-29T03:59:00Z",
+   "series": "usfed",
+   "bid": 0.9,
+   "ask": 0.91,
+   "price": 0.9
+  },
+  {
+   "slug": "gdpc-us-saa-q3-2026-10-29-gt1pt5",
+   "title": "Above 1.5%",
    "event": "us-saa-q3-2026-10-29",
    "event_title": "US GDP Growth in Q3 2026?",
    "ends": "2026-10-30T03:59:00Z",
    "series": "us",
-   "bid": 0.97,
-   "ask": 0.98,
-   "price": 0.97
+   "bid": 0.96,
+   "ask": 0.97,
+   "price": 0.96
   },
   {
    "slug": "paccc-usho-midterms-2026-11-03-dem",
@@ -1005,9 +1016,9 @@
    "event_title": "Michigan Governor Election Winner",
    "ends": "2026-11-04T04:59:00Z",
    "series": "usgub",
-   "bid": 0.92,
-   "ask": 0.93,
-   "price": 0.92
+   "bid": 0.9,
+   "ask": 0.91,
+   "price": 0.9
   },
   {
    "slug": "ewc-usse-ga-2026-11-03-dem",
@@ -1016,9 +1027,9 @@
    "event_title": "Georgia Senate Election Winner",
    "ends": "2026-11-04T04:59:00Z",
    "series": "usse",
-   "bid": 0.94,
-   "ask": 0.95,
-   "price": 0.94
+   "bid": 0.95,
+   "ask": 0.96,
+   "price": 0.95
   },
   {
    "slug": "pvwc-housepopw-2026-11-03-dem",
@@ -1030,17 +1041,6 @@
    "bid": 0.93,
    "ask": 0.94,
    "price": 0.93
-  },
-  {
-   "slug": "ushrewc-ushr-al-01-2026-11-03-rep",
-   "title": "Jerry Carl (R)",
-   "event": "ushr-al-01-2026-11-03",
-   "event_title": "AL-01 House Election Winner",
-   "ends": "2026-11-04T04:59:00Z",
-   "series": "ushr",
-   "bid": 0.96,
-   "ask": 0.97,
-   "price": 0.96
   }
  ],
  "exposure": {
