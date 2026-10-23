@@ -507,12 +507,16 @@
   {
    "time": "2026-10-23T17:46:21+00:00",
    "text": "In line with targets (QLD 100%). No orders."
+  },
+  {
+   "time": "2026-10-23T21:09:00+00:00",
+   "text": "Market is closed. Account snapshot only."
   }
  ],
  "connected": true,
- "updated": "2026-10-23T17:46:21+00:00",
+ "updated": "2026-10-23T21:09:00+00:00",
  "account": {
-  "equity": 88681.19,
+  "equity": 88614.73,
   "cash": 229.8,
   "last_equity": 88420.48,
   "status": "ACTIVE"
@@ -521,10 +525,10 @@
   {
    "symbol": "QLD",
    "qty": 1022.382085972,
-   "price": 86.52,
-   "value": 88451.39,
+   "price": 86.45,
+   "value": 88384.93,
    "weight": 0.9974,
-   "unrealized_pl": -11087.23,
+   "unrealized_pl": -11153.69,
    "avg_entry": 97.36
   }
  ],
@@ -571,7 +575,7 @@
   },
   {
    "date": "2026-10-23",
-   "equity": 88681.19
+   "equity": 88614.73
   }
  ]
 }
