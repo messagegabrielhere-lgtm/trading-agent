@@ -159,10 +159,6 @@
  ],
  "log": [
   {
-   "time": "2026-10-15T15:47:08Z",
-   "text": "Scanned 13 events ending within 14 days (75 price checks); 0 qualify; 0 order(s) simulated."
-  },
-  {
    "time": "2026-10-15T16:44:32Z",
    "text": "Scanned 13 events ending within 14 days (75 price checks); 0 qualify; 0 order(s) simulated."
   },
@@ -957,6 +953,10 @@
   {
    "time": "2026-10-23T19:20:06Z",
    "text": "Scanned 293 events ending within 14 days (150 price checks); 7 qualify; 0 order(s) simulated."
+  },
+  {
+   "time": "2026-10-23T22:21:40Z",
+   "text": "Scanned 293 events ending within 14 days (150 price checks); 8 qualify; 0 order(s) simulated."
   }
  ],
  "mode": "dry_run",
@@ -974,7 +974,7 @@
   "pnl_usd": 10.77,
   "staked_usd": 197.23
  },
- "updated": "2026-10-23T19:20:06Z",
+ "updated": "2026-10-23T22:21:40Z",
  "candidates": [
   {
    "slug": "rdc-usfed-fomc-2026-10-28-nochng",
@@ -1039,8 +1039,19 @@
    "ends": "2026-11-04T04:59:00Z",
    "series": "housepopw",
    "bid": 0.95,
-   "ask": 0.96,
-   "price": 0.95
+   "ask": 0.97,
+   "price": 0.96
+  },
+  {
+   "slug": "scc-hrep-rep-2026-11-03-gte180",
+   "title": "180+",
+   "event": "hrep-rep-2026-11-03",
+   "event_title": "2026 Midterms: Republican House Seats?",
+   "ends": "2026-11-04T04:59:00Z",
+   "series": "hrep",
+   "bid": 0.9,
+   "ask": 0.91,
+   "price": 0.9
   },
   {
    "slug": "ushrewc-ushr-al-01-2026-11-03-rep",
