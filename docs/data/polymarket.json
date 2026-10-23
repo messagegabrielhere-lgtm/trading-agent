@@ -159,10 +159,6 @@
  ],
  "log": [
   {
-   "time": "2026-10-15T11:07:19Z",
-   "text": "Scanned 0 events ending within 14 days (0 price checks); 0 qualify; 0 order(s) simulated."
-  },
-  {
    "time": "2026-10-15T11:41:00Z",
    "text": "Scanned 1 events ending within 14 days (2 price checks); 0 qualify; 0 order(s) simulated."
   },
@@ -957,6 +953,10 @@
   {
    "time": "2026-10-22T21:46:30Z",
    "text": "Scanned 293 events ending within 14 days (150 price checks); 7 qualify; 0 order(s) simulated."
+  },
+  {
+   "time": "2026-10-23T00:19:51Z",
+   "text": "Scanned 293 events ending within 14 days (150 price checks); 7 qualify; 0 order(s) simulated."
   }
  ],
  "mode": "dry_run",
@@ -974,7 +974,7 @@
   "pnl_usd": 10.77,
   "staked_usd": 197.23
  },
- "updated": "2026-10-22T21:46:30Z",
+ "updated": "2026-10-23T00:19:51Z",
  "candidates": [
   {
    "slug": "rdc-usfed-fomc-2026-10-28-nochng",
