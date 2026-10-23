@@ -62,6 +62,16 @@
    "date": "2026-10-21",
    "equity": 9247.4,
    "benchmark": 9946.86
+  },
+  {
+   "date": "2026-10-22",
+   "equity": 8721.64,
+   "benchmark": 9829.39
+  },
+  {
+   "date": "2026-10-23",
+   "equity": 8710.52,
+   "benchmark": 9778.06
   }
  ],
  "trades": [
@@ -201,6 +211,22 @@
    "targets": {
     "QLD": 1.0
    }
+  },
+  {
+   "date": "2026-10-22",
+   "action": "hold",
+   "reason": "QQQ 704.47 vs 200-day average 675.69: risk on, hold QLD.",
+   "targets": {
+    "QLD": 1.0
+   }
+  },
+  {
+   "date": "2026-10-23",
+   "action": "hold",
+   "reason": "QQQ 704.40 vs 200-day average 676.10: risk on, hold QLD.",
+   "targets": {
+    "QLD": 1.0
+   }
   }
  ],
  "tickets": {
@@ -229,13 +255,13 @@
    }
   ]
  },
- "last_date": "2026-10-21",
+ "last_date": "2026-10-23",
  "holdings": [
   {
    "symbol": "QLD",
    "qty": 101.1087,
-   "price": 91.46,
-   "value": 9247.4,
+   "price": 86.15,
+   "value": 8710.52,
    "weight": 1.0
   }
  ],
@@ -243,29 +269,29 @@
  "benchmark": "SPY",
  "goal_multiple": 10,
  "goal_days": 365,
- "updated": "2026-10-23T00:03:40+00:00",
+ "updated": "2026-10-23T23:54:21+00:00",
  "targets": {
   "QLD": 1.0
  },
  "prices": {
-  "BIL": 91.6,
-  "BND": 70.75,
-  "DBC": 33.5,
-  "EEM": 63.57,
-  "EFA": 104.06,
-  "EWJ": 95.72,
-  "GLD": 378.95,
-  "HYG": 76.98,
-  "IEF": 90.23,
-  "IWM": 276.48,
-  "LQD": 103.21,
-  "QLD": 91.46,
-  "QQQ": 725.2,
-  "SHY": 81.29,
-  "SPY": 773.09,
-  "TLT": 80.24,
-  "VGK": 87.58,
-  "VNQ": 91.49,
-  "VWO": 58.18
+  "BIL": 91.63,
+  "BND": 71.2,
+  "DBC": 34.1,
+  "EEM": 62.01,
+  "EFA": 102.63,
+  "EWJ": 94.1,
+  "GLD": 366.61,
+  "HYG": 77.05,
+  "IEF": 91.05,
+  "IWM": 275.75,
+  "LQD": 103.85,
+  "QLD": 86.15,
+  "QQQ": 704.4,
+  "SHY": 81.5,
+  "SPY": 759.97,
+  "TLT": 81.34,
+  "VGK": 86.25,
+  "VNQ": 92.69,
+  "VWO": 56.84
  }
 }
