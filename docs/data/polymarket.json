@@ -159,10 +159,6 @@
  ],
  "log": [
   {
-   "time": "2026-10-15T12:53:04Z",
-   "text": "Scanned 13 events ending within 14 days (75 price checks); 0 qualify; 0 order(s) simulated."
-  },
-  {
    "time": "2026-10-15T13:52:40Z",
    "text": "Scanned 13 events ending within 14 days (75 price checks); 0 qualify; 0 order(s) simulated."
   },
@@ -957,6 +953,10 @@
   {
    "time": "2026-10-23T04:59:10Z",
    "text": "Scanned 293 events ending within 14 days (150 price checks); 7 qualify; 0 order(s) simulated."
+  },
+  {
+   "time": "2026-10-23T10:10:31Z",
+   "text": "Scanned 293 events ending within 14 days (150 price checks); 7 qualify; 0 order(s) simulated."
   }
  ],
  "mode": "dry_run",
@@ -974,7 +974,7 @@
   "pnl_usd": 10.77,
   "staked_usd": 197.23
  },
- "updated": "2026-10-23T04:59:10Z",
+ "updated": "2026-10-23T10:10:31Z",
  "candidates": [
   {
    "slug": "rdc-usfed-fomc-2026-10-28-nochng",
@@ -1049,9 +1049,9 @@
    "event_title": "AL-01 House Election Winner",
    "ends": "2026-11-04T04:59:00Z",
    "series": "ushr",
-   "bid": 0.95,
-   "ask": 0.99,
-   "price": 0.96
+   "bid": 0.97,
+   "ask": 0.98,
+   "price": 0.97
   }
  ],
  "exposure": {
