@@ -154,14 +154,12 @@
    "cost": 24.3,
    "max_profit": 2.7,
    "mode": "dry_run",
-   "status": "dry run"
+   "status": "dry run",
+   "result": "won",
+   "pnl": 2.7
   }
  ],
  "log": [
-  {
-   "time": "2026-10-15T17:20:36Z",
-   "text": "Scanned 13 events ending within 14 days (75 price checks); 0 qualify; 0 order(s) simulated."
-  },
   {
    "time": "2026-10-15T18:11:38Z",
    "text": "Scanned 13 events ending within 14 days (75 price checks); 0 qualify; 0 order(s) simulated."
@@ -957,6 +955,10 @@
   {
    "time": "2026-10-24T01:13:52Z",
    "text": "Scanned 293 events ending within 14 days (150 price checks); 8 qualify; 0 order(s) simulated."
+  },
+  {
+   "time": "2026-10-24T05:57:18Z",
+   "text": "Scanned 292 events ending within 14 days (150 price checks); 8 qualify; 0 order(s) simulated."
   }
  ],
  "mode": "dry_run",
@@ -969,12 +971,12 @@
   "max_positions": 10
  },
  "dry_run_record": {
-  "settled": 8,
-  "won": 8,
-  "pnl_usd": 10.77,
-  "staked_usd": 197.23
+  "settled": 9,
+  "won": 9,
+  "pnl_usd": 13.47,
+  "staked_usd": 221.53
  },
- "updated": "2026-10-24T01:13:52Z",
+ "updated": "2026-10-24T05:57:18Z",
  "candidates": [
   {
    "slug": "rdc-usfed-fomc-2026-10-28-nochng",
@@ -1005,9 +1007,9 @@
    "event_title": "U.S House Midterm Winner",
    "ends": "2026-11-04T04:59:00Z",
    "series": "usho",
-   "bid": 0.906,
-   "ask": 0.907,
-   "price": 0.906
+   "bid": 0.909,
+   "ask": 0.91,
+   "price": 0.909
   },
   {
    "slug": "ewc-usgub-mi-2026-11-03-dem",
@@ -1061,24 +1063,17 @@
    "ends": "2026-11-04T04:59:00Z",
    "series": "ushr",
    "bid": 0.95,
-   "ask": 0.99,
+   "ask": 0.98,
    "price": 0.96
   }
  ],
  "exposure": {
-  "used_usd": 48.55,
+  "used_usd": 24.25,
   "limit_usd": 200,
-  "positions": 2,
+  "positions": 1,
   "open_orders": 0
  },
  "positions": [
-  {
-   "slug": "rdc-cbr-2026-10-23-nochng",
-   "qty": 27,
-   "cost": 24.3,
-   "event_title": "Bank of Russia Decision in October?",
-   "series": "cbr"
-  },
   {
    "slug": "rotc-t-wildwd-2026-10-26-gte80",
    "qty": 25,
