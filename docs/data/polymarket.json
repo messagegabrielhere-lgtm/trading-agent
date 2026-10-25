@@ -161,10 +161,6 @@
  ],
  "log": [
   {
-   "time": "2026-10-15T21:48:33Z",
-   "text": "Scanned 14 events ending within 14 days (83 price checks); 0 qualify; 0 order(s) simulated."
-  },
-  {
    "time": "2026-10-15T22:41:49Z",
    "text": "Scanned 14 events ending within 14 days (83 price checks); 0 qualify; 0 order(s) simulated."
   },
@@ -959,6 +955,10 @@
   {
    "time": "2026-10-25T00:41:36Z",
    "text": "Scanned 292 events ending within 14 days (150 price checks); 7 qualify; 0 order(s) simulated."
+  },
+  {
+   "time": "2026-10-25T05:26:54Z",
+   "text": "Scanned 290 events ending within 14 days (150 price checks); 7 qualify; 0 order(s) simulated."
   }
  ],
  "mode": "dry_run",
@@ -976,7 +976,7 @@
   "pnl_usd": 13.47,
   "staked_usd": 221.53
  },
- "updated": "2026-10-25T00:41:36Z",
+ "updated": "2026-10-25T05:26:54Z",
  "candidates": [
   {
    "slug": "rdc-usfed-fomc-2026-10-28-nochng",
@@ -985,9 +985,9 @@
    "event_title": "Fed Decision in October",
    "ends": "2026-10-29T03:59:00Z",
    "series": "usfed",
-   "bid": 0.92,
-   "ask": 0.93,
-   "price": 0.92
+   "bid": 0.93,
+   "ask": 0.94,
+   "price": 0.93
   },
   {
    "slug": "gdpc-us-saa-q3-2026-10-29-gt1pt5",
@@ -1007,9 +1007,9 @@
    "event_title": "U.S House Midterm Winner",
    "ends": "2026-11-04T04:59:00Z",
    "series": "usho",
-   "bid": 0.905,
-   "ask": 0.906,
-   "price": 0.905
+   "bid": 0.903,
+   "ask": 0.904,
+   "price": 0.903
   },
   {
    "slug": "ewc-usgub-mi-2026-11-03-dem",
@@ -1051,9 +1051,9 @@
    "event_title": "AL-01 House Election Winner",
    "ends": "2026-11-04T04:59:00Z",
    "series": "ushr",
-   "bid": 0.95,
+   "bid": 0.96,
    "ask": 0.99,
-   "price": 0.96
+   "price": 0.97
   }
  ],
  "exposure": {
