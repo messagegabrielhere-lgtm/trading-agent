@@ -161,10 +161,6 @@
  ],
  "log": [
   {
-   "time": "2026-10-15T23:06:31Z",
-   "text": "Scanned 14 events ending within 14 days (83 price checks); 0 qualify; 0 order(s) simulated."
-  },
-  {
    "time": "2026-10-15T23:37:39Z",
    "text": "Scanned 14 events ending within 14 days (83 price checks); 0 qualify; 0 order(s) simulated."
   },
@@ -959,6 +955,10 @@
   {
    "time": "2026-10-25T10:18:22Z",
    "text": "Scanned 290 events ending within 14 days (150 price checks); 6 qualify; 0 order(s) simulated."
+  },
+  {
+   "time": "2026-10-25T14:32:09Z",
+   "text": "Scanned 290 events ending within 14 days (150 price checks); 5 qualify; 0 order(s) simulated."
   }
  ],
  "mode": "dry_run",
@@ -976,7 +976,7 @@
   "pnl_usd": 13.47,
   "staked_usd": 221.53
  },
- "updated": "2026-10-25T10:18:22Z",
+ "updated": "2026-10-25T14:32:09Z",
  "candidates": [
   {
    "slug": "rdc-usfed-fomc-2026-10-28-nochng",
@@ -1032,17 +1032,6 @@
    "bid": 0.94,
    "ask": 0.95,
    "price": 0.94
-  },
-  {
-   "slug": "ushrewc-ushr-al-01-2026-11-03-rep",
-   "title": "Jerry Carl (R)",
-   "event": "ushr-al-01-2026-11-03",
-   "event_title": "AL-01 House Election Winner",
-   "ends": "2026-11-04T04:59:00Z",
-   "series": "ushr",
-   "bid": 0.96,
-   "ask": 0.99,
-   "price": 0.97
   }
  ],
  "exposure": {
