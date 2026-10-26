@@ -161,10 +161,6 @@
  ],
  "log": [
   {
-   "time": "2026-10-16T01:40:47Z",
-   "text": "Scanned 14 events ending within 14 days (83 price checks); 0 qualify; 0 order(s) simulated."
-  },
-  {
    "time": "2026-10-16T02:18:03Z",
    "text": "Scanned 17 events ending within 14 days (150 price checks); 1 qualify; 0 order(s) simulated."
   },
@@ -959,6 +955,10 @@
   {
    "time": "2026-10-25T23:23:16Z",
    "text": "Scanned 290 events ending within 14 days (150 price checks); 7 qualify; 0 order(s) simulated."
+  },
+  {
+   "time": "2026-10-26T01:51:31Z",
+   "text": "Scanned 290 events ending within 14 days (150 price checks); 7 qualify; 0 order(s) simulated."
   }
  ],
  "mode": "dry_run",
@@ -976,7 +976,7 @@
   "pnl_usd": 13.47,
   "staked_usd": 221.53
  },
- "updated": "2026-10-25T23:23:16Z",
+ "updated": "2026-10-26T01:51:31Z",
  "candidates": [
   {
    "slug": "rdc-usfed-fomc-2026-10-28-nochng",
@@ -1007,9 +1007,9 @@
    "event_title": "U.S House Midterm Winner",
    "ends": "2026-11-04T04:59:00Z",
    "series": "usho",
-   "bid": 0.9,
-   "ask": 0.901,
-   "price": 0.9
+   "bid": 0.902,
+   "ask": 0.903,
+   "price": 0.902
   },
   {
    "slug": "ewc-usgub-mi-2026-11-03-dem",
@@ -1040,9 +1040,9 @@
    "event_title": "2026 Midterms: House Popular Vote Winner?",
    "ends": "2026-11-04T04:59:00Z",
    "series": "housepopw",
-   "bid": 0.93,
-   "ask": 0.94,
-   "price": 0.93
+   "bid": 0.92,
+   "ask": 0.93,
+   "price": 0.92
   },
   {
    "slug": "ushrewc-ushr-al-01-2026-11-03-rep",
