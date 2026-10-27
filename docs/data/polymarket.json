@@ -163,10 +163,6 @@
  ],
  "log": [
   {
-   "time": "2026-10-16T04:44:05Z",
-   "text": "Scanned 17 events ending within 14 days (102 price checks); 2 qualify; 0 order(s) simulated."
-  },
-  {
    "time": "2026-10-16T05:16:28Z",
    "text": "Scanned 17 events ending within 14 days (102 price checks); 2 qualify; 0 order(s) simulated."
   },
@@ -961,6 +957,10 @@
   {
    "time": "2026-10-27T00:14:48Z",
    "text": "Scanned 290 events ending within 14 days (150 price checks); 7 qualify; 0 order(s) simulated."
+  },
+  {
+   "time": "2026-10-27T05:07:15Z",
+   "text": "Scanned 290 events ending within 14 days (150 price checks); 7 qualify; 0 order(s) simulated."
   }
  ],
  "mode": "dry_run",
@@ -978,7 +978,7 @@
   "pnl_usd": 14.22,
   "staked_usd": 245.78
  },
- "updated": "2026-10-27T00:14:48Z",
+ "updated": "2026-10-27T05:07:15Z",
  "candidates": [
   {
    "slug": "rdc-usfed-fomc-2026-10-28-nochng",
@@ -998,9 +998,9 @@
    "event_title": "US GDP Growth in Q3 2026?",
    "ends": "2026-10-30T03:59:00Z",
    "series": "us",
-   "bid": 0.96,
-   "ask": 0.97,
-   "price": 0.96
+   "bid": 0.97,
+   "ask": 0.98,
+   "price": 0.97
   },
   {
    "slug": "paccc-usho-midterms-2026-11-03-dem",
@@ -1053,9 +1053,9 @@
    "event_title": "AL-01 House Election Winner",
    "ends": "2026-11-04T04:59:00Z",
    "series": "ushr",
-   "bid": 0.96,
+   "bid": 0.95,
    "ask": 0.99,
-   "price": 0.97
+   "price": 0.96
   }
  ],
  "exposure": {
