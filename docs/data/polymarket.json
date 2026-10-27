@@ -163,10 +163,6 @@
  ],
  "log": [
   {
-   "time": "2026-10-16T05:41:34Z",
-   "text": "Stopped: PermissionDeniedError: HTTP 403 (an HTML error page)"
-  },
-  {
    "time": "2026-10-16T06:52:55Z",
    "text": "Scanned 17 events ending within 14 days (102 price checks); 2 qualify; 0 order(s) simulated."
   },
@@ -961,6 +957,10 @@
   {
    "time": "2026-10-27T10:40:18Z",
    "text": "Scanned 290 events ending within 14 days (150 price checks); 7 qualify; 0 order(s) simulated."
+  },
+  {
+   "time": "2026-10-27T16:11:13Z",
+   "text": "Scanned 290 events ending within 14 days (150 price checks); 7 qualify; 0 order(s) simulated."
   }
  ],
  "mode": "dry_run",
@@ -978,7 +978,7 @@
   "pnl_usd": 14.22,
   "staked_usd": 245.78
  },
- "updated": "2026-10-27T10:40:18Z",
+ "updated": "2026-10-27T16:11:13Z",
  "candidates": [
   {
    "slug": "rdc-usfed-fomc-2026-10-28-nochng",
@@ -987,9 +987,9 @@
    "event_title": "Fed Decision in October",
    "ends": "2026-10-29T03:59:00Z",
    "series": "usfed",
-   "bid": 0.92,
-   "ask": 0.93,
-   "price": 0.92
+   "bid": 0.93,
+   "ask": 0.94,
+   "price": 0.93
   },
   {
    "slug": "gdpc-us-saa-q3-2026-10-29-gt1pt5",
@@ -1053,9 +1053,9 @@
    "event_title": "AL-01 House Election Winner",
    "ends": "2026-11-04T04:59:00Z",
    "series": "ushr",
-   "bid": 0.96,
+   "bid": 0.95,
    "ask": 0.99,
-   "price": 0.97
+   "price": 0.96
   }
  ],
  "exposure": {
