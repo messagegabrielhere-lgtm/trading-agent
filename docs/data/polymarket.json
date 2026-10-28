@@ -163,10 +163,6 @@
  ],
  "log": [
   {
-   "time": "2026-10-16T10:53:58Z",
-   "text": "Scanned 20 events ending within 14 days (150 price checks); 3 qualify; 0 order(s) simulated."
-  },
-  {
    "time": "2026-10-16T11:48:03Z",
    "text": "Scanned 20 events ending within 14 days (150 price checks); 3 qualify; 0 order(s) simulated."
   },
@@ -961,6 +957,10 @@
   {
    "time": "2026-10-28T17:34:25Z",
    "text": "Scanned 290 events ending within 14 days (150 price checks); 6 qualify; 0 order(s) simulated."
+  },
+  {
+   "time": "2026-10-28T22:04:57Z",
+   "text": "Scanned 290 events ending within 14 days (150 price checks); 6 qualify; 0 order(s) simulated."
   }
  ],
  "mode": "dry_run",
@@ -978,19 +978,8 @@
   "pnl_usd": 14.22,
   "staked_usd": 245.78
  },
- "updated": "2026-10-28T17:34:25Z",
+ "updated": "2026-10-28T22:04:57Z",
  "candidates": [
-  {
-   "slug": "rdc-usfed-fomc-2026-10-28-nochng",
-   "title": "No Change",
-   "event": "usfed-fomc-2026-10-28",
-   "event_title": "Fed Decision in October",
-   "ends": "2026-10-29T03:59:00Z",
-   "series": "usfed",
-   "bid": 0.95,
-   "ask": 0.96,
-   "price": 0.95
-  },
   {
    "slug": "gdpc-us-saa-q3-2026-10-29-gt1pt5",
    "title": "Above 1.5%",
@@ -1009,9 +998,9 @@
    "event_title": "U.S House Midterm Winner",
    "ends": "2026-11-04T04:59:00Z",
    "series": "usho",
-   "bid": 0.91,
-   "ask": 0.911,
-   "price": 0.91
+   "bid": 0.912,
+   "ask": 0.913,
+   "price": 0.912
   },
   {
    "slug": "ewc-usgub-mi-2026-11-03-dem",
@@ -1042,9 +1031,20 @@
    "event_title": "2026 Midterms: House Popular Vote Winner?",
    "ends": "2026-11-04T04:59:00Z",
    "series": "housepopw",
-   "bid": 0.94,
-   "ask": 0.95,
-   "price": 0.94
+   "bid": 0.91,
+   "ask": 0.92,
+   "price": 0.91
+  },
+  {
+   "slug": "scc-hrep-rep-2026-11-03-gte180",
+   "title": "180+",
+   "event": "hrep-rep-2026-11-03",
+   "event_title": "2026 Midterms: Republican House Seats?",
+   "ends": "2026-11-04T04:59:00Z",
+   "series": "hrep",
+   "bid": 0.9,
+   "ask": 0.91,
+   "price": 0.9
   }
  ],
  "exposure": {
