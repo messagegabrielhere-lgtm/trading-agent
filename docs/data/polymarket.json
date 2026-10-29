@@ -163,10 +163,6 @@
  ],
  "log": [
   {
-   "time": "2026-10-16T13:02:34Z",
-   "text": "Scanned 20 events ending within 14 days (150 price checks); 3 qualify; 0 order(s) simulated."
-  },
-  {
    "time": "2026-10-16T13:56:09Z",
    "text": "Scanned 20 events ending within 14 days (150 price checks); 3 qualify; 0 order(s) simulated."
   },
@@ -961,6 +957,10 @@
   {
    "time": "2026-10-29T08:35:04Z",
    "text": "Scanned 292 events ending within 14 days (150 price checks); 7 qualify; 0 order(s) simulated."
+  },
+  {
+   "time": "2026-10-29T15:42:36Z",
+   "text": "Scanned 292 events ending within 14 days (150 price checks); 4 qualify; 0 order(s) simulated."
   }
  ],
  "mode": "dry_run",
@@ -978,19 +978,8 @@
   "pnl_usd": 14.22,
   "staked_usd": 245.78
  },
- "updated": "2026-10-29T08:35:04Z",
+ "updated": "2026-10-29T15:42:36Z",
  "candidates": [
-  {
-   "slug": "gdpc-us-saa-q3-2026-10-29-gt2pt0",
-   "title": "Above 2.0%",
-   "event": "us-saa-q3-2026-10-29",
-   "event_title": "US GDP Growth in Q3 2026?",
-   "ends": "2026-10-30T03:59:00Z",
-   "series": "us",
-   "bid": 0.94,
-   "ask": 0.95,
-   "price": 0.94
-  },
   {
    "slug": "paccc-usho-midterms-2026-11-03-dem",
    "title": "Democratic Party",
@@ -998,9 +987,9 @@
    "event_title": "U.S House Midterm Winner",
    "ends": "2026-11-04T04:59:00Z",
    "series": "usho",
-   "bid": 0.914,
-   "ask": 0.915,
-   "price": 0.914
+   "bid": 0.913,
+   "ask": 0.914,
+   "price": 0.913
   },
   {
    "slug": "ewc-usgub-mi-2026-11-03-dem",
@@ -1009,9 +998,9 @@
    "event_title": "Michigan Governor Election Winner",
    "ends": "2026-11-04T04:59:00Z",
    "series": "usgub",
-   "bid": 0.91,
-   "ask": 0.92,
-   "price": 0.91
+   "bid": 0.93,
+   "ask": 0.94,
+   "price": 0.93
   },
   {
    "slug": "ewc-usse-ga-2026-11-03-dem",
@@ -1031,31 +1020,9 @@
    "event_title": "2026 Midterms: House Popular Vote Winner?",
    "ends": "2026-11-04T04:59:00Z",
    "series": "housepopw",
-   "bid": 0.93,
-   "ask": 0.94,
-   "price": 0.93
-  },
-  {
-   "slug": "scc-hrep-rep-2026-11-03-gte180",
-   "title": "180+",
-   "event": "hrep-rep-2026-11-03",
-   "event_title": "2026 Midterms: Republican House Seats?",
-   "ends": "2026-11-04T04:59:00Z",
-   "series": "hrep",
-   "bid": 0.9,
-   "ask": 0.91,
-   "price": 0.9
-  },
-  {
-   "slug": "ushrewc-ushr-al-01-2026-11-03-rep",
-   "title": "Jerry Carl (R)",
-   "event": "ushr-al-01-2026-11-03",
-   "event_title": "AL-01 House Election Winner",
-   "ends": "2026-11-04T04:59:00Z",
-   "series": "ushr",
-   "bid": 0.95,
-   "ask": 0.99,
-   "price": 0.96
+   "bid": 0.94,
+   "ask": 0.95,
+   "price": 0.94
   }
  ],
  "exposure": {
