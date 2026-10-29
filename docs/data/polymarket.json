@@ -163,10 +163,6 @@
  ],
  "log": [
   {
-   "time": "2026-10-16T12:18:55Z",
-   "text": "Scanned 20 events ending within 14 days (150 price checks); 3 qualify; 0 order(s) simulated."
-  },
-  {
    "time": "2026-10-16T13:02:34Z",
    "text": "Scanned 20 events ending within 14 days (150 price checks); 3 qualify; 0 order(s) simulated."
   },
@@ -961,6 +957,10 @@
   {
    "time": "2026-10-29T01:57:08Z",
    "text": "Scanned 291 events ending within 14 days (150 price checks); 6 qualify; 0 order(s) simulated."
+  },
+  {
+   "time": "2026-10-29T08:35:04Z",
+   "text": "Scanned 292 events ending within 14 days (150 price checks); 7 qualify; 0 order(s) simulated."
   }
  ],
  "mode": "dry_run",
@@ -978,18 +978,18 @@
   "pnl_usd": 14.22,
   "staked_usd": 245.78
  },
- "updated": "2026-10-29T01:57:08Z",
+ "updated": "2026-10-29T08:35:04Z",
  "candidates": [
   {
-   "slug": "gdpc-us-saa-q3-2026-10-29-gt1pt5",
-   "title": "Above 1.5%",
+   "slug": "gdpc-us-saa-q3-2026-10-29-gt2pt0",
+   "title": "Above 2.0%",
    "event": "us-saa-q3-2026-10-29",
    "event_title": "US GDP Growth in Q3 2026?",
    "ends": "2026-10-30T03:59:00Z",
    "series": "us",
-   "bid": 0.97,
-   "ask": 0.98,
-   "price": 0.97
+   "bid": 0.94,
+   "ask": 0.95,
+   "price": 0.94
   },
   {
    "slug": "paccc-usho-midterms-2026-11-03-dem",
@@ -1045,6 +1045,17 @@
    "bid": 0.9,
    "ask": 0.91,
    "price": 0.9
+  },
+  {
+   "slug": "ushrewc-ushr-al-01-2026-11-03-rep",
+   "title": "Jerry Carl (R)",
+   "event": "ushr-al-01-2026-11-03",
+   "event_title": "AL-01 House Election Winner",
+   "ends": "2026-11-04T04:59:00Z",
+   "series": "ushr",
+   "bid": 0.95,
+   "ask": 0.99,
+   "price": 0.96
   }
  ],
  "exposure": {
