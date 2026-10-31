@@ -163,10 +163,6 @@
  ],
  "log": [
   {
-   "time": "2026-10-16T20:38:22Z",
-   "text": "Scanned 16 events ending within 14 days (94 price checks); 2 qualify; 0 order(s) simulated."
-  },
-  {
    "time": "2026-10-16T21:13:39Z",
    "text": "Scanned 16 events ending within 14 days (94 price checks); 2 qualify; 0 order(s) simulated."
   },
@@ -961,6 +957,10 @@
   {
    "time": "2026-10-31T19:31:26Z",
    "text": "Stopped: InternalServerError: proxy at capacity"
+  },
+  {
+   "time": "2026-10-31T22:59:39Z",
+   "text": "Scanned 292 events ending within 14 days (150 price checks); 4 qualify; 0 order(s) simulated."
   }
  ],
  "mode": "dry_run",
@@ -978,7 +978,7 @@
   "pnl_usd": 14.22,
   "staked_usd": 245.78
  },
- "updated": "2026-10-31T19:31:26Z",
+ "updated": "2026-10-31T22:59:39Z",
  "candidates": [
   {
    "slug": "paccc-usho-midterms-2026-11-03-dem",
@@ -987,9 +987,9 @@
    "event_title": "U.S. House Midterm Winner",
    "ends": "2026-11-04T04:59:00Z",
    "series": "usho",
-   "bid": 0.936,
-   "ask": 0.937,
-   "price": 0.936
+   "bid": 0.937,
+   "ask": 0.938,
+   "price": 0.937
   },
   {
    "slug": "ewc-usgub-mi-2026-11-03-dem",
@@ -1023,17 +1023,6 @@
    "bid": 0.95,
    "ask": 0.96,
    "price": 0.95
-  },
-  {
-   "slug": "ushrewc-ushr-al-01-2026-11-03-rep",
-   "title": "Jerry Carl (R)",
-   "event": "ushr-al-01-2026-11-03",
-   "event_title": "AL-01 House Election Winner",
-   "ends": "2026-11-04T04:59:00Z",
-   "series": "ushr",
-   "bid": 0.97,
-   "ask": 0.98,
-   "price": 0.97
   }
  ],
  "exposure": {

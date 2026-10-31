@@ -37,14 +37,6 @@
  ],
  "log": [
   {
-   "time": "2026-10-19T02:21:35+00:00",
-   "text": "BTC $82,374 is above its 200-day average $72,497. Bot holds $248.73 vs $250.00 target. No trade."
-  },
-  {
-   "time": "2026-10-19T02:21:35+00:00",
-   "text": "ETH $2,420 is above its 200-day average $2,148. Bot holds $242.62 vs $250.00 target. No trade."
-  },
-  {
    "time": "2026-10-19T03:17:42+00:00",
    "text": "BTC $82,486 is above its 200-day average $72,498. Bot holds $249.07 vs $250.00 target. No trade."
   },
@@ -835,6 +827,14 @@
   {
    "time": "2026-10-31T19:31:26+00:00",
    "text": "ETH $2,250 is above its 200-day average $2,158. Bot holds $255.59 vs $250.00 target. No trade."
+  },
+  {
+   "time": "2026-10-31T22:59:39+00:00",
+   "text": "BTC $77,405 is above its 200-day average $73,132. Bot holds $233.73 vs $250.00 target. No trade."
+  },
+  {
+   "time": "2026-10-31T22:59:39+00:00",
+   "text": "ETH $2,251 is above its 200-day average $2,158. Bot holds $255.67 vs $250.00 target. No trade."
   }
  ],
  "mode": "dry_run",
@@ -849,13 +849,13 @@
  },
  "signals": {
   "BTC": {
-   "close": 77431.67,
-   "sma": 73131.66,
+   "close": 77405.43,
+   "sma": 73131.53,
    "above": true
   },
   "ETH": {
-   "close": 2250.47,
-   "sma": 2158.1,
+   "close": 2251.17,
+   "sma": 2158.11,
    "above": true
   }
  },
@@ -1746,7 +1746,7 @@
    19.7584,
    19.6095,
    19.0435,
-   18.4507
+   18.4504
   ],
   "hold": [
    1.0,
@@ -2189,7 +2189,7 @@
    9.1942,
    9.125,
    8.8616,
-   8.5857
+   8.5856
   ],
   "stats": {
    "trend": {
@@ -2197,14 +2197,14 @@
     "vol": 0.4575,
     "sharpe": 0.9865,
     "max_drawdown": -0.5935,
-    "total_multiple": 18.4507
+    "total_multiple": 18.4504
    },
    "hold": {
     "cagr": 0.2904,
     "vol": 0.6758,
     "sharpe": 0.7211,
     "max_drawdown": -0.7631,
-    "total_multiple": 8.5857
+    "total_multiple": 8.5856
    }
   }
  },
@@ -2214,5 +2214,5 @@
  },
  "book": "sim_qty",
  "bot_value_usd": 489.39,
- "updated": "2026-10-31T19:31:26+00:00"
+ "updated": "2026-10-31T22:59:39+00:00"
 }
