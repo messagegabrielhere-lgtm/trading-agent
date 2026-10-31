@@ -163,10 +163,6 @@
  ],
  "log": [
   {
-   "time": "2026-10-16T20:07:49Z",
-   "text": "Scanned 16 events ending within 14 days (94 price checks); 2 qualify; 0 order(s) simulated."
-  },
-  {
    "time": "2026-10-16T20:38:22Z",
    "text": "Scanned 16 events ending within 14 days (94 price checks); 2 qualify; 0 order(s) simulated."
   },
@@ -961,6 +957,10 @@
   {
    "time": "2026-10-31T15:28:26Z",
    "text": "Scanned 292 events ending within 14 days (150 price checks); 5 qualify; 0 order(s) simulated."
+  },
+  {
+   "time": "2026-10-31T19:31:26Z",
+   "text": "Stopped: InternalServerError: proxy at capacity"
   }
  ],
  "mode": "dry_run",
@@ -978,7 +978,7 @@
   "pnl_usd": 14.22,
   "staked_usd": 245.78
  },
- "updated": "2026-10-31T15:28:26Z",
+ "updated": "2026-10-31T19:31:26Z",
  "candidates": [
   {
    "slug": "paccc-usho-midterms-2026-11-03-dem",
