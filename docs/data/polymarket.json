@@ -163,10 +163,6 @@
  ],
  "log": [
   {
-   "time": "2026-10-16T21:43:45Z",
-   "text": "Scanned 16 events ending within 14 days (94 price checks); 2 qualify; 0 order(s) simulated."
-  },
-  {
    "time": "2026-10-16T22:13:48Z",
    "text": "Scanned 16 events ending within 14 days (94 price checks); 2 qualify; 0 order(s) simulated."
   },
@@ -961,6 +957,10 @@
   {
    "time": "2026-11-01T02:19:34Z",
    "text": "Scanned 294 events ending within 14 days (150 price checks); 4 qualify; 0 order(s) simulated."
+  },
+  {
+   "time": "2026-11-01T09:25:53Z",
+   "text": "Scanned 294 events ending within 14 days (150 price checks); 4 qualify; 0 order(s) simulated."
   }
  ],
  "mode": "dry_run",
@@ -978,7 +978,7 @@
   "pnl_usd": 14.22,
   "staked_usd": 245.78
  },
- "updated": "2026-11-01T02:19:34Z",
+ "updated": "2026-11-01T09:25:53Z",
  "candidates": [
   {
    "slug": "paccc-usho-midterms-2026-11-03-dem",
