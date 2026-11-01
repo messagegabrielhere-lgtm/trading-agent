@@ -163,10 +163,6 @@
  ],
  "log": [
   {
-   "time": "2026-10-16T22:45:16Z",
-   "text": "Scanned 16 events ending within 14 days (94 price checks); 2 qualify; 0 order(s) simulated."
-  },
-  {
    "time": "2026-10-16T23:12:12Z",
    "text": "Scanned 16 events ending within 14 days (94 price checks); 2 qualify; 0 order(s) simulated."
   },
@@ -961,6 +957,10 @@
   {
    "time": "2026-11-01T16:32:22Z",
    "text": "Scanned 294 events ending within 14 days (150 price checks); 5 qualify; 0 order(s) simulated."
+  },
+  {
+   "time": "2026-11-01T20:59:49Z",
+   "text": "Scanned 294 events ending within 14 days (150 price checks); 5 qualify; 0 order(s) simulated."
   }
  ],
  "mode": "dry_run",
@@ -978,7 +978,7 @@
   "pnl_usd": 14.22,
   "staked_usd": 245.78
  },
- "updated": "2026-11-01T16:32:22Z",
+ "updated": "2026-11-01T20:59:49Z",
  "candidates": [
   {
    "slug": "paccc-usho-midterms-2026-11-03-dem",
@@ -998,9 +998,9 @@
    "event_title": "Michigan Governor Election Winner",
    "ends": "2026-11-04T04:59:00Z",
    "series": "usgub",
-   "bid": 0.93,
-   "ask": 0.94,
-   "price": 0.93
+   "bid": 0.92,
+   "ask": 0.93,
+   "price": 0.92
   },
   {
    "slug": "ewc-usse-ga-2026-11-03-dem",
