@@ -163,10 +163,6 @@
  ],
  "log": [
   {
-   "time": "2026-10-16T22:13:48Z",
-   "text": "Scanned 16 events ending within 14 days (94 price checks); 2 qualify; 0 order(s) simulated."
-  },
-  {
    "time": "2026-10-16T22:45:16Z",
    "text": "Scanned 16 events ending within 14 days (94 price checks); 2 qualify; 0 order(s) simulated."
   },
@@ -961,6 +957,10 @@
   {
    "time": "2026-11-01T09:25:53Z",
    "text": "Scanned 294 events ending within 14 days (150 price checks); 4 qualify; 0 order(s) simulated."
+  },
+  {
+   "time": "2026-11-01T16:32:22Z",
+   "text": "Scanned 294 events ending within 14 days (150 price checks); 5 qualify; 0 order(s) simulated."
   }
  ],
  "mode": "dry_run",
@@ -978,7 +978,7 @@
   "pnl_usd": 14.22,
   "staked_usd": 245.78
  },
- "updated": "2026-11-01T09:25:53Z",
+ "updated": "2026-11-01T16:32:22Z",
  "candidates": [
   {
    "slug": "paccc-usho-midterms-2026-11-03-dem",
@@ -1023,6 +1023,17 @@
    "bid": 0.95,
    "ask": 0.96,
    "price": 0.95
+  },
+  {
+   "slug": "scc-hrep-rep-2026-11-03-gte180",
+   "title": "180+",
+   "event": "hrep-rep-2026-11-03",
+   "event_title": "2026 Midterms: Republican House Seats?",
+   "ends": "2026-11-04T04:59:00Z",
+   "series": "hrep",
+   "bid": 0.92,
+   "ask": 0.93,
+   "price": 0.92
   }
  ],
  "exposure": {
