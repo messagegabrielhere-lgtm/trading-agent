@@ -163,10 +163,6 @@
  ],
  "log": [
   {
-   "time": "2026-10-17T00:03:21Z",
-   "text": "Scanned 16 events ending within 14 days (94 price checks); 2 qualify; 0 order(s) simulated."
-  },
-  {
    "time": "2026-10-17T00:54:19Z",
    "text": "Scanned 16 events ending within 14 days (94 price checks); 2 qualify; 0 order(s) simulated."
   },
@@ -961,6 +957,10 @@
   {
    "time": "2026-11-02T07:01:10Z",
    "text": "Scanned 294 events ending within 14 days (150 price checks); 4 qualify; 0 order(s) simulated."
+  },
+  {
+   "time": "2026-11-02T17:10:49Z",
+   "text": "Scanned 294 events ending within 14 days (150 price checks); 4 qualify; 0 order(s) simulated."
   }
  ],
  "mode": "dry_run",
@@ -978,7 +978,7 @@
   "pnl_usd": 14.22,
   "staked_usd": 245.78
  },
- "updated": "2026-11-02T07:01:10Z",
+ "updated": "2026-11-02T17:10:49Z",
  "candidates": [
   {
    "slug": "paccc-usho-midterms-2026-11-03-dem",
@@ -987,9 +987,9 @@
    "event_title": "U.S. House Midterm Winner",
    "ends": "2026-11-04T04:59:00Z",
    "series": "usho",
-   "bid": 0.937,
-   "ask": 0.938,
-   "price": 0.937
+   "bid": 0.946,
+   "ask": 0.947,
+   "price": 0.946
   },
   {
    "slug": "ewc-usgub-mi-2026-11-03-dem",
@@ -1009,9 +1009,9 @@
    "event_title": "Georgia Senate Election Winner",
    "ends": "2026-11-04T04:59:00Z",
    "series": "usse",
-   "bid": 0.96,
-   "ask": 0.97,
-   "price": 0.96
+   "bid": 0.97,
+   "ask": 0.98,
+   "price": 0.97
   },
   {
    "slug": "pvwc-housepopw-2026-11-03-dem",
@@ -1021,8 +1021,8 @@
    "ends": "2026-11-04T04:59:00Z",
    "series": "housepopw",
    "bid": 0.94,
-   "ask": 0.96,
-   "price": 0.95
+   "ask": 0.95,
+   "price": 0.94
   }
  ],
  "exposure": {
