@@ -163,10 +163,6 @@
  ],
  "log": [
   {
-   "time": "2026-10-16T23:31:34Z",
-   "text": "Stopped: PermissionDeniedError: HTTP 403 (an HTML error page)"
-  },
-  {
    "time": "2026-10-17T00:03:21Z",
    "text": "Scanned 16 events ending within 14 days (94 price checks); 2 qualify; 0 order(s) simulated."
   },
@@ -961,6 +957,10 @@
   {
    "time": "2026-11-02T00:48:53Z",
    "text": "Scanned 294 events ending within 14 days (150 price checks); 5 qualify; 0 order(s) simulated."
+  },
+  {
+   "time": "2026-11-02T07:01:10Z",
+   "text": "Scanned 294 events ending within 14 days (150 price checks); 4 qualify; 0 order(s) simulated."
   }
  ],
  "mode": "dry_run",
@@ -978,7 +978,7 @@
   "pnl_usd": 14.22,
   "staked_usd": 245.78
  },
- "updated": "2026-11-02T00:48:53Z",
+ "updated": "2026-11-02T07:01:10Z",
  "candidates": [
   {
    "slug": "paccc-usho-midterms-2026-11-03-dem",
@@ -998,9 +998,9 @@
    "event_title": "Michigan Governor Election Winner",
    "ends": "2026-11-04T04:59:00Z",
    "series": "usgub",
-   "bid": 0.92,
-   "ask": 0.93,
-   "price": 0.92
+   "bid": 0.93,
+   "ask": 0.94,
+   "price": 0.93
   },
   {
    "slug": "ewc-usse-ga-2026-11-03-dem",
@@ -1020,20 +1020,9 @@
    "event_title": "2026 Midterms: House Popular Vote Winner?",
    "ends": "2026-11-04T04:59:00Z",
    "series": "housepopw",
-   "bid": 0.95,
+   "bid": 0.94,
    "ask": 0.96,
    "price": 0.95
-  },
-  {
-   "slug": "scc-hrep-rep-2026-11-03-gte180",
-   "title": "180+",
-   "event": "hrep-rep-2026-11-03",
-   "event_title": "2026 Midterms: Republican House Seats?",
-   "ends": "2026-11-04T04:59:00Z",
-   "series": "hrep",
-   "bid": 0.92,
-   "ask": 0.93,
-   "price": 0.92
   }
  ],
  "exposure": {
