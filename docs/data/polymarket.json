@@ -163,10 +163,6 @@
  ],
  "log": [
   {
-   "time": "2026-10-17T04:42:40Z",
-   "text": "Scanned 17 events ending within 14 days (99 price checks); 3 qualify; 0 order(s) simulated."
-  },
-  {
    "time": "2026-10-17T05:11:03Z",
    "text": "Scanned 17 events ending within 14 days (99 price checks); 3 qualify; 0 order(s) simulated."
   },
@@ -961,6 +957,10 @@
   {
    "time": "2026-11-04T16:24:24Z",
    "text": "Scanned 31 events ending within 14 days (150 price checks); 5 qualify; 0 order(s) simulated."
+  },
+  {
+   "time": "2026-11-04T22:21:45Z",
+   "text": "Scanned 30 events ending within 14 days (150 price checks); 6 qualify; 0 order(s) simulated."
   }
  ],
  "mode": "dry_run",
@@ -978,7 +978,7 @@
   "pnl_usd": 14.22,
   "staked_usd": 245.78
  },
- "updated": "2026-11-04T16:24:24Z",
+ "updated": "2026-11-04T22:21:45Z",
  "candidates": [
   {
    "slug": "rdc-boe-2026-11-05-hike25",
@@ -998,9 +998,9 @@
    "event_title": "October Unemployment Rate",
    "ends": "2026-11-07T04:59:00Z",
    "series": "usunemp",
-   "bid": 0.94,
-   "ask": 0.95,
-   "price": 0.94
+   "bid": 0.95,
+   "ask": 0.96,
+   "price": 0.95
   },
   {
    "slug": "nfpc-usnfp-sa-october-2026-11-06-gtn50k",
@@ -1014,15 +1014,15 @@
    "price": 0.96
   },
   {
-   "slug": "usexpwc-extpl-midtrm-latmen-2026-dem",
+   "slug": "usexpwc-extpl-midtrm-whwmn-2026-dem",
    "title": "Democrats",
-   "event": "extpl-midtrm-latmen-2026",
-   "event_title": "Which Party Wins Latino Men in the Midterms?",
+   "event": "extpl-midtrm-whwmn-2026",
+   "event_title": "Which Party Wins White Women in the Midterms?",
    "ends": "2026-11-07T04:59:00Z",
    "series": "extpl",
-   "bid": 0.92,
+   "bid": 0.91,
    "ask": null,
-   "price": 0.92
+   "price": 0.91
   },
   {
    "slug": "rotc-t-wilhor-2026-11-09-gte90",
@@ -1033,6 +1033,17 @@
    "series": "t",
    "bid": 0.96,
    "ask": 0.97,
+   "price": 0.96
+  },
+  {
+   "slug": "tac-grammys-nom-bna-2026-11-16-elllan",
+   "title": "Ella Langley",
+   "event": "grammys-nom-bna-2026-11-16",
+   "event_title": "Grammy Nominees: Best New Artist",
+   "ends": "2026-11-17T04:59:00Z",
+   "series": "grammys",
+   "bid": 0.96,
+   "ask": null,
    "price": 0.96
   }
  ],
