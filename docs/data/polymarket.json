@@ -163,10 +163,6 @@
  ],
  "log": [
   {
-   "time": "2026-10-17T03:41:23Z",
-   "text": "Scanned 16 events ending within 14 days (94 price checks); 2 qualify; 0 order(s) simulated."
-  },
-  {
    "time": "2026-10-17T04:12:49Z",
    "text": "Scanned 17 events ending within 14 days (99 price checks); 3 qualify; 0 order(s) simulated."
   },
@@ -961,6 +957,10 @@
   {
    "time": "2026-11-04T01:28:42Z",
    "text": "Scanned 294 events ending within 14 days (150 price checks); 3 qualify; 0 order(s) simulated."
+  },
+  {
+   "time": "2026-11-04T08:10:01Z",
+   "text": "Scanned 31 events ending within 14 days (150 price checks); 3 qualify; 0 order(s) simulated."
   }
  ],
  "mode": "dry_run",
@@ -978,40 +978,40 @@
   "pnl_usd": 14.22,
   "staked_usd": 245.78
  },
- "updated": "2026-11-04T01:28:42Z",
+ "updated": "2026-11-04T08:10:01Z",
  "candidates": [
   {
-   "slug": "paccc-usse-midterms-2026-11-03-dem",
-   "title": "Democratic Party",
-   "event": "usse-midterms-2026-11-03",
-   "event_title": "U.S. Senate Midterm Winner",
-   "ends": "2026-11-04T04:59:00Z",
-   "series": "usse",
-   "bid": 0.958,
-   "ask": 0.959,
-   "price": 0.958
+   "slug": "urc-usunemp-sa-october-2026-11-06-gt4pt0pct",
+   "title": "Above 4.0%",
+   "event": "usunemp-sa-october-2026-11-06",
+   "event_title": "October Unemployment Rate",
+   "ends": "2026-11-07T04:59:00Z",
+   "series": "usunemp",
+   "bid": 0.91,
+   "ask": 0.92,
+   "price": 0.91
   },
   {
-   "slug": "ewc-usgub-oh-2026-11-03-dem",
-   "title": "Amy Acton (D)",
-   "event": "usgub-oh-2026-11-03",
-   "event_title": "Ohio Governor Election Winner",
-   "ends": "2026-11-04T04:59:00Z",
-   "series": "usgub",
-   "bid": 0.93,
-   "ask": 0.94,
-   "price": 0.93
-  },
-  {
-   "slug": "pvwc-housepopw-2026-11-03-dem",
-   "title": "Democratic Party",
-   "event": "housepopw-2026-11-03",
-   "event_title": "2026 Midterms: House Popular Vote Winner?",
-   "ends": "2026-11-04T04:59:00Z",
-   "series": "housepopw",
+   "slug": "nfpc-usnfp-sa-october-2026-11-06-gtn50k",
+   "title": "Above -50,000",
+   "event": "usnfp-sa-october-2026-11-06",
+   "event_title": "Jobs Numbers in October 2026",
+   "ends": "2026-11-07T04:59:00Z",
+   "series": "usnfp",
    "bid": 0.96,
-   "ask": null,
+   "ask": 0.97,
    "price": 0.96
+  },
+  {
+   "slug": "rotc-t-wilhor-2026-11-09-gte90",
+   "title": "90+",
+   "event": "t-wilhor-2026-11-09",
+   "event_title": "Wild Horse Nine Rotten Tomatoes Score?",
+   "ends": "2026-11-10T04:59:00Z",
+   "series": "t",
+   "bid": 0.93,
+   "ask": 0.99,
+   "price": 0.94
   }
  ],
  "exposure": {
