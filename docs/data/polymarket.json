@@ -163,10 +163,6 @@
  ],
  "log": [
   {
-   "time": "2026-10-17T06:08:30Z",
-   "text": "Scanned 17 events ending within 14 days (99 price checks); 3 qualify; 0 order(s) simulated."
-  },
-  {
    "time": "2026-10-17T06:47:45Z",
    "text": "Scanned 17 events ending within 14 days (99 price checks); 3 qualify; 0 order(s) simulated."
   },
@@ -961,6 +957,10 @@
   {
    "time": "2026-11-05T10:56:28Z",
    "text": "Scanned 43 events ending within 14 days (150 price checks); 6 qualify; 0 order(s) simulated."
+  },
+  {
+   "time": "2026-11-05T18:50:40Z",
+   "text": "Scanned 42 events ending within 14 days (150 price checks); 5 qualify; 0 order(s) simulated."
   }
  ],
  "mode": "dry_run",
@@ -978,18 +978,18 @@
   "pnl_usd": 14.22,
   "staked_usd": 245.78
  },
- "updated": "2026-11-05T10:56:28Z",
+ "updated": "2026-11-05T18:50:40Z",
  "candidates": [
   {
-   "slug": "rdc-boe-2026-11-05-hike25",
-   "title": "25 bps Increase",
-   "event": "boe-2026-11-05",
-   "event_title": "Bank of England Decision in November?",
-   "ends": "2026-11-06T04:59:00Z",
-   "series": "boe",
-   "bid": 0.96,
+   "slug": "usexpwc-extpl-midtrm-wmn-2026-dem",
+   "title": "Democrats",
+   "event": "extpl-midtrm-wmn-2026",
+   "event_title": "Which Party Wins Women in the Midterms?",
+   "ends": "2026-11-07T04:59:00Z",
+   "series": "extpl",
+   "bid": 0.97,
    "ask": null,
-   "price": 0.96
+   "price": 0.97
   },
   {
    "slug": "urc-usunemp-sa-october-2026-11-06-gt4pt0pct",
@@ -998,42 +998,31 @@
    "event_title": "October Unemployment Rate",
    "ends": "2026-11-07T04:59:00Z",
    "series": "usunemp",
-   "bid": 0.95,
-   "ask": 0.96,
-   "price": 0.95
+   "bid": 0.94,
+   "ask": 0.95,
+   "price": 0.94
   },
   {
-   "slug": "nfpc-usnfp-sa-october-2026-11-06-gtn100k",
-   "title": "Above -100,000",
+   "slug": "nfpc-usnfp-sa-october-2026-11-06-gtn50k",
+   "title": "Above -50,000",
    "event": "usnfp-sa-october-2026-11-06",
    "event_title": "Jobs Numbers in October 2026",
    "ends": "2026-11-07T04:59:00Z",
    "series": "usnfp",
-   "bid": 0.97,
-   "ask": 0.98,
-   "price": 0.97
+   "bid": 0.96,
+   "ask": 0.97,
+   "price": 0.96
   },
   {
-   "slug": "usexpwc-extpl-midtrm-whwmn-2026-dem",
-   "title": "Democrats",
-   "event": "extpl-midtrm-whwmn-2026",
-   "event_title": "Which Party Wins White Women in the Midterms?",
-   "ends": "2026-11-07T04:59:00Z",
-   "series": "extpl",
-   "bid": 0.93,
-   "ask": null,
-   "price": 0.93
-  },
-  {
-   "slug": "rotc-t-wilhor-2026-11-09-gte92",
-   "title": "92+",
+   "slug": "rotc-t-wilhor-2026-11-09-gte85",
+   "title": "85+",
    "event": "t-wilhor-2026-11-09",
    "event_title": "Wild Horse Nine Rotten Tomatoes Score?",
    "ends": "2026-11-10T04:59:00Z",
    "series": "t",
-   "bid": 0.91,
-   "ask": 0.94,
-   "price": 0.92
+   "bid": 0.96,
+   "ask": 0.99,
+   "price": 0.97
   },
   {
    "slug": "tac-grammys-nom-aoty-2026-11-16-yousee",
@@ -1043,8 +1032,8 @@
    "ends": "2026-11-17T04:59:00Z",
    "series": "grammys",
    "bid": 0.9,
-   "ask": null,
-   "price": 0.9
+   "ask": 0.99,
+   "price": 0.91
   }
  ],
  "exposure": {
