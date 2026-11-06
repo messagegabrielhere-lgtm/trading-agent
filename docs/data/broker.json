@@ -1,6 +1,6 @@
 {
  "halted": true,
- "peak_equity": 74930.15,
+ "peak_equity": 74976.38,
  "orders": [
   {
    "time": "2026-10-09T16:51:37+00:00",
@@ -575,27 +575,21 @@
   {
    "time": "2026-11-05T20:29:45+00:00",
    "text": "Drawdown halt: equity $74,930.15 is 25.1% below the $100,032.00 peak (limit 20%). Closed every position. Trading stays off until you set \"halted\" to false in docs/data/broker.json."
+  },
+  {
+   "time": "2026-11-06T01:05:23+00:00",
+   "text": "Trading is halted after a drawdown. Set \"halted\" to false in docs/data/broker.json to resume."
   }
  ],
  "connected": true,
- "updated": "2026-11-05T20:29:45+00:00",
+ "updated": "2026-11-06T01:05:24+00:00",
  "account": {
-  "equity": 74930.15,
-  "cash": 229.8,
+  "equity": 74976.38,
+  "cash": 74976.38,
   "last_equity": 84893.26,
   "status": "ACTIVE"
  },
- "positions": [
-  {
-   "symbol": "QLD",
-   "qty": 1022.382085972,
-   "price": 73.06,
-   "value": 74700.35,
-   "weight": 0.9969,
-   "unrealized_pl": -24838.27,
-   "avg_entry": 97.36
-  }
- ],
+ "positions": [],
  "history": [
   {
    "date": "2026-10-09",
@@ -676,6 +670,10 @@
   {
    "date": "2026-11-05",
    "equity": 74930.15
+  },
+  {
+   "date": "2026-11-06",
+   "equity": 74976.38
   }
  ]
 }
