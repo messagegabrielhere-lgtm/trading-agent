@@ -163,10 +163,6 @@
  ],
  "log": [
   {
-   "time": "2026-10-17T08:42:41Z",
-   "text": "Scanned 17 events ending within 14 days (99 price checks); 3 qualify; 0 order(s) simulated."
-  },
-  {
    "time": "2026-10-17T09:10:07Z",
    "text": "Scanned 17 events ending within 14 days (99 price checks); 3 qualify; 0 order(s) simulated."
   },
@@ -961,6 +957,10 @@
   {
    "time": "2026-11-06T15:08:43Z",
    "text": "Scanned 42 events ending within 14 days (150 price checks); 4 qualify; 0 order(s) simulated."
+  },
+  {
+   "time": "2026-11-06T21:01:38Z",
+   "text": "Scanned 34 events ending within 14 days (150 price checks); 2 qualify; 0 order(s) simulated."
   }
  ],
  "mode": "dry_run",
@@ -978,30 +978,8 @@
   "pnl_usd": 14.22,
   "staked_usd": 245.78
  },
- "updated": "2026-11-06T15:08:43Z",
+ "updated": "2026-11-06T21:01:38Z",
  "candidates": [
-  {
-   "slug": "nfpc-usnfp-sa-october-2026-11-06-gt50k",
-   "title": "Above 50,000",
-   "event": "usnfp-sa-october-2026-11-06",
-   "event_title": "Jobs Numbers in October 2026",
-   "ends": "2026-11-07T04:59:00Z",
-   "series": "usnfp",
-   "bid": 0.95,
-   "ask": null,
-   "price": 0.95
-  },
-  {
-   "slug": "usexpwc-extpl-midtrm-whwmn-2026-dem",
-   "title": "Democrats",
-   "event": "extpl-midtrm-whwmn-2026",
-   "event_title": "Which Party Wins White Women in the Midterms?",
-   "ends": "2026-11-07T04:59:00Z",
-   "series": "extpl",
-   "bid": 0.97,
-   "ask": null,
-   "price": 0.97
-  },
   {
    "slug": "rotc-t-wilhor-2026-11-09-gte87",
    "title": "87+",
@@ -1009,8 +987,8 @@
    "event_title": "Wild Horse Nine Rotten Tomatoes Score?",
    "ends": "2026-11-10T04:59:00Z",
    "series": "t",
-   "bid": 0.96,
-   "ask": 0.99,
+   "bid": 0.97,
+   "ask": null,
    "price": 0.97
   },
   {
