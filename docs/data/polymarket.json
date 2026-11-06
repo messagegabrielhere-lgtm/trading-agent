@@ -163,10 +163,6 @@
  ],
  "log": [
   {
-   "time": "2026-10-17T06:47:45Z",
-   "text": "Scanned 17 events ending within 14 days (99 price checks); 3 qualify; 0 order(s) simulated."
-  },
-  {
    "time": "2026-10-17T07:43:46Z",
    "text": "Scanned 17 events ending within 14 days (99 price checks); 3 qualify; 0 order(s) simulated."
   },
@@ -961,6 +957,10 @@
   {
    "time": "2026-11-05T18:50:40Z",
    "text": "Scanned 42 events ending within 14 days (150 price checks); 5 qualify; 0 order(s) simulated."
+  },
+  {
+   "time": "2026-11-06T00:20:49Z",
+   "text": "Scanned 42 events ending within 14 days (150 price checks); 5 qualify; 0 order(s) simulated."
   }
  ],
  "mode": "dry_run",
@@ -978,19 +978,8 @@
   "pnl_usd": 14.22,
   "staked_usd": 245.78
  },
- "updated": "2026-11-05T18:50:40Z",
+ "updated": "2026-11-06T00:20:49Z",
  "candidates": [
-  {
-   "slug": "usexpwc-extpl-midtrm-wmn-2026-dem",
-   "title": "Democrats",
-   "event": "extpl-midtrm-wmn-2026",
-   "event_title": "Which Party Wins Women in the Midterms?",
-   "ends": "2026-11-07T04:59:00Z",
-   "series": "extpl",
-   "bid": 0.97,
-   "ask": null,
-   "price": 0.97
-  },
   {
    "slug": "urc-usunemp-sa-october-2026-11-06-gt4pt0pct",
    "title": "Above 4.0%",
@@ -998,9 +987,9 @@
    "event_title": "October Unemployment Rate",
    "ends": "2026-11-07T04:59:00Z",
    "series": "usunemp",
-   "bid": 0.94,
-   "ask": 0.95,
-   "price": 0.94
+   "bid": 0.93,
+   "ask": 0.94,
+   "price": 0.93
   },
   {
    "slug": "nfpc-usnfp-sa-october-2026-11-06-gtn50k",
@@ -1014,14 +1003,25 @@
    "price": 0.96
   },
   {
-   "slug": "rotc-t-wilhor-2026-11-09-gte85",
-   "title": "85+",
+   "slug": "usexpwc-extpl-midtrm-whwmn-2026-dem",
+   "title": "Democrats",
+   "event": "extpl-midtrm-whwmn-2026",
+   "event_title": "Which Party Wins White Women in the Midterms?",
+   "ends": "2026-11-07T04:59:00Z",
+   "series": "extpl",
+   "bid": 0.97,
+   "ask": null,
+   "price": 0.97
+  },
+  {
+   "slug": "rotc-t-wilhor-2026-11-09-gte90",
+   "title": "90+",
    "event": "t-wilhor-2026-11-09",
    "event_title": "Wild Horse Nine Rotten Tomatoes Score?",
    "ends": "2026-11-10T04:59:00Z",
    "series": "t",
-   "bid": 0.96,
-   "ask": 0.99,
+   "bid": 0.97,
+   "ask": null,
    "price": 0.97
   },
   {
