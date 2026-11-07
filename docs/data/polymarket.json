@@ -163,10 +163,6 @@
  ],
  "log": [
   {
-   "time": "2026-10-17T11:07:13Z",
-   "text": "Scanned 17 events ending within 14 days (99 price checks); 3 qualify; 0 order(s) simulated."
-  },
-  {
    "time": "2026-10-17T11:39:51Z",
    "text": "Scanned 17 events ending within 14 days (99 price checks); 3 qualify; 0 order(s) simulated."
   },
@@ -961,6 +957,10 @@
   {
    "time": "2026-11-07T18:54:05Z",
    "text": "Scanned 34 events ending within 14 days (150 price checks); 2 qualify; 0 order(s) simulated."
+  },
+  {
+   "time": "2026-11-07T22:52:07Z",
+   "text": "Scanned 34 events ending within 14 days (150 price checks); 2 qualify; 0 order(s) simulated."
   }
  ],
  "mode": "dry_run",
@@ -978,7 +978,7 @@
   "pnl_usd": 14.22,
   "staked_usd": 245.78
  },
- "updated": "2026-11-07T18:54:05Z",
+ "updated": "2026-11-07T22:52:07Z",
  "candidates": [
   {
    "slug": "rotc-t-wilhor-2026-11-09-gte92",
