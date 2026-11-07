@@ -4,9 +4,9 @@
  "benchmark_start": 777.219970703125,
  "cash": 0.0,
  "positions": {
-  "QLD": 101.108732
+  "IEF": 79.371797
  },
- "last_rebalance": "2026-10-09",
+ "last_rebalance": "2026-11-05",
  "history": [
   {
    "date": "2026-10-07",
@@ -112,6 +112,11 @@
    "date": "2026-11-04",
    "equity": 8372.81,
    "benchmark": 9866.06
+  },
+  {
+   "date": "2026-11-05",
+   "equity": 7299.82,
+   "benchmark": 9431.05
   }
  ],
  "trades": [
@@ -158,6 +163,24 @@
    "qty": 101.108732,
    "price": 98.4692,
    "value": 9956.1,
+   "target_weight": 1.0
+  },
+  {
+   "date": "2026-11-05",
+   "symbol": "QLD",
+   "side": "sell",
+   "qty": 101.108732,
+   "price": 72.2339,
+   "value": 7303.47,
+   "target_weight": 0
+  },
+  {
+   "date": "2026-11-05",
+   "symbol": "IEF",
+   "side": "buy",
+   "qty": 79.371797,
+   "price": 92.016,
+   "value": 7303.47,
    "target_weight": 1.0
   }
  ],
@@ -331,41 +354,42 @@
    "targets": {
     "QLD": 1.0
    }
+  },
+  {
+   "date": "2026-11-05",
+   "action": "rebalance",
+   "reason": "QQQ 647.05 vs 200-day average 679.61: risk off, hold IEF.",
+   "targets": {
+    "IEF": 1.0
+   }
   }
  ],
  "tickets": {
-  "date": "2026-10-09",
+  "date": "2026-11-05",
   "items": [
    {
-    "symbol": "SPY",
-    "side": "sell",
-    "target_weight": 0,
-    "paper_qty": 6.42997,
-    "reference_close": 778.57
-   },
-   {
-    "symbol": "QQQ",
-    "side": "sell",
-    "target_weight": 0,
-    "paper_qty": 6.595359,
-    "reference_close": 751.27
-   },
-   {
     "symbol": "QLD",
+    "side": "sell",
+    "target_weight": 0,
+    "paper_qty": 101.108732,
+    "reference_close": 72.27
+   },
+   {
+    "symbol": "IEF",
     "side": "buy",
     "target_weight": 1.0,
-    "paper_qty": 101.108732,
-    "reference_close": 98.42
+    "paper_qty": 79.371797,
+    "reference_close": 91.97
    }
   ]
  },
- "last_date": "2026-11-04",
+ "last_date": "2026-11-05",
  "holdings": [
   {
-   "symbol": "QLD",
-   "qty": 101.1087,
-   "price": 82.81,
-   "value": 8372.81,
+   "symbol": "IEF",
+   "qty": 79.3718,
+   "price": 91.97,
+   "value": 7299.82,
    "weight": 1.0
   }
  ],
@@ -373,29 +397,29 @@
  "benchmark": "SPY",
  "goal_multiple": 10,
  "goal_days": 365,
- "updated": "2026-11-06T01:42:12+00:00",
+ "updated": "2026-11-07T01:02:59+00:00",
  "targets": {
-  "QLD": 1.0
+  "IEF": 1.0
  },
  "prices": {
-  "BIL": 91.42,
-  "BND": 71.5,
-  "DBC": 31.29,
-  "EEM": 61.62,
-  "EFA": 105.72,
-  "EWJ": 93.86,
-  "GLD": 372.49,
-  "HYG": 77.52,
-  "IEF": 91.66,
-  "IWM": 284.02,
-  "LQD": 104.5,
-  "QLD": 82.81,
-  "QQQ": 691.95,
-  "SHY": 81.5,
-  "SPY": 766.81,
-  "TLT": 81.76,
-  "VGK": 90.24,
-  "VNQ": 98.03,
-  "VWO": 56.28
+  "BIL": 91.43,
+  "BND": 71.65,
+  "DBC": 31.47,
+  "EEM": 58.05,
+  "EFA": 102.7,
+  "EWJ": 88.26,
+  "GLD": 375.49,
+  "HYG": 77.28,
+  "IEF": 91.97,
+  "IWM": 270.98,
+  "LQD": 104.66,
+  "QLD": 72.27,
+  "QQQ": 647.05,
+  "SHY": 81.67,
+  "SPY": 733.0,
+  "TLT": 81.93,
+  "VGK": 88.42,
+  "VNQ": 96.23,
+  "VWO": 54.24
  }
 }
