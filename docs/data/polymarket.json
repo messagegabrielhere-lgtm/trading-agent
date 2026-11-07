@@ -163,10 +163,6 @@
  ],
  "log": [
   {
-   "time": "2026-10-17T09:41:18Z",
-   "text": "Scanned 17 events ending within 14 days (99 price checks); 3 qualify; 0 order(s) simulated."
-  },
-  {
    "time": "2026-10-17T10:09:06Z",
    "text": "Scanned 17 events ending within 14 days (99 price checks); 3 qualify; 0 order(s) simulated."
   },
@@ -961,6 +957,10 @@
   {
    "time": "2026-11-07T01:02:45Z",
    "text": "Scanned 34 events ending within 14 days (150 price checks); 2 qualify; 0 order(s) simulated."
+  },
+  {
+   "time": "2026-11-07T07:14:18Z",
+   "text": "Scanned 34 events ending within 14 days (150 price checks); 2 qualify; 0 order(s) simulated."
   }
  ],
  "mode": "dry_run",
@@ -978,7 +978,7 @@
   "pnl_usd": 14.22,
   "staked_usd": 245.78
  },
- "updated": "2026-11-07T01:02:45Z",
+ "updated": "2026-11-07T07:14:18Z",
  "candidates": [
   {
    "slug": "rotc-t-wilhor-2026-11-09-gte92",
@@ -988,8 +988,8 @@
    "ends": "2026-11-10T04:59:00Z",
    "series": "t",
    "bid": 0.96,
-   "ask": 0.97,
-   "price": 0.96
+   "ask": 0.99,
+   "price": 0.97
   },
   {
    "slug": "tac-grammys-nom-aoty-2026-11-16-yousee",
@@ -998,9 +998,9 @@
    "event_title": "Grammy Nominees: Album of the Year",
    "ends": "2026-11-17T04:59:00Z",
    "series": "grammys",
-   "bid": 0.91,
+   "bid": 0.95,
    "ask": 0.99,
-   "price": 0.92
+   "price": 0.96
   }
  ],
  "exposure": {
