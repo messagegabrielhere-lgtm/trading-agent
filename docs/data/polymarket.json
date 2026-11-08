@@ -163,10 +163,6 @@
  ],
  "log": [
   {
-   "time": "2026-10-17T12:45:49Z",
-   "text": "Scanned 17 events ending within 14 days (99 price checks); 3 qualify; 0 order(s) simulated."
-  },
-  {
    "time": "2026-10-17T13:20:44Z",
    "text": "Scanned 17 events ending within 14 days (99 price checks); 3 qualify; 0 order(s) simulated."
   },
@@ -961,6 +957,10 @@
   {
    "time": "2026-11-08T09:37:48Z",
    "text": "Scanned 34 events ending within 14 days (150 price checks); 2 qualify; 0 order(s) simulated."
+  },
+  {
+   "time": "2026-11-08T16:28:52Z",
+   "text": "Scanned 34 events ending within 14 days (150 price checks); 3 qualify; 0 order(s) simulated."
   }
  ],
  "mode": "dry_run",
@@ -978,7 +978,7 @@
   "pnl_usd": 14.22,
   "staked_usd": 245.78
  },
- "updated": "2026-11-08T09:37:48Z",
+ "updated": "2026-11-08T16:28:52Z",
  "candidates": [
   {
    "slug": "rotc-t-wilhor-2026-11-09-gte85",
@@ -1001,6 +1001,17 @@
    "bid": 0.95,
    "ask": 0.99,
    "price": 0.96
+  },
+  {
+   "slug": "tac-cma-sioty-2026-11-18-chotex",
+   "title": "Choosin' Texas - Ella Langley",
+   "event": "cma-sioty-2026-11-18",
+   "event_title": "CMA Winner: Single of the Year",
+   "ends": "2026-11-19T04:59:00Z",
+   "series": "cma",
+   "bid": 0.89,
+   "ask": 0.94,
+   "price": 0.9
   }
  ],
  "exposure": {
