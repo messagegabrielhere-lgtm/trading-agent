@@ -163,10 +163,6 @@
  ],
  "log": [
   {
-   "time": "2026-10-17T11:39:51Z",
-   "text": "Scanned 17 events ending within 14 days (99 price checks); 3 qualify; 0 order(s) simulated."
-  },
-  {
    "time": "2026-10-17T12:06:20Z",
    "text": "Scanned 17 events ending within 14 days (99 price checks); 3 qualify; 0 order(s) simulated."
   },
@@ -961,6 +957,10 @@
   {
    "time": "2026-11-07T22:52:07Z",
    "text": "Scanned 34 events ending within 14 days (150 price checks); 2 qualify; 0 order(s) simulated."
+  },
+  {
+   "time": "2026-11-08T02:34:28Z",
+   "text": "Scanned 34 events ending within 14 days (150 price checks); 3 qualify; 0 order(s) simulated."
   }
  ],
  "mode": "dry_run",
@@ -978,17 +978,17 @@
   "pnl_usd": 14.22,
   "staked_usd": 245.78
  },
- "updated": "2026-11-07T22:52:07Z",
+ "updated": "2026-11-08T02:34:28Z",
  "candidates": [
   {
-   "slug": "rotc-t-wilhor-2026-11-09-gte92",
-   "title": "92+",
+   "slug": "rotc-t-wilhor-2026-11-09-gte85",
+   "title": "85+",
    "event": "t-wilhor-2026-11-09",
    "event_title": "Wild Horse Nine Rotten Tomatoes Score?",
    "ends": "2026-11-10T04:59:00Z",
    "series": "t",
    "bid": 0.96,
-   "ask": 0.97,
+   "ask": null,
    "price": 0.96
   },
   {
@@ -1001,6 +1001,17 @@
    "bid": 0.95,
    "ask": 0.99,
    "price": 0.96
+  },
+  {
+   "slug": "tac-cma-eoty-2026-11-18-elllan",
+   "title": "Ella Langley",
+   "event": "cma-eoty-2026-11-18",
+   "event_title": "CMA Winner: Entertainer of the Year",
+   "ends": "2026-11-19T04:59:00Z",
+   "series": "cma",
+   "bid": 0.94,
+   "ask": 0.96,
+   "price": 0.95
   }
  ],
  "exposure": {
