@@ -67,14 +67,6 @@
  ],
  "log": [
   {
-   "time": "2026-10-20T05:18:56+00:00",
-   "text": "BTC $81,893 is above its 200-day average $72,570. Bot holds $247.28 vs $250.00 target. No trade."
-  },
-  {
-   "time": "2026-10-20T05:18:56+00:00",
-   "text": "ETH $2,405 is above its 200-day average $2,149. Bot holds $241.18 vs $250.00 target. No trade."
-  },
-  {
    "time": "2026-10-20T06:16:38+00:00",
    "text": "BTC $81,555 is above its 200-day average $72,569. Bot holds $246.26 vs $250.00 target. No trade."
   },
@@ -865,6 +857,14 @@
   {
    "time": "2026-11-09T08:04:31+00:00",
    "text": "ETH $2,090 is below its 200-day average $2,153. Bot holds $0.00 vs $0.00 target. No trade."
+  },
+  {
+   "time": "2026-11-09T18:53:29+00:00",
+   "text": "BTC $74,536 is above its 200-day average $73,151. Bot holds $252.75 vs $250.00 target. No trade."
+  },
+  {
+   "time": "2026-11-09T18:53:29+00:00",
+   "text": "ETH $2,123 is below its 200-day average $2,153. Bot holds $0.00 vs $0.00 target. No trade."
   }
  ],
  "mode": "dry_run",
@@ -879,13 +879,13 @@
  },
  "signals": {
   "BTC": {
-   "close": 73726.22,
-   "sma": 73146.97,
+   "close": 74536.12,
+   "sma": 73151.02,
    "above": true
   },
   "ETH": {
-   "close": 2089.8,
-   "sma": 2153.3,
+   "close": 2123.32,
+   "sma": 2153.47,
    "above": false
   }
  },
@@ -1778,7 +1778,7 @@
    19.6095,
    19.0435,
    18.3543,
-   17.4843
+   17.5798
   ],
   "hold": [
    1.0,
@@ -2222,22 +2222,22 @@
    9.125,
    8.8616,
    8.5409,
-   8.0759
+   8.185
   ],
   "stats": {
    "trend": {
-    "cagr": 0.4026,
+    "cagr": 0.4035,
     "vol": 0.458,
-    "sharpe": 0.9699,
+    "sharpe": 0.9713,
     "max_drawdown": -0.5935,
-    "total_multiple": 17.4843
+    "total_multiple": 17.5798
    },
    "hold": {
-    "cagr": 0.2802,
+    "cagr": 0.2822,
     "vol": 0.6756,
-    "sharpe": 0.7093,
+    "sharpe": 0.7116,
     "max_drawdown": -0.7631,
-    "total_multiple": 8.0759
+    "total_multiple": 8.185
    }
   }
  },
@@ -2246,6 +2246,6 @@
   "ETH": 0.0
  },
  "book": "sim_qty",
- "bot_value_usd": 250.0,
- "updated": "2026-11-09T08:04:31+00:00"
+ "bot_value_usd": 252.75,
+ "updated": "2026-11-09T18:53:29+00:00"
 }
