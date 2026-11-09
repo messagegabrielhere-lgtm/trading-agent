@@ -1,6 +1,6 @@
 {
  "sim_qty": {
-  "BTC": 0.00301951,
+  "BTC": 0.00339092,
   "ETH": 0.0
  },
  "orders": [
@@ -53,17 +53,19 @@
    "reason": "ETH $2,141 is below its 200-day average $2,155",
    "qty": 0.10302226,
    "status": "dry run"
+  },
+  {
+   "time": "2026-11-09T08:04:31+00:00",
+   "coin": "BTC",
+   "side": "buy",
+   "usd": 27.38,
+   "mode": "dry_run",
+   "reason": "BTC $73,726 is above its 200-day average $73,147",
+   "qty": 0.00037141,
+   "status": "dry run"
   }
  ],
  "log": [
-  {
-   "time": "2026-10-20T04:45:03+00:00",
-   "text": "BTC $81,967 is above its 200-day average $72,571. Bot holds $247.50 vs $250.00 target. No trade."
-  },
-  {
-   "time": "2026-10-20T04:45:03+00:00",
-   "text": "ETH $2,409 is above its 200-day average $2,149. Bot holds $241.59 vs $250.00 target. No trade."
-  },
   {
    "time": "2026-10-20T05:18:56+00:00",
    "text": "BTC $81,893 is above its 200-day average $72,570. Bot holds $247.28 vs $250.00 target. No trade."
@@ -855,6 +857,14 @@
   {
    "time": "2026-11-09T00:59:34+00:00",
    "text": "Would SELL $220.60 of ETH: ETH $2,141 is below its 200-day average $2,155."
+  },
+  {
+   "time": "2026-11-09T08:04:31+00:00",
+   "text": "Would BUY $27.38 of BTC: BTC $73,726 is above its 200-day average $73,147."
+  },
+  {
+   "time": "2026-11-09T08:04:31+00:00",
+   "text": "ETH $2,090 is below its 200-day average $2,153. Bot holds $0.00 vs $0.00 target. No trade."
   }
  ],
  "mode": "dry_run",
@@ -869,13 +879,13 @@
  },
  "signals": {
   "BTC": {
-   "close": 75135.6,
-   "sma": 73172.44,
+   "close": 73726.22,
+   "sma": 73146.97,
    "above": true
   },
   "ETH": {
-   "close": 2141.32,
-   "sma": 2154.61,
+   "close": 2089.8,
+   "sma": 2153.3,
    "above": false
   }
  },
@@ -1768,7 +1778,7 @@
    19.6095,
    19.0435,
    18.3543,
-   17.7344
+   17.4843
   ],
   "hold": [
    1.0,
@@ -2212,22 +2222,22 @@
    9.125,
    8.8616,
    8.5409,
-   8.2524
+   8.0759
   ],
   "stats": {
    "trend": {
-    "cagr": 0.4051,
+    "cagr": 0.4026,
     "vol": 0.458,
-    "sharpe": 0.9738,
+    "sharpe": 0.9699,
     "max_drawdown": -0.5935,
-    "total_multiple": 17.7344
+    "total_multiple": 17.4843
    },
    "hold": {
-    "cagr": 0.2835,
-    "vol": 0.6757,
-    "sharpe": 0.7132,
+    "cagr": 0.2802,
+    "vol": 0.6756,
+    "sharpe": 0.7093,
     "max_drawdown": -0.7631,
-    "total_multiple": 8.2524
+    "total_multiple": 8.0759
    }
   }
  },
@@ -2236,6 +2246,6 @@
   "ETH": 0.0
  },
  "book": "sim_qty",
- "bot_value_usd": 226.87,
- "updated": "2026-11-09T00:59:34+00:00"
+ "bot_value_usd": 250.0,
+ "updated": "2026-11-09T08:04:31+00:00"
 }
