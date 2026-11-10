@@ -163,10 +163,6 @@
  ],
  "log": [
   {
-   "time": "2026-10-17T17:07:30Z",
-   "text": "Scanned 17 events ending within 14 days (99 price checks); 3 qualify; 0 order(s) simulated."
-  },
-  {
    "time": "2026-10-17T17:38:42Z",
    "text": "Scanned 17 events ending within 14 days (99 price checks); 3 qualify; 0 order(s) simulated."
   },
@@ -961,6 +957,10 @@
   {
    "time": "2026-11-10T17:55:38Z",
    "text": "Scanned 30 events ending within 14 days (150 price checks); 3 qualify; 0 order(s) simulated."
+  },
+  {
+   "time": "2026-11-10T23:24:46Z",
+   "text": "Scanned 30 events ending within 14 days (150 price checks); 3 qualify; 0 order(s) simulated."
   }
  ],
  "mode": "dry_run",
@@ -978,18 +978,18 @@
   "pnl_usd": 14.22,
   "staked_usd": 245.78
  },
- "updated": "2026-11-10T17:55:38Z",
+ "updated": "2026-11-10T23:24:46Z",
  "candidates": [
   {
-   "slug": "tac-grammys-nom-aoty-2026-11-16-artlov",
-   "title": "The Art of Loving - Olivia Dean",
+   "slug": "tac-grammys-nom-aoty-2026-11-16-yousee",
+   "title": "you seem pretty sad for a girl so in love - Olivia Rodrigo",
    "event": "grammys-nom-aoty-2026-11-16",
    "event_title": "Grammy Nominees: Album of the Year",
    "ends": "2026-11-17T04:59:00Z",
    "series": "grammys",
-   "bid": 0.94,
+   "bid": 0.96,
    "ask": 0.99,
-   "price": 0.95
+   "price": 0.97
   },
   {
    "slug": "tac-cma-eoty-2026-11-18-elllan",
@@ -998,9 +998,9 @@
    "event_title": "CMA Winner: Entertainer of the Year",
    "ends": "2026-11-19T04:59:00Z",
    "series": "cma",
-   "bid": 0.9,
+   "bid": 0.93,
    "ask": 0.95,
-   "price": 0.91
+   "price": 0.93
   },
   {
    "slug": "rotc-t-thehun-2026-11-23-gte55",
@@ -1009,9 +1009,9 @@
    "event_title": "The Hunger Games: Sunrise on the Reaping Rotten Tomatoes Score?",
    "ends": "2026-11-24T04:59:00Z",
    "series": "t",
-   "bid": 0.96,
-   "ask": 0.97,
-   "price": 0.96
+   "bid": 0.95,
+   "ask": 0.96,
+   "price": 0.95
   }
  ],
  "exposure": {
