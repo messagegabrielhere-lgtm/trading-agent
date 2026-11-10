@@ -591,10 +591,14 @@
   {
    "time": "2026-11-09T22:54:31+00:00",
    "text": "Trading is halted after a drawdown. Set \"halted\" to false in docs/data/broker.json to resume."
+  },
+  {
+   "time": "2026-11-10T20:19:36+00:00",
+   "text": "Trading is halted after a drawdown. Set \"halted\" to false in docs/data/broker.json to resume."
   }
  ],
  "connected": true,
- "updated": "2026-11-09T22:54:32+00:00",
+ "updated": "2026-11-10T20:19:37+00:00",
  "account": {
   "equity": 74974.83,
   "cash": 74974.83,
@@ -689,6 +693,10 @@
   },
   {
    "date": "2026-11-09",
+   "equity": 74974.83
+  },
+  {
+   "date": "2026-11-10",
    "equity": 74974.83
   }
  ]
