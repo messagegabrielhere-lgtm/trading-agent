@@ -163,10 +163,6 @@
  ],
  "log": [
   {
-   "time": "2026-10-17T16:07:14Z",
-   "text": "Scanned 17 events ending within 14 days (99 price checks); 3 qualify; 0 order(s) simulated."
-  },
-  {
    "time": "2026-10-17T16:40:57Z",
    "text": "Scanned 17 events ending within 14 days (99 price checks); 3 qualify; 0 order(s) simulated."
   },
@@ -961,6 +957,10 @@
   {
    "time": "2026-11-10T02:12:13Z",
    "text": "Scanned 31 events ending within 14 days (150 price checks); 2 qualify; 0 order(s) simulated."
+  },
+  {
+   "time": "2026-11-10T09:52:36Z",
+   "text": "Scanned 32 events ending within 14 days (150 price checks); 3 qualify; 0 order(s) simulated."
   }
  ],
  "mode": "dry_run",
@@ -978,7 +978,7 @@
   "pnl_usd": 14.22,
   "staked_usd": 245.78
  },
- "updated": "2026-11-10T02:12:13Z",
+ "updated": "2026-11-10T09:52:36Z",
  "candidates": [
   {
    "slug": "tac-grammys-nom-aoty-2026-11-16-yousee",
@@ -999,8 +999,19 @@
    "ends": "2026-11-19T04:59:00Z",
    "series": "cma",
    "bid": 0.92,
+   "ask": 0.93,
+   "price": 0.92
+  },
+  {
+   "slug": "rotc-t-thehun-2026-11-23-gte55",
+   "title": "55+",
+   "event": "t-thehun-2026-11-23",
+   "event_title": "The Hunger Games: Sunrise on the Reaping Rotten Tomatoes Score?",
+   "ends": "2026-11-24T04:59:00Z",
+   "series": "t",
+   "bid": 0.96,
    "ask": 0.97,
-   "price": 0.93
+   "price": 0.96
   }
  ],
  "exposure": {
