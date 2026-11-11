@@ -163,10 +163,6 @@
  ],
  "log": [
   {
-   "time": "2026-10-17T18:42:45Z",
-   "text": "Scanned 17 events ending within 14 days (99 price checks); 3 qualify; 0 order(s) simulated."
-  },
-  {
    "time": "2026-10-17T19:11:15Z",
    "text": "Scanned 17 events ending within 14 days (99 price checks); 3 qualify; 0 order(s) simulated."
   },
@@ -961,6 +957,10 @@
   {
    "time": "2026-11-11T10:58:05Z",
    "text": "Scanned 29 events ending within 14 days (150 price checks); 3 qualify; 0 order(s) simulated."
+  },
+  {
+   "time": "2026-11-11T18:49:24Z",
+   "text": "Scanned 29 events ending within 14 days (150 price checks); 3 qualify; 0 order(s) simulated."
   }
  ],
  "mode": "dry_run",
@@ -978,7 +978,7 @@
   "pnl_usd": 14.22,
   "staked_usd": 245.78
  },
- "updated": "2026-11-11T10:58:05Z",
+ "updated": "2026-11-11T18:49:24Z",
  "candidates": [
   {
    "slug": "tac-grammys-nom-aoty-2026-11-16-yousee",
@@ -999,8 +999,8 @@
    "ends": "2026-11-19T04:59:00Z",
    "series": "cma",
    "bid": 0.92,
-   "ask": 0.96,
-   "price": 0.93
+   "ask": 0.94,
+   "price": 0.92
   },
   {
    "slug": "rotc-t-thehun-2026-11-23-gte55",
