@@ -163,10 +163,6 @@
  ],
  "log": [
   {
-   "time": "2026-10-17T20:40:54Z",
-   "text": "Scanned 17 events ending within 14 days (99 price checks); 3 qualify; 0 order(s) simulated."
-  },
-  {
    "time": "2026-10-17T21:08:27Z",
    "text": "Scanned 17 events ending within 14 days (99 price checks); 3 qualify; 0 order(s) simulated."
   },
@@ -961,6 +957,10 @@
   {
    "time": "2026-11-12T17:14:06Z",
    "text": "Scanned 29 events ending within 14 days (150 price checks); 2 qualify; 0 order(s) simulated."
+  },
+  {
+   "time": "2026-11-12T22:52:30Z",
+   "text": "Scanned 29 events ending within 14 days (150 price checks); 3 qualify; 0 order(s) simulated."
   }
  ],
  "mode": "dry_run",
@@ -978,18 +978,29 @@
   "pnl_usd": 14.22,
   "staked_usd": 245.78
  },
- "updated": "2026-11-12T17:14:06Z",
+ "updated": "2026-11-12T22:52:30Z",
  "candidates": [
   {
-   "slug": "tac-grammys-nom-aoty-2026-11-16-yousee",
-   "title": "you seem pretty sad for a girl so in love - Olivia Rodrigo",
+   "slug": "tac-grammys-nom-aoty-2026-11-16-lifsho",
+   "title": "The Life of a Showgirl - Taylor Swift",
    "event": "grammys-nom-aoty-2026-11-16",
    "event_title": "Grammy Nominees: Album of the Year",
    "ends": "2026-11-17T04:59:00Z",
    "series": "grammys",
-   "bid": 0.94,
-   "ask": 0.99,
-   "price": 0.95
+   "bid": 0.9,
+   "ask": 0.97,
+   "price": 0.91
+  },
+  {
+   "slug": "tac-cma-eoty-2026-11-18-elllan",
+   "title": "Ella Langley",
+   "event": "cma-eoty-2026-11-18",
+   "event_title": "CMA Winner: Entertainer of the Year",
+   "ends": "2026-11-19T04:59:00Z",
+   "series": "cma",
+   "bid": 0.91,
+   "ask": 0.94,
+   "price": 0.92
   },
   {
    "slug": "rotc-t-thehun-2026-11-23-gte55",
