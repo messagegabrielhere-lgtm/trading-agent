@@ -163,10 +163,6 @@
  ],
  "log": [
   {
-   "time": "2026-10-17T22:06:23Z",
-   "text": "Scanned 17 events ending within 14 days (99 price checks); 3 qualify; 0 order(s) simulated."
-  },
-  {
    "time": "2026-10-17T22:38:04Z",
    "text": "Scanned 17 events ending within 14 days (99 price checks); 3 qualify; 0 order(s) simulated."
   },
@@ -961,6 +957,10 @@
   {
    "time": "2026-11-13T11:41:11Z",
    "text": "Scanned 26 events ending within 14 days (150 price checks); 3 qualify; 0 order(s) simulated."
+  },
+  {
+   "time": "2026-11-13T18:54:50Z",
+   "text": "Scanned 26 events ending within 14 days (150 price checks); 3 qualify; 0 order(s) simulated."
   }
  ],
  "mode": "dry_run",
@@ -978,7 +978,7 @@
   "pnl_usd": 14.22,
   "staked_usd": 245.78
  },
- "updated": "2026-11-13T11:41:11Z",
+ "updated": "2026-11-13T18:54:50Z",
  "candidates": [
   {
    "slug": "tac-grammys-nom-aoty-2026-11-16-yousee",
