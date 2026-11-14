@@ -163,10 +163,6 @@
  ],
  "log": [
   {
-   "time": "2026-10-17T23:04:36Z",
-   "text": "Scanned 17 events ending within 14 days (99 price checks); 3 qualify; 0 order(s) simulated."
-  },
-  {
    "time": "2026-10-17T23:36:04Z",
    "text": "Scanned 17 events ending within 14 days (99 price checks); 3 qualify; 0 order(s) simulated."
   },
@@ -961,6 +957,10 @@
   {
    "time": "2026-11-14T00:29:56Z",
    "text": "Scanned 26 events ending within 14 days (150 price checks); 3 qualify; 0 order(s) simulated."
+  },
+  {
+   "time": "2026-11-14T07:10:10Z",
+   "text": "Scanned 26 events ending within 14 days (150 price checks); 3 qualify; 0 order(s) simulated."
   }
  ],
  "mode": "dry_run",
@@ -978,7 +978,7 @@
   "pnl_usd": 14.22,
   "staked_usd": 245.78
  },
- "updated": "2026-11-14T00:29:56Z",
+ "updated": "2026-11-14T07:10:10Z",
  "candidates": [
   {
    "slug": "tac-grammys-nom-aoty-2026-11-16-yousee",
@@ -992,15 +992,15 @@
    "price": 0.97
   },
   {
-   "slug": "tac-cma-aoty-2026-11-18-dandel",
-   "title": "Dandelion - Ella Langley",
-   "event": "cma-aoty-2026-11-18",
-   "event_title": "CMA Winner: Album of the Year",
+   "slug": "tac-cma-eoty-2026-11-18-elllan",
+   "title": "Ella Langley",
+   "event": "cma-eoty-2026-11-18",
+   "event_title": "CMA Winner: Entertainer of the Year",
    "ends": "2026-11-19T04:59:00Z",
    "series": "cma",
-   "bid": 0.9,
+   "bid": 0.89,
    "ask": 0.92,
-   "price": 0.91
+   "price": 0.9
   },
   {
    "slug": "rotc-t-thehun-2026-11-23-gte55",
