@@ -77,14 +77,6 @@
  ],
  "log": [
   {
-   "time": "2026-10-23T10:10:31+00:00",
-   "text": "BTC $81,650 is above its 200-day average $72,859. Bot holds $246.54 vs $250.00 target. No trade."
-  },
-  {
-   "time": "2026-10-23T10:10:31+00:00",
-   "text": "ETH $2,397 is above its 200-day average $2,156. Bot holds $240.34 vs $250.00 target. No trade."
-  },
-  {
    "time": "2026-10-23T15:11:11+00:00",
    "text": "BTC $81,390 is above its 200-day average $72,858. Bot holds $245.76 vs $250.00 target. No trade."
   },
@@ -875,6 +867,14 @@
   {
    "time": "2026-11-15T02:47:34+00:00",
    "text": "ETH $1,812 is below its 200-day average $2,145. Bot holds $0.00 vs $0.00 target. No trade."
+  },
+  {
+   "time": "2026-11-15T10:05:13+00:00",
+   "text": "BTC $65,432 is below its 200-day average $72,923. Bot holds $0.00 vs $0.00 target. No trade."
+  },
+  {
+   "time": "2026-11-15T10:05:13+00:00",
+   "text": "ETH $1,827 is below its 200-day average $2,142. Bot holds $0.00 vs $0.00 target. No trade."
   }
  ],
  "mode": "dry_run",
@@ -889,13 +889,13 @@
  },
  "signals": {
   "BTC": {
-   "close": 64784.34,
-   "sma": 72977.55,
+   "close": 65432.43,
+   "sma": 72922.55,
    "above": false
   },
   "ETH": {
-   "close": 1811.88,
-   "sma": 2144.84,
+   "close": 1827.28,
+   "sma": 2142.49,
    "above": false
   }
  },
@@ -2235,22 +2235,22 @@
    8.8616,
    8.5409,
    8.2384,
-   7.0496
+   7.1154
   ],
   "stats": {
    "trend": {
-    "cagr": 0.3991,
-    "vol": 0.4577,
-    "sharpe": 0.9649,
+    "cagr": 0.399,
+    "vol": 0.4576,
+    "sharpe": 0.9647,
     "max_drawdown": -0.5935,
     "total_multiple": 17.203
    },
    "hold": {
-    "cagr": 0.2593,
-    "vol": 0.6757,
-    "sharpe": 0.6849,
+    "cagr": 0.2606,
+    "vol": 0.6758,
+    "sharpe": 0.6864,
     "max_drawdown": -0.7631,
-    "total_multiple": 7.0496
+    "total_multiple": 7.1154
    }
   }
  },
@@ -2260,5 +2260,5 @@
  },
  "book": "sim_qty",
  "bot_value_usd": 0.0,
- "updated": "2026-11-15T02:47:34+00:00"
+ "updated": "2026-11-15T10:05:13+00:00"
 }
