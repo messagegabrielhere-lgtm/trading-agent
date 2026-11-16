@@ -77,14 +77,6 @@
  ],
  "log": [
   {
-   "time": "2026-10-23T22:21:41+00:00",
-   "text": "BTC $81,227 is above its 200-day average $72,857. Bot holds $245.27 vs $250.00 target. No trade."
-  },
-  {
-   "time": "2026-10-23T22:21:41+00:00",
-   "text": "ETH $2,393 is above its 200-day average $2,156. Bot holds $239.98 vs $250.00 target. No trade."
-  },
-  {
    "time": "2026-10-24T01:13:53+00:00",
    "text": "BTC $80,642 is above its 200-day average $72,854. Bot holds $243.50 vs $250.00 target. No trade."
   },
@@ -875,6 +867,14 @@
   {
    "time": "2026-11-15T21:54:45+00:00",
    "text": "ETH $1,823 is below its 200-day average $2,142. Bot holds $0.00 vs $0.00 target. No trade."
+  },
+  {
+   "time": "2026-11-16T02:08:49+00:00",
+   "text": "BTC $64,900 is below its 200-day average $72,920. Bot holds $0.00 vs $0.00 target. No trade."
+  },
+  {
+   "time": "2026-11-16T02:08:49+00:00",
+   "text": "ETH $1,817 is below its 200-day average $2,142. Bot holds $0.00 vs $0.00 target. No trade."
   }
  ],
  "mode": "dry_run",
@@ -889,19 +889,19 @@
  },
  "signals": {
   "BTC": {
-   "close": 65130.56,
-   "sma": 72921.04,
+   "close": 64900.01,
+   "sma": 72919.89,
    "above": false
   },
   "ETH": {
-   "close": 1823.49,
-   "sma": 2142.47,
+   "close": 1817.06,
+   "sma": 2142.44,
    "above": false
   }
  },
  "backtest": {
   "from": "2018-05-27",
-  "to": "2026-11-14",
+  "to": "2026-11-15",
   "dates": [
    "2018-05-27",
    "2018-06-03",
@@ -1345,7 +1345,7 @@
    "2026-10-25",
    "2026-11-01",
    "2026-11-08",
-   "2026-11-14"
+   "2026-11-15"
   ],
   "trend": [
    1.0,
@@ -2235,7 +2235,7 @@
    8.8616,
    8.5409,
    8.2384,
-   7.0916
+   7.0666
   ],
   "stats": {
    "trend": {
@@ -2246,11 +2246,11 @@
     "total_multiple": 17.203
    },
    "hold": {
-    "cagr": 0.2601,
+    "cagr": 0.2595,
     "vol": 0.6758,
-    "sharpe": 0.6858,
+    "sharpe": 0.6852,
     "max_drawdown": -0.7631,
-    "total_multiple": 7.0916
+    "total_multiple": 7.0666
    }
   }
  },
@@ -2260,5 +2260,5 @@
  },
  "book": "sim_qty",
  "bot_value_usd": 0.0,
- "updated": "2026-11-15T21:54:45+00:00"
+ "updated": "2026-11-16T02:08:49+00:00"
 }
