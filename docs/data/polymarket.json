@@ -163,10 +163,6 @@
  ],
  "log": [
   {
-   "time": "2026-10-18T04:48:09Z",
-   "text": "Scanned 22 events ending within 14 days (147 price checks); 4 qualify; 0 order(s) simulated."
-  },
-  {
    "time": "2026-10-18T05:17:34Z",
    "text": "Scanned 22 events ending within 14 days (147 price checks); 4 qualify; 0 order(s) simulated."
   },
@@ -961,6 +957,10 @@
   {
    "time": "2026-11-16T09:42:57Z",
    "text": "Scanned 32 events ending within 14 days (150 price checks); 3 qualify; 0 order(s) simulated."
+  },
+  {
+   "time": "2026-11-16T20:01:04Z",
+   "text": "Scanned 23 events ending within 14 days (150 price checks); 3 qualify; 0 order(s) simulated."
   }
  ],
  "mode": "dry_run",
@@ -978,19 +978,8 @@
   "pnl_usd": 14.22,
   "staked_usd": 245.78
  },
- "updated": "2026-11-16T09:42:57Z",
+ "updated": "2026-11-16T20:01:04Z",
  "candidates": [
-  {
-   "slug": "tac-grammys-nom-aoty-2026-11-16-yousee",
-   "title": "you seem pretty sad for a girl so in love - Olivia Rodrigo",
-   "event": "grammys-nom-aoty-2026-11-16",
-   "event_title": "Grammy Nominees: Album of the Year",
-   "ends": "2026-11-17T04:59:00Z",
-   "series": "grammys",
-   "bid": 0.96,
-   "ask": 0.99,
-   "price": 0.97
-  },
   {
    "slug": "tac-cma-soty-2026-11-18-chotex",
    "title": "Choosin' Texas - Ella Langley",
@@ -1012,6 +1001,17 @@
    "bid": 0.96,
    "ask": null,
    "price": 0.96
+  },
+  {
+   "slug": "aaagaspc-usdsl-month-2026-11-30-gt5pt5000",
+   "title": "Above $5.5000",
+   "event": "usdsl-month-2026-11-30",
+   "event_title": "US Diesel Prices This Month",
+   "ends": "2026-11-30T05:00:00Z",
+   "series": "usdsl",
+   "bid": 0.9,
+   "ask": 0.95,
+   "price": 0.91
   }
  ],
  "exposure": {
