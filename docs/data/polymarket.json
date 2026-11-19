@@ -163,10 +163,6 @@
  ],
  "log": [
   {
-   "time": "2026-10-18T09:44:50Z",
-   "text": "Scanned 22 events ending within 14 days (147 price checks); 4 qualify; 0 order(s) simulated."
-  },
-  {
    "time": "2026-10-18T10:12:34Z",
    "text": "Scanned 22 events ending within 14 days (147 price checks); 4 qualify; 0 order(s) simulated."
   },
@@ -961,6 +957,10 @@
   {
    "time": "2026-11-19T09:39:34Z",
    "text": "Scanned 35 events ending within 14 days (150 price checks); 3 qualify; 0 order(s) simulated."
+  },
+  {
+   "time": "2026-11-19T18:49:37Z",
+   "text": "Scanned 35 events ending within 14 days (150 price checks); 3 qualify; 0 order(s) simulated."
   }
  ],
  "mode": "dry_run",
@@ -978,18 +978,18 @@
   "pnl_usd": 14.22,
   "staked_usd": 245.78
  },
- "updated": "2026-11-19T09:39:34Z",
+ "updated": "2026-11-19T18:49:37Z",
  "candidates": [
   {
-   "slug": "rotc-t-thehun-2026-11-23-gte65",
-   "title": "65+",
+   "slug": "rotc-t-thehun-2026-11-23-gte45",
+   "title": "45+",
    "event": "t-thehun-2026-11-23",
    "event_title": "The Hunger Games: Sunrise on the Reaping Rotten Tomatoes Score?",
    "ends": "2026-11-24T04:59:00Z",
    "series": "t",
-   "bid": 0.96,
-   "ask": 0.97,
-   "price": 0.96
+   "bid": 0.97,
+   "ask": null,
+   "price": 0.97
   },
   {
    "slug": "aimrc-company1-wk-2026-11-23-google",
@@ -998,9 +998,9 @@
    "event_title": "Top AI Company this week",
    "ends": "2026-11-24T04:59:00Z",
    "series": "company1",
-   "bid": 0.97,
-   "ask": 0.98,
-   "price": 0.97
+   "bid": 0.96,
+   "ask": 0.97,
+   "price": 0.96
   },
   {
    "slug": "ccrc-sptfy-1-artst-glbl-yr-2026-badbun",
