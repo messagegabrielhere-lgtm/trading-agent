@@ -163,10 +163,6 @@
  ],
  "log": [
   {
-   "time": "2026-10-18T11:42:44Z",
-   "text": "Scanned 22 events ending within 14 days (147 price checks); 4 qualify; 0 order(s) simulated."
-  },
-  {
    "time": "2026-10-18T12:08:51Z",
    "text": "Scanned 22 events ending within 14 days (147 price checks); 4 qualify; 0 order(s) simulated."
   },
@@ -961,6 +957,10 @@
   {
    "time": "2026-11-20T17:25:38Z",
    "text": "Scanned 38 events ending within 14 days (150 price checks); 3 qualify; 0 order(s) simulated."
+  },
+  {
+   "time": "2026-11-20T23:30:29Z",
+   "text": "Scanned 38 events ending within 14 days (150 price checks); 3 qualify; 0 order(s) simulated."
   }
  ],
  "mode": "dry_run",
@@ -978,7 +978,7 @@
   "pnl_usd": 14.22,
   "staked_usd": 245.78
  },
- "updated": "2026-11-20T17:25:38Z",
+ "updated": "2026-11-20T23:30:29Z",
  "candidates": [
   {
    "slug": "ccpc-bilbrd-1song-any-11-24-2026-chotex",
