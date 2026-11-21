@@ -163,10 +163,6 @@
  ],
  "log": [
   {
-   "time": "2026-10-18T12:49:48Z",
-   "text": "Scanned 22 events ending within 14 days (147 price checks); 4 qualify; 0 order(s) simulated."
-  },
-  {
    "time": "2026-10-18T13:24:13Z",
    "text": "Scanned 22 events ending within 14 days (147 price checks); 3 qualify; 0 order(s) simulated."
   },
@@ -961,6 +957,10 @@
   {
    "time": "2026-11-21T04:26:28Z",
    "text": "Scanned 38 events ending within 14 days (150 price checks); 4 qualify; 0 order(s) simulated."
+  },
+  {
+   "time": "2026-11-21T13:09:52Z",
+   "text": "Scanned 41 events ending within 14 days (150 price checks); 4 qualify; 0 order(s) simulated."
   }
  ],
  "mode": "dry_run",
@@ -978,8 +978,19 @@
   "pnl_usd": 14.22,
   "staked_usd": 245.78
  },
- "updated": "2026-11-21T04:26:28Z",
+ "updated": "2026-11-21T13:09:52Z",
  "candidates": [
+  {
+   "slug": "rotc-t-thehun-2026-11-23-gte55",
+   "title": "55+",
+   "event": "t-thehun-2026-11-23",
+   "event_title": "The Hunger Games: Sunrise on the Reaping Rotten Tomatoes Score?",
+   "ends": "2026-11-24T04:59:00Z",
+   "series": "t",
+   "bid": 0.96,
+   "ask": null,
+   "price": 0.96
+  },
   {
    "slug": "ccpc-bilbrd-1song-any-11-24-2026-chotex",
    "title": "Choosin' Texas - Ella Langley",
@@ -1001,17 +1012,6 @@
    "bid": 0.96,
    "ask": 0.97,
    "price": 0.96
-  },
-  {
-   "slug": "cpc-btc-hit-l-m-2026-11-55000",
-   "title": "Dips to $55,000",
-   "event": "btc-hit-l-m-2026-11",
-   "event_title": "How low will BTC get in November?",
-   "ends": "2026-12-01T05:00:00Z",
-   "series": "btc",
-   "bid": 0.9,
-   "ask": 0.91,
-   "price": 0.9
   },
   {
    "slug": "ccrc-sptfy-1-artst-glbl-yr-2026-badbun",
