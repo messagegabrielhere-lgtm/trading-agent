@@ -163,10 +163,6 @@
  ],
  "log": [
   {
-   "time": "2026-10-18T18:07:55Z",
-   "text": "Scanned 22 events ending within 14 days (147 price checks); 3 qualify; 0 order(s) simulated."
-  },
-  {
    "time": "2026-10-18T18:46:33Z",
    "text": "Scanned 22 events ending within 14 days (147 price checks); 3 qualify; 0 order(s) simulated."
   },
@@ -961,6 +957,10 @@
   {
    "time": "2026-11-24T06:33:16Z",
    "text": "Scanned 70 events ending within 14 days (150 price checks); 3 qualify; 0 order(s) simulated."
+  },
+  {
+   "time": "2026-11-24T18:26:55Z",
+   "text": "Scanned 69 events ending within 14 days (150 price checks); 2 qualify; 0 order(s) simulated."
   }
  ],
  "mode": "dry_run",
@@ -978,19 +978,8 @@
   "pnl_usd": 14.22,
   "staked_usd": 245.78
  },
- "updated": "2026-11-24T06:33:16Z",
+ "updated": "2026-11-24T18:26:55Z",
  "candidates": [
-  {
-   "slug": "ccpc-bilbrd-1song-any-11-24-2026-chotex",
-   "title": "Choosin' Texas - Ella Langley",
-   "event": "bilbrd-1song-any-11-24-2026",
-   "event_title": "Which Songs Will Be Billboard #1 in November?",
-   "ends": "2026-11-25T04:59:00Z",
-   "series": "bilbrd",
-   "bid": 0.97,
-   "ask": null,
-   "price": 0.97
-  },
   {
    "slug": "aimrc-company1-mnth-2026-11-30-google",
    "title": "Google",
