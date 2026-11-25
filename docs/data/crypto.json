@@ -77,14 +77,6 @@
  ],
  "log": [
   {
-   "time": "2026-10-29T01:57:08+00:00",
-   "text": "BTC $80,026 is above its 200-day average $73,061. Bot holds $241.64 vs $250.00 target. No trade."
-  },
-  {
-   "time": "2026-10-29T01:57:08+00:00",
-   "text": "ETH $2,316 is above its 200-day average $2,159. Bot holds $232.18 vs $250.00 target. No trade."
-  },
-  {
    "time": "2026-10-29T08:35:05+00:00",
    "text": "BTC $79,958 is above its 200-day average $73,113. Bot holds $241.43 vs $250.00 target. No trade."
   },
@@ -875,6 +867,14 @@
   {
    "time": "2026-11-25T02:57:13+00:00",
    "text": "ETH $1,654 is below its 200-day average $2,116. Bot holds $0.00 vs $0.00 target. No trade."
+  },
+  {
+   "time": "2026-11-25T12:54:05+00:00",
+   "text": "BTC $58,642 is below its 200-day average $72,020. Bot holds $0.00 vs $0.00 target. No trade."
+  },
+  {
+   "time": "2026-11-25T12:54:05+00:00",
+   "text": "ETH $1,645 is below its 200-day average $2,113. Bot holds $0.00 vs $0.00 target. No trade."
   }
  ],
  "mode": "dry_run",
@@ -889,13 +889,13 @@
  },
  "signals": {
   "BTC": {
-   "close": 59154.0,
-   "sma": 72126.92,
+   "close": 58642.1,
+   "sma": 72019.78,
    "above": false
   },
   "ETH": {
-   "close": 1654.15,
-   "sma": 2116.1,
+   "close": 1645.29,
+   "sma": 2112.81,
    "above": false
   }
  },
@@ -2241,22 +2241,22 @@
    8.2384,
    7.0686,
    6.6565,
-   6.4381
+   6.393
   ],
   "stats": {
    "trend": {
-    "cagr": 0.3976,
-    "vol": 0.457,
-    "sharpe": 0.9633,
+    "cagr": 0.3975,
+    "vol": 0.4569,
+    "sharpe": 0.9631,
     "max_drawdown": -0.5935,
     "total_multiple": 17.203
    },
    "hold": {
-    "cagr": 0.245,
-    "vol": 0.6755,
-    "sharpe": 0.668,
+    "cagr": 0.2439,
+    "vol": 0.6754,
+    "sharpe": 0.6667,
     "max_drawdown": -0.7631,
-    "total_multiple": 6.4381
+    "total_multiple": 6.393
    }
   }
  },
@@ -2266,5 +2266,5 @@
  },
  "book": "sim_qty",
  "bot_value_usd": 0.0,
- "updated": "2026-11-25T02:57:13+00:00"
+ "updated": "2026-11-25T12:54:05+00:00"
 }
