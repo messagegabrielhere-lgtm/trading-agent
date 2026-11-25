@@ -163,10 +163,6 @@
  ],
  "log": [
   {
-   "time": "2026-10-18T19:40:23Z",
-   "text": "Scanned 22 events ending within 14 days (147 price checks); 3 qualify; 0 order(s) simulated."
-  },
-  {
    "time": "2026-10-18T20:07:55Z",
    "text": "Scanned 22 events ending within 14 days (147 price checks); 3 qualify; 0 order(s) simulated."
   },
@@ -961,6 +957,10 @@
   {
    "time": "2026-11-25T12:54:04Z",
    "text": "Scanned 75 events ending within 14 days (150 price checks); 2 qualify; 0 order(s) simulated."
+  },
+  {
+   "time": "2026-11-25T22:38:29Z",
+   "text": "Scanned 75 events ending within 14 days (150 price checks); 2 qualify; 0 order(s) simulated."
   }
  ],
  "mode": "dry_run",
@@ -978,7 +978,7 @@
   "pnl_usd": 14.22,
   "staked_usd": 245.78
  },
- "updated": "2026-11-25T12:54:04Z",
+ "updated": "2026-11-25T22:38:29Z",
  "candidates": [
   {
    "slug": "aimrc-company1-mnth-2026-11-30-google",
@@ -987,9 +987,9 @@
    "event_title": "Which Company Has #1 AI Model end of November?",
    "ends": "2026-12-01T04:59:00Z",
    "series": "company1",
-   "bid": 0.96,
-   "ask": 0.97,
-   "price": 0.96
+   "bid": 0.95,
+   "ask": 0.96,
+   "price": 0.95
   },
   {
    "slug": "ccrc-sptfy-1-artst-glbl-yr-2026-badbun",
