@@ -163,10 +163,6 @@
  ],
  "log": [
   {
-   "time": "2026-10-18T21:11:26Z",
-   "text": "Scanned 22 events ending within 14 days (147 price checks); 3 qualify; 0 order(s) simulated."
-  },
-  {
    "time": "2026-10-18T21:43:51Z",
    "text": "Scanned 22 events ending within 14 days (147 price checks); 3 qualify; 0 order(s) simulated."
   },
@@ -961,6 +957,10 @@
   {
    "time": "2026-11-26T14:35:33Z",
    "text": "Scanned 76 events ending within 14 days (150 price checks); 3 qualify; 0 order(s) simulated."
+  },
+  {
+   "time": "2026-11-26T23:27:07Z",
+   "text": "Scanned 76 events ending within 14 days (150 price checks); 3 qualify; 0 order(s) simulated."
   }
  ],
  "mode": "dry_run",
@@ -978,7 +978,7 @@
   "pnl_usd": 14.22,
   "staked_usd": 245.78
  },
- "updated": "2026-11-26T14:35:33Z",
+ "updated": "2026-11-26T23:27:07Z",
  "candidates": [
   {
    "slug": "aimrc-company1-mnth-2026-11-30-google",
@@ -987,20 +987,20 @@
    "event_title": "Which Company Has #1 AI Model end of November?",
    "ends": "2026-12-01T04:59:00Z",
    "series": "company1",
-   "bid": 0.96,
-   "ask": 0.97,
-   "price": 0.96
-  },
-  {
-   "slug": "ccrc-sptfy-1-artst-glbl-yr-2026-badbun",
-   "title": "Bad Bunny",
-   "event": "sptfy-1-artst-glbl-yr-2026",
-   "event_title": "Top Global Artist 2026",
-   "ends": "2026-12-03T04:59:00Z",
-   "series": "sptfy",
    "bid": 0.97,
    "ask": 0.98,
    "price": 0.97
+  },
+  {
+   "slug": "ccrc-sptfy-1-artst-us-yr-2026-drake",
+   "title": "Drake",
+   "event": "sptfy-1-artst-us-yr-2026",
+   "event_title": "Top Artist in the US 2026?",
+   "ends": "2026-12-03T04:59:00Z",
+   "series": "sptfy",
+   "bid": 0.93,
+   "ask": 0.94,
+   "price": 0.93
   },
   {
    "slug": "rdc-usfed-fomc-2026-12-09-hike25",
