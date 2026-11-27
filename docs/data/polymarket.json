@@ -163,10 +163,6 @@
  ],
  "log": [
   {
-   "time": "2026-10-18T22:42:31Z",
-   "text": "Scanned 22 events ending within 14 days (147 price checks); 3 qualify; 0 order(s) simulated."
-  },
-  {
    "time": "2026-10-18T23:08:56Z",
    "text": "Scanned 22 events ending within 14 days (147 price checks); 3 qualify; 0 order(s) simulated."
   },
@@ -961,6 +957,10 @@
   {
    "time": "2026-11-27T15:44:27Z",
    "text": "Scanned 81 events ending within 14 days (150 price checks); 3 qualify; 0 order(s) simulated."
+  },
+  {
+   "time": "2026-11-27T23:53:56Z",
+   "text": "Scanned 93 events ending within 14 days (150 price checks); 3 qualify; 0 order(s) simulated."
   }
  ],
  "mode": "dry_run",
@@ -978,7 +978,7 @@
   "pnl_usd": 14.22,
   "staked_usd": 245.78
  },
- "updated": "2026-11-27T15:44:27Z",
+ "updated": "2026-11-27T23:53:56Z",
  "candidates": [
   {
    "slug": "aimrc-company1-mnth-2026-11-30-google",
