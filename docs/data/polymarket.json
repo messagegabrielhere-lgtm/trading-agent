@@ -163,10 +163,6 @@
  ],
  "log": [
   {
-   "time": "2026-10-18T23:40:47Z",
-   "text": "Scanned 23 events ending within 14 days (147 price checks); 3 qualify; 0 order(s) simulated."
-  },
-  {
    "time": "2026-10-19T00:07:00Z",
    "text": "Scanned 24 events ending within 14 days (150 price checks); 3 qualify; 0 order(s) simulated."
   },
@@ -961,6 +957,10 @@
   {
    "time": "2026-11-28T07:49:27Z",
    "text": "Scanned 90 events ending within 14 days (150 price checks); 2 qualify; 0 order(s) simulated."
+  },
+  {
+   "time": "2026-11-28T16:35:20Z",
+   "text": "Scanned 90 events ending within 14 days (150 price checks); 2 qualify; 0 order(s) simulated."
   }
  ],
  "mode": "dry_run",
@@ -978,7 +978,7 @@
   "pnl_usd": 14.22,
   "staked_usd": 245.78
  },
- "updated": "2026-11-28T07:49:27Z",
+ "updated": "2026-11-28T16:35:20Z",
  "candidates": [
   {
    "slug": "ccrc-sptfy-1-artst-us-yr-2026-drake",
@@ -998,9 +998,9 @@
    "event_title": "Fed Decision in December",
    "ends": "2026-12-10T04:59:00Z",
    "series": "usfed",
-   "bid": 0.92,
-   "ask": 0.93,
-   "price": 0.92
+   "bid": 0.93,
+   "ask": 0.94,
+   "price": 0.93
   }
  ],
  "exposure": {
